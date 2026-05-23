@@ -253,8 +253,8 @@ header.fixed-top {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -0.5rem;
-    right: -0.5rem;
+    left: -1rem;
+    right: -1rem;
     border-radius: 6.25rem;
     overflow: hidden;
 }
@@ -286,7 +286,7 @@ header.fixed-top .header-glass {
 }
 
 header.fixed-top .header-pill {
-   border: 1px solid rgba(163, 163, 163, 0.1);
+   border: 1px solid rgba(74, 85, 104, 0.1);;
 }
 
 
