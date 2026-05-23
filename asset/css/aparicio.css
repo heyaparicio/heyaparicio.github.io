@@ -164,9 +164,25 @@ a, button, .boton {
   pointer-events: none;
   mix-blend-mode: difference;
   z-index: 9999;
-  transform: translate(-50%, -50%);
-  /* ✅ Solo animar tamaño, nunca transform */
-  transition: width 0.3s ease, height 0.3s ease;
+
+  /* CSS custom properties controlan la posición */
+  transform: translate(var(--cx, -100px), var(--cy, -100px))
+             translate(-50%, -50%)
+             scale(var(--scale, 1));
+
+  /* 
+    50ms linear = absorbe el jitter de Brave sin crear lag visible.
+    El movimiento lo maneja el compositor CSS, no el hilo JS.
+  */
+  transition:
+    transform 50ms linear,
+    width 0.3s ease,
+    height 0.3s ease,
+    background-color 0.3s ease,
+    border 0.2s ease,
+    opacity 0.3s ease;
+
+  will-change: transform;
 }
 
 #cursor.magnet {
@@ -174,8 +190,6 @@ a, button, .boton {
   height: 90px;
   background: transparent;
   border: 1px solid var(--color-accent);
-  backdrop-filter: blur(0px);
-  /* Performance fix */
 }
 
 #cursor.magnet::after {
@@ -183,11 +197,11 @@ a, button, .boton {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 10px;
   height: 10px;
   background: var(--color-accent);
   border-radius: 50%;
+  transform: translate(-50%, -50%);
 }
 
 
@@ -215,15 +229,66 @@ a, button, .boton {
 
 .navbar.fixed-top.scrolled {
   transform: translateY(0);
-  opacity: 1;
-  background: #FFFFFF12;
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   margin: 20px 20px 0 20px;
   padding-top: 0;
   padding-bottom: 0;
+ 
 }
+
+header {
+    position: relative;
+    top: 0;
+    z-index: 1030;
+    width: 100%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+header.fixed-top {
+    position: fixed;
+    top: 0;
+}
+
+
+.header-pill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -0.5rem;
+    right: -0.5rem;
+    border-radius: 6.25rem;
+    overflow: hidden;
+}
+
+/* Estado por defecto: sin filtro */
+.header-glass {
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background-color: transparent;
+    filter: none;
+    transition: filter 0.3s ease;
+}
+header.fixed-top.scrolled {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Se oculta hacia arriba */
+header.fixed-top.nav-hide {
+    transform: translateY(-110%);
+    opacity: 0;
+}
+
+/* ✅ header (no .navbar) es quien recibe fixed-top */
+header.fixed-top .header-glass {
+    filter: url(#liquid-prism-intense);
+}
+
+header.fixed-top .header-pill {
+   border: 1px solid rgba(163, 163, 163, 0.1);
+}
+
+
 
 .navbar.fixed-top .nav-link,
 .navbar.fixed-top .navbar-brand span,
@@ -249,8 +314,8 @@ a, button, .boton {
 
 /* Navbar — variante clara (#main) */
 #main { margin-top: 30px; }
-#main nav { padding-top: 0.975rem; padding-bottom: 0.975rem; }
-#main.navbar.fixed-top.scrolled nav { padding-top: 10px; padding-bottom: 10px; }
+#main nav { padding-top: 1.6rem; padding-bottom: 1.6rem; }
+
 #main nav .navbar-brand span { color: #1E2435; font-weight: 600; font-size: 1.344rem; text-transform: capitalize; }
 
 #navbar .navbar-nav .nav-item, #mainNavbar .navbar-nav .nav-item{ margin: 12px; }
@@ -268,46 +333,64 @@ a, button, .boton {
   text-decoration: none;
 }
 
-/* ── Efecto color: ::before ── */
-#navbar .navbar-nav .nav-link::before, #mainNavbar .navbar-nav .nav-link::before {
+/* ── Nav link base ── */
+#navbar .navbar-nav .nav-link,
+#mainNavbar .navbar-nav .nav-link {
+  font-size: 0.938rem;
+  font-weight: 500;
+  letter-spacing: 0.08rem;
+  padding: 0 !important;
+  position: relative;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+/* ── Efecto color: ::before — usa clip-path en lugar de max-width ── */
+#navbar .navbar-nav .nav-link::before,
+#mainNavbar .navbar-nav .nav-link::before {
   content: attr(data-hover);
   position: absolute;
-  display: inline-block;
+  inset: 0; /* top/left/right/bottom: 0 */
   white-space: nowrap;
   font-size: 0.938rem;
   font-weight: 500;
   letter-spacing: 0.08rem;
   color: #fb0040;
-  max-width: 0;
-  overflow: hidden;
-  left: 0;
-  top: 0;
-  transition: max-width 0.5s ease;
+  /* clip-path solo toca composite, no layout */
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.5s ease;
+  will-change: clip-path;
 }
 
-#navbar .navbar-nav .nav-link:hover::before, #mainNavbar .navbar-nav .nav-link:hover::before {
-  max-width: 100%;
+#navbar .navbar-nav .nav-link:hover::before,
+#mainNavbar .navbar-nav .nav-link:hover::before {
+  clip-path: inset(0 0% 0 0); /* revela de izquierda a derecha */
 }
 
-/* ── Underline: ::after ── */
-#navbar .navbar-nav .nav-link::after, #mainNavbar .navbar-nav .nav-link::after {
+/* ── Underline: ::after — usa scaleX en lugar de width ── */
+#navbar .navbar-nav .nav-link::after,
+#mainNavbar .navbar-nav .nav-link::after {
   content: "";
   display: block;
   position: absolute;
   bottom: -4px;
   left: 0;
   height: 2px;
-  width: 0;
-  background: #fb0040; /* rojo para que coincida con el color hover */
+  width: 100%; /* siempre 100%, la escala lo oculta */
+  background: #fb0040;
   opacity: 0.6;
-  transition: width 0.3s ease, opacity 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: left center;
+  /* transform y opacity son las únicas propiedades 100% GPU ✅ */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  will-change: transform;
 }
 
-#navbar .navbar-nav .nav-link:hover::after, #mainNavbar .navbar-nav .nav-link:hover::after {
-  width: 100%;
+#navbar .navbar-nav .nav-link:hover::after,
+#mainNavbar .navbar-nav .nav-link:hover::after {
+  transform: scaleX(1);
   opacity: 0.9;
 }
-
 
 /* Navbar — variante oscura (#mainNavbar) */
 #mainNavbar nav { padding-top: 10px; padding-bottom: 10px; }
@@ -361,9 +444,9 @@ h3 a:hover  { color: #FB0040; }
   height: calc(100vh - 40px);
 }
 
-.header-bg-gris .navbar { padding-top: 1.6rem; padding-bottom: 1.6rem; }
-.header-bg-gris .navbar.fixed-top { margin-top: 30px !important; }
-.header-bg-gris .navbar.fixed-top.scrolled { background: #1e2435d0 !important; }
+.header-bg-gris header { padding-top: 1.6rem; padding-bottom: 1.6rem; }
+.header-bg-gris header.fixed-top { margin-top: 30px !important; }
+/*.header-bg-gris #mainNavbar header.fixed-top.scrolled { background: #1e2435d0 !important; }*/
 
 .header-bg-gris-single {
   background-color: #1E2435;
