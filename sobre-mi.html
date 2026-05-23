@@ -4,24 +4,25 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Aparicio</title>
+        <link rel="canonical" href="https://heyaparicio.github.io/">
         <link rel="shortcut icon" href="asset/img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="asset/img/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="asset/css/bootstrap.css" />
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-        <link rel="stylesheet" href="asset/css/fonts.css" />
-        <link rel="stylesheet" href="asset/css/cardi-slider.css">
-        <link rel="stylesheet" href="asset/css/aparicio.css"/>
+        <link rel="stylesheet" href="asset/css/bootstrap.css">
+        <link rel="stylesheet" href="asset/css/fonts.css">
+        <link rel="stylesheet" href="animations.css">
+        <link rel="stylesheet" href="asset/css/cardi-slider.css"> 
+        <link rel="stylesheet" href="asset/css/aparicio.css">
     </head>
     <body>
         <div id="cursor"></div>
         
             <header class="navbar navbar-expand-lg" id="main" tabindex="0" >
                 <nav class="container" aria-label="Menu principal">
-                    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                    <a class="navbar-brand d-flex align-items-center magnetic" href="index.html">
                         <svg id="aparicio" xmlns="http://www.w3.org/2000/svg" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" version="1.1" viewBox="0 0 149.8 149.8">
                             <path class="st0" d="M86.9.4h-39.8l32.7,78c-2.6-.3-5.3-.5-8-.5C32.4,78,.4,110,.4,149.4h36.5c0-19.3,15.5-34.9,34.9-34.9s34.9,15.6,34.9,34.9h42.7L86.9.4Z"/>
                         </svg>
-                        <span class="fs-4">APARICIO</span>
+                        <span>Aparicio</span>
                     </a>
                     <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar1" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                         <span class="fs-6 pe-1">Menu</span>
@@ -29,13 +30,13 @@
                     
                     <div class="collapse navbar-collapse d-none d-lg-flex" id="navbar">
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link" href="proyectos.html">Proyectos</a></li>
-                            <li class="nav-item"><a class="nav-link" href="docencia.html">Docencia</a></li>
-                            <li class="nav-item"><a class="nav-link active" href="sobre-mi.html">Sobre mí</a></li>
+                            <li class="nav-item"><a class="nav-link magnetic" href="proyectos.html" data-hover="Proyectos">Proyectos</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a></li>
                         </ul>
                     </div>
                 </nav>
             </header>
+
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar1" aria-labelledby="offcanvasNavbar1Label">
                 <div class="offcanvas-header">
                     <span class="offcanvas-title" id="offcanvasNavbar1Label">
@@ -59,10 +60,10 @@
             <div class="py-5 data-scroll-section">
                 <div class="container">
                     <div class="row d-flex">
-                        <div class="offset-lg-1 col-lg-3 py-5" data-aos="fade-right" data-aos-delay="200">
+                        <div class="offset-lg-1 col-lg-3 py-5" data-reveal="right" data-duration="slow" data-once>
                             <img src="asset/img/aparicio_perfil.png" alt="foto de perfil" class="img-fluid rounded-circle">
                         </div>
-                        <div class="offset-lg-2 col-lg-6  py-5" data-aos="fade-left" data-aos-delay="200">
+                        <div class="offset-lg-2 col-lg-6  py-5" data-reveal="left" data-duration="slow" data-once>
                             <h1>Sobre mí</h1>
                             <p>Un diseñador con raíces en el código y el humanismo</p>
                             <p class="text-lead">Llegué al diseño desde la computación. Primero aprendí a construir sitios desde cero, a entender cómo funciona la web por dentro. Después el diseño gráfico me abrió otra dimensión: la comunicación visual, la forma en que los elementos gráficos conviven en una pantalla, en una pieza editorial impresa, en un espacio físico. Y cuando descubrí la experiencia de usuario, las piezas encajaron — porque al final todo se trata de entender a la persona que está del otro lado.</p>
@@ -76,10 +77,10 @@
                     <div class="row">
                         <div class="col-12 mt-3 mb-5">
                             <div class="row">
-                                <div class="col-lg-3 offset-lg-1" data-aos="fade-down" data-aos-delay="200">
+                                <div class="col-lg-3 offset-lg-1" data-reveal="up" data-duration="slow" data-delay="100">
                                     <span class="monospace text-small">Uno tecnología, diseño visual e investigación centrada en las personas.</span>
                                 </div>
-                                <div class="col-lg-3 offset-lg-2" data-aos="fade-down" data-aos-delay="200">
+                                <div class="col-lg-3 offset-lg-2" data-reveal="up" data-duration="slow" data-delay="200">
                                     <img src="asset/img/aparicio-3d.jpeg" alt="logo aparicio design 3d" class="img-fluid">
                                 </div>
                             </div>
@@ -91,10 +92,10 @@
             <section>
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-3 mb-5" data-aos="fade-down" data-aos-delay="200">
+                        <div class="col-lg-3 mb-5" data-reveal="up" data-duration="slow" data-delay="200">
                             <img src="asset/img/carlos_perfil.jpg" alt="foto de perfil" class="img-fluid">
                         </div>
-                        <div class="col-lg-6 offset-lg-3 mb-5">
+                        <div class="col-lg-6 offset-lg-3 mb-5" data-reveal="up" data-duration="slow" data-delay="300">
                             <p>Hoy trabajo en la intersección de esas tres áreas. Uso Design Thinking no como una receta sino como una forma de pensar: observo, pregunto, defino el problema real y recién entonces empiezo a diseñar. Me interesa la etnografía, los procesos cognitivos, la forma en que las personas se relacionan con los objetos y las pantallas.</p> 
                             <p>Esa curiosidad por lo humano es lo que guía cada proyecto.</p>
                         </div>
@@ -105,7 +106,7 @@
             <section class="mb-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6 mb-5">
+                        <div class="col-md-6 mb-5" data-reveal="up" data-duration="slow" data-delay="400">
                             <p>Soy socio fundador de debuenamano.cl, un marketplace de productos de segunda mano para bebés donde soy CEO, product designer y responsable de la plataforma y su posicionamiento. Un espacio donde pongo en práctica todo lo que sé — y donde aprendo cosas nuevas todo el tiempo.</p>
                             <p>Y en las aulas de Duoc UC Viña del Mar comparto lo que fui acumulando con quienes están empezando. Diseñar la experiencia de aprendizaje con la misma lógica que diseño productos es, quizás, el proyecto más interesante que tengo entre manos.</p>
                         </div>
@@ -120,8 +121,6 @@
                     
                     <div class="cards py-5">
                         <div class="cardi" active>
-                            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=640"
-                            alt="Empatizar" class="card__image" decoding="async" fetchpriority="high">
                             <div class="card__infos">
                             <h3 class="card__name">01 Empatizar</h3>
                             <p class="card__desc">Todo parte de salir a observar y escuchar. Uso investigación cualitativa y cuantitativa, entrevistas y observación directa para entender el contexto real detrás del problema.</p>
@@ -129,8 +128,6 @@
                         </div>
 
                         <div class="cardi">
-                            <img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=640"
-                            alt="Definir" class="card__image" loading="lazy" decoding="async">
                             <div class="card__infos">
                             <h3 class="card__name">02 Definir</h3>
                             <p class="card__desc">Con la investigación encima, sintetizo los hallazgos para nombrar el problema real. Un buen "How Might We" vale más que horas de brainstorming sin dirección.</p>
@@ -138,8 +135,6 @@
                         </div>
 
                         <div class="cardi">
-                            <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=640"
-                            alt="Idear" class="card__image" loading="lazy" decoding="async">
                             <div class="card__infos">
                             <h3 class="card__name">03 Idear</h3>
                             <p class="card__desc">Aquí se abre el embudo. Facilito sesiones de ideación donde todas las ideas tienen cabida antes de filtrar. Cantidad primero, calidad después.</p>
@@ -147,8 +142,6 @@
                         </div>
 
                         <div class="cardi">
-                            <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=640"
-                            alt="Prototipar" class="card__image" loading="lazy" decoding="async">
                             <div class="card__infos">
                             <h3 class="card__name">04 Prototipar</h3>
                             <p class="card__desc">Hago tangible la idea lo antes posible, con el mínimo esfuerzo necesario. Papel, Figma o código según lo que el prototipo necesite demostrar.</p>
@@ -156,8 +149,6 @@
                         </div>
 
                         <div class="cardi">
-                            <img src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=640"
-                            alt="Testear" class="card__image" loading="lazy" decoding="async">
                             <div class="card__infos">
                             <h3 class="card__name">05 Testear</h3>
                             <p class="card__desc">El prototipo vuelve a las personas. Observo, no explico. Cada test es una oportunidad de aprender algo que el equipo no sabía que no sabía.</p>
@@ -174,12 +165,17 @@
         <footer class="bg-negro-noise py-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-                        <nav class="nav">
-                            <a href="https://www.instagram.com/apariciodesign" class="nav-link" target="_blank" rel="noopener noreferrer">Instagram</a>
-                            <a href="https://www.linkedin.com/in/hey-aparicio" class="nav-link" target="_blank" rel="noopener noreferrer">Linkedin</a>
-                        </nav>
-                    </div>
+                <div class="col-lg-6">
+                    <nav class="nav">
+                    <a href="https://www.instagram.com/apariciodesign" class="nav-link magnetic" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.linkedin.com/in/hey-aparicio" class="nav-link magnetic" target="_blank" rel="noopener noreferrer" >Linkedin</a>
+                    </nav>
+                </div>
+                <div class="col-lg-6">
+                    <p class="text-white text-small text-md-end text-center">
+                    Lo pienso, lo diseño, lo escribo y lo codifico.
+                    </p>
+                </div>
                 </div>
             </div>
         </footer>
@@ -187,18 +183,10 @@
         
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        <script src="animations.js"></script>
         <script src="asset/js/aparicio.js"></script>
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.3.0/dist/simpleParallax.min.js"></script>
-        <script src="asset/js/parallax.js"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        
-        <script>
-            AOS.init({
-              duration: 800, // values from 0 to 3000, with step 50ms
-            });
-        </script>
-        <!-- Añádelo justo antes del cierre de </body> -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
         <script type="module">
             import gsap from "https://cdn.skypack.dev/gsap@3.12.0";
         

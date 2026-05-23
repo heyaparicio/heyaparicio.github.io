@@ -4,16 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Aparicio</title>
-    <link
-      rel="shortcut icon"
-      href="asset/img/favicon.ico"
-      type="image/x-icon"
-    />
+    <link rel="canonical" href="https://heyaparicio.github.io/" />
+    <link rel="shortcut icon" href="asset/img/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="asset/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="asset/css/bootstrap.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="asset/css/fonts.css" />
-    <link rel="stylesheet" href="asset/css/aparicio.css" />
+    <link rel="stylesheet" href="animations.css"> 
+    <link rel="stylesheet" href="asset/css/aparicio.css"/>
   </head>
   <body>
     <div id="cursor"></div>
@@ -21,7 +18,7 @@
     <header class="navbar navbar-expand-lg" id="main" tabindex="0">
       <nav class="container" aria-label="Menu principal">
         <a
-          class="navbar-brand d-flex align-items-center gap-2"
+          class="navbar-brand d-flex align-items-center magnetic"
           href="index.html"
         >
           <svg
@@ -36,7 +33,7 @@
               d="M86.9.4h-39.8l32.7,78c-2.6-.3-5.3-.5-8-.5C32.4,78,.4,110,.4,149.4h36.5c0-19.3,15.5-34.9,34.9-34.9s34.9,15.6,34.9,34.9h42.7L86.9.4Z"
             />
           </svg>
-          <span class="fs-4">APARICIO</span>
+          <span>Aparicio</span>
         </a>
         <button
           class="navbar-toggler ms-auto"
@@ -52,13 +49,10 @@
         <div class="collapse navbar-collapse d-none d-lg-flex" id="navbar">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="proyectos.html">Proyectos</a>
+              <a class="nav-link active" href="proyectos.html" data-hover="Proyectos">Proyectos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="docencia.html">Docencia</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="sobre-mi.html">Sobre mí</a>
+              <a class="nav-link" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a>
             </li>
           </ul>
         </div>
@@ -95,16 +89,13 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" href="index.html" data-hover="Inicio">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="proyectos.html">Proyectos</a>
+            <a class="nav-link active" href="proyectos.html" data-hover="Proyectos">Proyectos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="docencia.html">Docencia</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sobre-mi.html">Sobre mí</a>
+            <a class="nav-link" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a>
           </li>
         </ul>
       </div>
@@ -294,23 +285,14 @@
     <footer class="bg-negro-noise py-5">
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
-            <nav class="nav">
-              <a
-                href="https://www.instagram.com/apariciodesign"
-                class="nav-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Instagram</a
-              >
-              <a
-                href="https://www.linkedin.com/in/hey-aparicio"
-                class="nav-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Linkedin</a
-              >
-            </nav>
+          <div class="col-lg-6">
+                <nav class="nav">
+                  <a href="https://www.instagram.com/apariciodesign" class="nav-link magnetic" target="_blank" rel="noopener noreferrer">Instagram</a>
+                  <a href="https://www.linkedin.com/in/hey-aparicio" class="nav-link magnetic" target="_blank" rel="noopener noreferrer" >Linkedin</a>
+                </nav>
+          </div>
+          <div class="col-lg-6">
+              <p class="text-white text-small text-md-end text-center">Lo pienso, lo diseño, lo escribo y lo codifico.</p>
           </div>
         </div>
       </div>

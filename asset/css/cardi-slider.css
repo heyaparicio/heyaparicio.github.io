@@ -30,9 +30,8 @@
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
-  transition:
-    flex          0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    border-radius 0.4s ease;
+  background-color: var(--color-text-base);
+  transition: flex 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.4s ease;
 }
 
 .cardi:hover:not([active]) {
@@ -47,6 +46,7 @@
 .cardi[active] {
   flex: 1 1 auto;
   cursor: default;
+  background-color: #4A5568;
 }
 
 
@@ -82,16 +82,16 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.72) 0%,
-    rgba(0, 0, 0, 0.24) 50%,
-    rgba(0, 0, 0, 0.08) 100%
+    rgba(30, 36, 56, 0.72) 0%,
+    rgba(30, 36, 56, 0.24) 50%,
+    rgba(30, 36, 56, 0.08) 100%
   );
   z-index: 1;
   transition: opacity 0.4s ease;
 }
 
 .cardi:not([active])::before {
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(30, 36, 56, 0);
 }
 
 

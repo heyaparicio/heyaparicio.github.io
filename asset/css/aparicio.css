@@ -91,18 +91,44 @@ a, button, .boton {
 .boton-enlace:hover { color: var(--color-accent); }
 
 .boton {
-  display: inline-block;
-  padding: 14px 28px;
+  font-family: var(--font-display);
   background-color: var(--color-text-sec);
   color: var(--color-surface);
   text-decoration: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  box-shadow: 0 4px 16px rgba(30, 36, 56, 0.4);
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  /* solo las propiedades que realmente cambian */
+  transition: color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
+
 .boton:hover {
-  background-color: var(--color-accent);
-  color: var(--color-surface);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(251, 0, 64, 0.35);
+}
+
+.boton::before {
+  content: "";
+  position: absolute;
+  inset: 0;             /* reemplaza top/left/height/width: 100% */
+  width: 0;             /* arranca colapsado */
+  background: #fb0040;
+  z-index: -1;
+  transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.boton:hover::before {
+  width: 100%;          /* misma propiedad que se declaró en base */
 }
 
 .disabled {
@@ -207,10 +233,13 @@ a, button, .boton {
   box-shadow: none;
 }
 
+#aparicio, #apariciolight {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+.navbar-brand { gap: 0.469rem;}
 .navbar-brand svg,
 .offcanvas-title svg {
-  width: 32px;
-  max-width: 32px;
   height: auto;
   fill: #FB0040;
   display: block;
@@ -218,55 +247,83 @@ a, button, .boton {
 
 /* Navbar — variante clara (#main) */
 #main { margin-top: 30px; }
-#main nav { padding-top: 0.975rem; padding-bottom: 1.6rem; }
+#main nav { padding-top: 0.975rem; padding-bottom: 0.975rem; }
 #main.navbar.fixed-top.scrolled nav { padding-top: 10px; padding-bottom: 10px; }
-#main nav .navbar-brand span { color: #1E2435; font-weight: 600; }
+#main nav .navbar-brand span { color: #1E2435; font-weight: 600; font-size: 1.344rem; text-transform: capitalize; }
 
-#navbar .navbar-nav .nav-link {
-  font-size: 15px;
+#navbar .navbar-nav .nav-item, #mainNavbar .navbar-nav .nav-item{ margin: 12px; }
+
+#navbar .navbar-nav .nav-item .nav-link { color: #1E2435; }
+#mainNavbar .navbar-nav .nav-item .nav-link { color: #EEF1F6; }
+
+#navbar .navbar-nav .nav-item .nav-link, #mainNavbar .navbar-nav .nav-item .nav-link {
+  font-size: 0.938rem;
   font-weight: 500;
-  color: #1E2435;
-  padding: 12px 16px;
-  background-color: transparent;
-  border-radius: 8px;
+  letter-spacing: 0.08rem;
+  padding: 0 !important;
+  position: relative;
+  white-space: nowrap;
+  text-decoration: none;
 }
-#navbar .navbar-nav .nav-link:hover,
-#navbar .navbar-nav .nav-link.active {
-  background: linear-gradient(87deg, rgba(252, 58, 35, 1) 0%, rgba(251, 0, 64, 1) 100%);
-  color: #EEF1F6 !important;
+
+/* ── Efecto color: ::before ── */
+#navbar .navbar-nav .nav-link::before, #mainNavbar .navbar-nav .nav-link::before {
+  content: attr(data-hover);
+  position: absolute;
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 0.938rem;
+  font-weight: 500;
+  letter-spacing: 0.08rem;
+  color: #fb0040;
+  max-width: 0;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  transition: max-width 0.5s ease;
 }
-#navbar .navbar-nav .nav-item { margin-left: 13px; }
+
+#navbar .navbar-nav .nav-link:hover::before, #mainNavbar .navbar-nav .nav-link:hover::before {
+  max-width: 100%;
+}
+
+/* ── Underline: ::after ── */
+#navbar .navbar-nav .nav-link::after, #mainNavbar .navbar-nav .nav-link::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: #fb0040; /* rojo para que coincida con el color hover */
+  opacity: 0.6;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+#navbar .navbar-nav .nav-link:hover::after, #mainNavbar .navbar-nav .nav-link:hover::after {
+  width: 100%;
+  opacity: 0.9;
+}
+
 
 /* Navbar — variante oscura (#mainNavbar) */
 #mainNavbar nav { padding-top: 10px; padding-bottom: 10px; }
-#mainNavbar .navbar-brand span { color: #EEF1F6; font-weight: 600; }
+#mainNavbar .navbar-brand span { color: #EEF1F6; font-weight: 600; font-size: 1.344rem; }
 #mainNavbar .navbar-toggler { border: none; color: #EEF1F6; }
 
-#mainNavbar .navbar-nav .nav-link {
-  font-size: 15px;
-  font-weight: 500;
-  color: #EEF1F6;
-  padding: 12px 16px;
-  background-color: transparent;
-  border-radius: 8px;
-}
-#mainNavbar .navbar-nav .nav-link:hover,
-#mainNavbar .navbar-nav .nav-link.active {
-  background: linear-gradient(87deg, rgba(252, 58, 35, 1) 0%, rgba(251, 0, 64, 1) 100%);
-  color: #EEF1F6 !important;
-}
 
 /* Nav — reglas globales compartidas */
 .navbar-nav .nav-link {
   color: #EEF1F6;
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 17px;
+  font-size: 0.938rem;
   letter-spacing: 0.25px;
+  position: relative;
 }
-.nav-link:hover,
+
 footer .nav .nav-link:hover,
-.navbar.fixed-top .nav-link:hover,
 h2 a:hover,
 h3 a:hover  { color: #FB0040; }
 .nav-link.active { color: #FB0040 !important; }
@@ -387,6 +444,7 @@ h3 a:hover  { color: #FB0040; }
   height: 100%;
 }
 .img-zoom:hover { transform: scale(1.1); }
+
 
 
 
@@ -607,27 +665,43 @@ footer .nav .nav-link:hover { color: #FB0040; }
   }
 }
 
+
 #aparicio .logo-path {
-  fill: #FB0040;
-  stroke: var(--color-bg);
-  stroke-width: 3;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  stroke-dasharray: 0, 596;
+ fill: #FB0040;
+ stroke: var(--color-bg);
+ stroke-width: 3;
+ stroke-linejoin: round;
+ stroke-linecap: round;
+ stroke-dasharray: 0, 596;
 }
 
 #logo_erlen-masson:hover #aparicio .logo-path {
-  animation: shine 1.2s ease-in-out forwards;
+  animation: shine 0.9s ease-in-out forwards;
 }
 
 @keyframes shine {
-  0%   { stroke-dasharray:  0,   596;   stroke-dashoffset:  0; }
-  10%  { stroke-dasharray:  60, 536; stroke-dashoffset:  0; }
-  80%  { stroke-dasharray:  60, 536; stroke-dashoffset: -536; }
-  100% { stroke-dasharray:  0,   596;   stroke-dashoffset: -596; }
+  0%   { stroke-dasharray:  0,   596;   stroke-dashoffset:  0; fill: #FB0040; }
+  10%  { stroke-dasharray:  60, 536; stroke-dashoffset:  0; fill: transparent; }
+  80%  { stroke-dasharray:  60, 536; stroke-dashoffset: -536; fill: transparent; }
+  100% { stroke-dasharray:  0,   596;   stroke-dashoffset: -596; fill: #FB0040; }
 }
 
-#aparicio {
-  width: 40px;
-  height: 40px;
+#apariciolight .logo-path {
+ fill: #FB0040;
+ stroke: var(--color-bg);
+ stroke-width: 3;
+ stroke-linejoin: round;
+ stroke-linecap: round;
+ stroke-dasharray: 0, 596;
+}
+
+#logo_erlen-masson:hover #apariciolight .logo-path {
+  animation: shinelight 0.9s ease-in-out forwards;
+}
+
+@keyframes shinelight {
+  0%   { stroke-dasharray:  0,   596;   stroke-dashoffset:  0; fill: #FB0040; stroke: var(--color-text-base); }
+  10%  { stroke-dasharray:  60, 536; stroke-dashoffset:  0; fill: transparent; stroke: var(--color-text-base);}
+  80%  { stroke-dasharray:  60, 536; stroke-dashoffset: -536; fill: transparent; stroke: var(--color-text-base);}
+  100% { stroke-dasharray:  0,   596;   stroke-dashoffset: -596; fill: #FB0040; stroke: var(--color-text-base);}
 }
