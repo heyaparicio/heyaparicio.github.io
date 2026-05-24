@@ -1,241 +1,226 @@
 <!doctype html>
 <html lang="es">
-	  <head>
-	      <meta charset="utf-8">
-	      <meta name="viewport" content="width=device-width, initial-scale=1">
-	      <title>Aparicio</title>
-	      <link rel="canonical" href="https://heyaparicio.github.io/" />
-	      <link rel="shortcut icon" href="asset/img/favicon.ico" type="image/x-icon"/>
-	      <link rel="icon" href="asset/img/favicon.ico" type="image/x-icon" />
-	      <link rel="stylesheet" href="asset/css/bootstrap.css" />
-	      <link rel="stylesheet" href="asset/css/fonts.css" />
-	      <link rel="stylesheet" href="animations.css"> 
-	      <link rel="stylesheet" href="asset/css/aparicio.css"/>
-	  </head>
-	  <body>
-	      <div id="cursor"></div>
-	      <svg width="0" height="0" aria-hidden="true" style="position:absolute">
-	          <defs>
-	              <filter id="liquid-prism-intense" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
-	                  <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence"></feTurbulence>
-	                  <feComponentTransfer in="turbulence" result="mapped">
-	                      <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5"></feFuncR>
-	                      <feFuncG type="gamma" amplitude="0" exponent="1" offset="0"></feFuncG>
-	                      <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5"></feFuncB>
-	                  </feComponentTransfer>
-	                  <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap"></feGaussianBlur>
-	                  <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lighting-color="white" result="specLight">
-	                      <fePointLight x="-200" y="-200" z="300"></fePointLight>
-	                  </feSpecularLighting>
-	                  <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage"></feComposite>
-	                  <feDisplacementMap in="SourceGraphic" in2="softMap" scale="250" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
-	              </filter>
-	          </defs>
-	      </svg>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Aparicio</title>
+        <link rel="canonical" href="https://heyaparicio.github.io/" />
+        <link rel="shortcut icon" href="asset/img/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="asset/img/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="asset/css/bootstrap.css" />
+        <link rel="stylesheet" href="asset/css/fonts.css" />
+        <link rel="stylesheet" href="asset/css/animations.css"> 
+        <link rel="stylesheet" href="asset/css/aparicio.css"/>
+    </head>
+    <body>
+        <div id="cursor"></div>
+        <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+            <defs>
+                <filter id="liquid-prism-intense" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox"> <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence"></feTurbulence> <feComponentTransfer in="turbulence" result="mapped"> <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5"></feFuncR> <feFuncG type="gamma" amplitude="0" exponent="1" offset="0"></feFuncG> <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5"></feFuncB> </feComponentTransfer> <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap"></feGaussianBlur> <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lighting-color="white" result="specLight"> <fePointLight x="-200" y="-200" z="300"></fePointLight> </feSpecularLighting> <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage"></feComposite> <feDisplacementMap in="SourceGraphic" in2="softMap" scale="250" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap> </filter>
+            </defs>
+        </svg>
 
-	      <header id="main" tabindex="0">
-	          <div class="container position-relative">
-	              <div class="header-pill" aria-hidden="true">
-	                  <div class="header-glass"></div>
-	              </div>
+        <header id="main" tabindex="0">
+            <div class="container position-relative">
+                <div class="header-pill" aria-hidden="true">
+                    <div class="header-glass"></div>
+                </div>
 
-	              <nav class="navbar navbar-expand-lg" aria-label="Menu principal">
-	                  <a class="navbar-brand d-flex align-items-center magnetic" href="index.html" id="logo_erlen-masson">
-	                      <svg id="apariciolight" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 149.8 149.8">
-	                          <path class="logo-path" d="M86.9.4h-39.8l32.7,78c-2.6-.3-5.3-.5-8-.5C32.4,78,.4,110,.4,149.4h36.5c0-19.3,15.5-34.9,34.9-34.9s34.9,15.6,34.9,34.9h42.7L86.9.4Z"/>
-	                      </svg>
-	                      <span>Aparicio</span>
-	                  </a>
-	                  <button class="navbar-toggler ms-auto" type="button"
-	                      data-bs-toggle="offcanvas"
-	                      data-bs-target="#offcanvasNavbar1"
-	                      aria-controls="offcanvasNavbar"
-	                      aria-label="Toggle navigation">
-	                      <span class="fs-6 pe-1">Menu</span>
-	                  </button>
-	                  <div class="collapse navbar-collapse d-none d-lg-flex" id="navbar">
-	                      <ul class="navbar-nav ms-auto">
-	                          <li class="nav-item">
-	                              <a class="nav-link active" href="proyectos.html" data-hover="Proyectos">Proyectos</a>
-	                          </li>
-	                          <li class="nav-item">
-	                              <a class="nav-link magnetic" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a>
-	                          </li>
-	                      </ul>
-	                  </div>
-	              </nav>
-	          </div>
-	      </header>
+                <nav class="navbar navbar-expand-lg" aria-label="Menu principal">
+                    <a class="navbar-brand d-flex align-items-center magnetic" href="index.html" id="logo_erlen-masson">
+                        <svg id="apariciolight" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 149.8 149.8">
+                            <path class="logo-path" d="M86.9.4h-39.8l32.7,78c-2.6-.3-5.3-.5-8-.5C32.4,78,.4,110,.4,149.4h36.5c0-19.3,15.5-34.9,34.9-34.9s34.9,15.6,34.9,34.9h42.7L86.9.4Z"/>
+                        </svg>
+                        <span>Aparicio</span>
+                    </a>
+                    <button class="navbar-toggler ms-auto" type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar1"
+                        aria-controls="offcanvasNavbar"
+                        aria-label="Toggle navigation">
+                        <span class="fs-6 pe-1">Menu</span>
+                    </button>
+                    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbar">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="proyectos.html" data-hover="Proyectos">Proyectos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link magnetic" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
 
-	      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar1" aria-labelledby="offcanvasNavbar1Label">
-	          <div class="offcanvas-header">
-	              <span class="offcanvas-title" id="offcanvasNavbar1Label">
-	                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" version="1.1" viewBox="0 0 149.8 149.8">
-	                          <path class="st0" d="M86.9.4h-39.8l32.7,78c-2.6-.3-5.3-.5-8-.5C32.4,78,.4,110,.4,149.4h36.5c0-19.3,15.5-34.9,34.9-34.9s34.9,15.6,34.9,34.9h42.7L86.9.4Z"/>
-	                  </svg>
-	              </span>
-	              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-	          </div>
-	          <div class="offcanvas-body">
-	               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-	                  <li class="nav-item"><a class="nav-link" href="index.html" data-hover="Inicio">Inicio</a></li>
-	                  <li class="nav-item"><a class="nav-link active" href="proyectos.html" data-hover="Proyectos">Proyectos</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a></li>
-	              </ul>
-	          </div>
-	      </div>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar1" aria-labelledby="offcanvasNavbar1Label">
+            <div class="offcanvas-header">
+                <span class="offcanvas-title" id="offcanvasNavbar1Label">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" version="1.1" viewBox="0 0 149.8 149.8">
+                            <path class="st0" d="M86.9.4h-39.8l32.7,78c-2.6-.3-5.3-.5-8-.5C32.4,78,.4,110,.4,149.4h36.5c0-19.3,15.5-34.9,34.9-34.9s34.9,15.6,34.9,34.9h42.7L86.9.4Z"/>
+                    </svg>
+                </span>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item"><a class="nav-link" href="index.html" data-hover="Inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="proyectos.html" data-hover="Proyectos">Proyectos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a></li>
+                </ul>
+            </div>
+        </div>
 
-	      <main data-scroll-container class="py-5">
-	          <div class="py-5 data-scroll-section">
-	              <div class="container">
-	                  <div class="row d-flex">
-	                      <div class="col-md-6 mb-5" data-reveal="right" data-duration="slow" data-once>
-	                          <h1>Proyectos</h1>
-	                          <p>Desafíos con un problema real detrás.</p>
-	                      </div>
-	                      <div class="col-md-6" data-reveal="fade" data-delay="1">
-	                          <p class="frase-fuerza texto-narrativo">Cada caso tiene un problema real detrás. Contexto, decisiones y lo que aprendí en el camino.</p>
-	                      </div>
-	                  </div>
-	              </div>
-	          </div>
+        <main data-scroll-container class="py-5">
+            <div class="py-5 data-scroll-section">
+                <div class="container">
+                    <div class="row d-flex">
+                        <div class="col-md-6 mb-5" data-reveal="right" data-duration="slow" data-once>
+                            <h1>Proyectos</h1>
+                            <p>Desafíos con un problema real detrás.</p>
+                        </div>
+                        <div class="col-md-6" data-reveal="fade" data-delay="1">
+                            <p class="frase-fuerza texto-narrativo">Cada caso tiene un problema real detrás. Contexto, decisiones y lo que aprendí en el camino.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-	          <section class="my-5">
-	              <div class="container" id="card-home">
-	                  <div class="row">
-	                      <div class="col-12 mb-5" data-reveal="up" data-delay="1">
-	                          <div class="row">
-	                              <div class="col-xl-5 offset-xl-1 col-md-12">
-	                                  <div class="card-img-container image-noise">
-	                                      <div class="img-parallax one">
-	                                          <a href="#"><img src="asset/img/portafolio/debuenamano/cover_debuenamano.png" class="card-img-top img-zoom main-image ione magnetic" alt="Imagen 1"></a>
-	                                      </div>
-	                                      <canvas class="noise-overlay"></canvas>
-	                                  </div>
-	                              </div>
-	                              <div class="col-xl-5 col-md-12 mt-4">
-	                                  <div class="d-flex justify-content-between mb-2">
-	                                      <span class="text-small">UX Research · diseño de interfaz</span>
-	                                      <span class="text-small">2025</span>
-	                                  </div>    
-	                                  <h2><a href="debuenamano.html" class="enlace magnetic" data-hover="De Buena Mano">De Buena Mano</a></h2>
-	                                  <p class="text-body mb-4">Cómo diseñé una plataforma que simplifica comprar y vender artículos de crianza, sin que parezca un e-commerce más.</p>
-	                                  <a href="debuenamano.html" data-hover="ver proyecto" class="boton magnetic">ver proyecto</a>
-	                              </div>
-	                          </div>
-	                      </div>
-	                  </div> <!-- cierre row -->
-	                  <div class="row">
-	                      <div class="col-12 mt-5 mb-5" data-reveal="up" data-delay="2">
-	                          <div class="row">
-	                              <div class="col-xl-5 offset-xl-1 col-md-12"> 
-	                                  <div class="card-img-container image-noise">
-	                                      <div class="img-parallax one">
-	                                          <a href="#"><img src="asset/img/portafolio/mira+/cover_mira+.png" class="card-img-top img-zoom main-image ione" alt="Imagen 1"></a>
-	                                      </div>
-	                                      <canvas class="noise-overlay"></canvas>
-	                                  </div> 
-	                              </div>
-	                              <div class="col-xl-5 col-md-12 mt-4">                                  
-	                                  <div class="d-flex justify-content-between mb-2">
-	                                      <span class="text-small">Diseño de interfaz</span>
-	                                      <span class="text-small">2021</span>
-	                                  </div>                                         
-	                                  <h2><a href="#" class="enlace" data-hover="Mira+">Mira+</a></h2>
-	                                  <p class="text-body mb-4">Cómo diseñé una interfaz que ayuda a los estudiantes a entender su progresión curricular, sin que parezca una tabla de Excel más.</p>
-	                                  <a href="#" class="disabled">próximamente</a>                                        
-	                              </div>
-	                          </div>
-	                      </div>
-	                  </div> <!-- cierre row -->
-	                  <div class="row">
-	                      <div class="col-12 mt-5 mb-5" data-reveal="up" data-delay="3">
-	                          <div class="row">
-	                              <div class="col-xl-5 offset-xl-1 col-md-12">
-	                                  <div class="card-img-container image-noise">
-	                                      <div class="img-parallax one">
-	                                          <a href="#"><img src="asset/img/portafolio/pucv/cover_pucv.png" class="card-img-top img-zoom main-image ione" alt="Imagen 1"></a>
-	                                      </div>
-	                                      <canvas class="noise-overlay"></canvas>
-	                                   </div> 
-	                              </div>
-	                              <div class="col-xl-5 col-md-12 mt-4">
-	                                  <div class="d-flex justify-content-between mb-2">
-	                                      <span class="text-small">Diseño de interfaz</span>
-	                                      <span class="text-small">2020</span>
-	                                  </div>       
-	                                  <h2><a href="#" class="enlace magnetic" data-hover="PUCV">PUCV</a></h2>
-	                                  <p class="text-body mb-4">Cómo diseñé un formulario que guiaba a estudiantes de todo Chile a postular a la universidad de forma autónoma, en medio de una pandemia.</p>
-	                                  <a href="#" class="disabled">próximamente</a>    
-	                              </div>
-	                          </div>
-	                      </div>
-	                  </div> <!-- cierre row -->
-	                  <div class="row">
-	                      <div class="col-12 mt-5 mb-5" data-reveal="up" data-delay="4">
-	                          <div class="row">
-	                              <div class="col-xl-5 offset-xl-1 col-md-12">
-	                                  <div class="card-img-container image-noise">
-	                                      <div class="img-parallax one">
-	                                          <a href="#"><img src="asset/img/portafolio/trapananda/cover_trapananda.png" class="card-img-top img-zoom main-image ione" alt="Imagen 1"></a>
-	                                      </div>
-	                                      <canvas class="noise-overlay"></canvas>
-	                                  </div>
-	                              </div>
-	                              <div class="col-xl-5 col-md-12 mt-4">
-	                                  <div class="d-flex justify-content-between mb-2">
-	                                      <span class="text-small">Diseño de interfaz</span>
-	                                      <span class="text-small">2020</span>
-	                                  </div>
-	                                  <h2><a href="#" class="enlace magnetic" data-hover="Trapananda">Trapananda</a></h2>
-	                                  <p class="text-body mb-4">Cómo diseñé el sitio de una editorial patagónica que publica lejos de todo, para que sus libros lleguen a cualquier parte.</p>
-	                                  <a href="#" class="disabled">próximamente</a>     
-	                              </div>
-	                          </div>
-	                      </div> <!-- cierre col-12 -->  
-	                  </div> <!-- cierre row -->
-	              </div>
-	          </section>    
-	      </main>
+            <section class="my-5">
+                <div class="container" id="card-home">
+                    <div class="row">
+                        <div class="col-12 mb-5" data-reveal="up" data-delay="1">
+                            <div class="row">
+                                <div class="col-xl-5 offset-xl-1 col-md-12">
+                                    <div class="card-img-container image-noise">
+                                        <div class="img-parallax one">
+                                            <a href="#"><img src="asset/img/portafolio/debuenamano/cover_debuenamano.png" class="card-img-top img-zoom main-image ione magnetic" alt="Imagen 1"></a>
+                                        </div>
+                                        <canvas class="noise-overlay"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col-xl-5 col-md-12 mt-4">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-small">UX Research · diseño de interfaz</span>
+                                        <span class="text-small">2025</span>
+                                    </div>    
+                                    <h2><a href="debuenamano.html" class="enlace magnetic" data-hover="De Buena Mano">De Buena Mano</a></h2>
+                                    <p class="text-body mb-4">Cómo diseñé una plataforma que simplifica comprar y vender artículos de crianza, sin que parezca un e-commerce más.</p>
+                                    <a href="debuenamano.html" data-hover="ver proyecto" class="boton magnetic">ver proyecto</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- cierre row -->
+                    <div class="row">
+                        <div class="col-12 mt-5 mb-5" data-reveal="up" data-delay="2">
+                            <div class="row">
+                                <div class="col-xl-5 offset-xl-1 col-md-12"> 
+                                    <div class="card-img-container image-noise">
+                                        <div class="img-parallax one">
+                                            <a href="#"><img src="asset/img/portafolio/mira+/cover_mira+.png" class="card-img-top img-zoom main-image ione" alt="Imagen 1"></a>
+                                        </div>
+                                        <canvas class="noise-overlay"></canvas>
+                                    </div> 
+                                </div>
+                                <div class="col-xl-5 col-md-12 mt-4">                                  
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-small">Diseño de interfaz</span>
+                                        <span class="text-small">2021</span>
+                                    </div>                                         
+                                    <h2><a href="#" class="enlace" data-hover="Mira+">Mira+</a></h2>
+                                    <p class="text-body mb-4">Cómo diseñé una interfaz que ayuda a los estudiantes a entender su progresión curricular, sin que parezca una tabla de Excel más.</p>
+                                    <a href="#" class="disabled">próximamente</a>                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- cierre row -->
+                    <div class="row">
+                        <div class="col-12 mt-5 mb-5" data-reveal="up" data-delay="3">
+                            <div class="row">
+                                <div class="col-xl-5 offset-xl-1 col-md-12">
+                                    <div class="card-img-container image-noise">
+                                        <div class="img-parallax one">
+                                            <a href="#"><img src="asset/img/portafolio/pucv/cover_pucv.png" class="card-img-top img-zoom main-image ione" alt="Imagen 1"></a>
+                                        </div>
+                                        <canvas class="noise-overlay"></canvas>
+                                    </div> 
+                                </div>
+                                <div class="col-xl-5 col-md-12 mt-4">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-small">Diseño de interfaz</span>
+                                        <span class="text-small">2020</span>
+                                    </div>       
+                                    <h2><a href="#" class="enlace magnetic" data-hover="PUCV">PUCV</a></h2>
+                                    <p class="text-body mb-4">Cómo diseñé un formulario que guiaba a estudiantes de todo Chile a postular a la universidad de forma autónoma, en medio de una pandemia.</p>
+                                    <a href="#" class="disabled">próximamente</a>    
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- cierre row -->
+                    <div class="row">
+                        <div class="col-12 mt-5 mb-5" data-reveal="up" data-delay="4">
+                            <div class="row">
+                                <div class="col-xl-5 offset-xl-1 col-md-12">
+                                    <div class="card-img-container image-noise">
+                                        <div class="img-parallax one">
+                                            <a href="#"><img src="asset/img/portafolio/trapananda/cover_trapananda.png" class="card-img-top img-zoom main-image ione" alt="Imagen 1"></a>
+                                        </div>
+                                        <canvas class="noise-overlay"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col-xl-5 col-md-12 mt-4">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-small">Diseño de interfaz</span>
+                                        <span class="text-small">2020</span>
+                                    </div>
+                                    <h2><a href="#" class="enlace magnetic" data-hover="Trapananda">Trapananda</a></h2>
+                                    <p class="text-body mb-4">Cómo diseñé el sitio de una editorial patagónica que publica lejos de todo, para que sus libros lleguen a cualquier parte.</p>
+                                    <a href="#" class="disabled">próximamente</a>     
+                                </div>
+                            </div>
+                        </div> <!-- cierre col-12 -->  
+                    </div> <!-- cierre row -->
+                </div>
+            </section>    
+        </main>
 
-	      <footer class="bg-negro-noise py-5">
-	          <div class="container">
-	              <div class="row">
-	              <div class="col-lg-6">
-	                  <nav class="nav">
-	                  <a href="https://www.instagram.com/apariciodesign" class="nav-link magnetic" target="_blank" rel="noopener noreferrer">Instagram</a>
-	                  <a href="https://www.linkedin.com/in/hey-aparicio" class="nav-link magnetic" target="_blank" rel="noopener noreferrer" >Linkedin</a>
-	                  </nav>
-	              </div>
-	              <div class="col-lg-6">
-	                  <p class="text-white text-small text-md-end text-center">
-	                  Lo pienso, lo diseño, lo escribo y lo codifico.
-	                  </p>
-	              </div>
-	              </div>
-	          </div>
-	      </footer>
+        <footer class="bg-negro-noise py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <nav class="nav">
+                        <li class="nav-item"><a href="https://www.instagram.com/apariciodesign" class="nav-link enlace magnetic" target="_blank" rel="noopener noreferrer" data-hover="Instagram">Instagram</a></li>
+                            <li class="nav-item"><a href="https://www.linkedin.com/in/hey-aparicio" class="nav-link enlace magnetic" target="_blank" rel="noopener noreferrer" data-hover="Linkedin">Linkedin</a></li>
+                        </nav>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="text-white text-small text-md-end text-center"> Lo pienso, lo diseño, lo escribo y lo codifico. </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
 	      
-	      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-	      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-	      <script src="animations.js" defer></script>
-	      <script src="asset/js/aparicio.js"></script>
-	      <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-	      <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.3.0/dist/simpleParallax.min.js"></script>
-	      <script src="asset/js/parallax.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        <script src="asset/js/animations.js" defer></script>
+        <script src="asset/js/aparicio.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.3.0/dist/simpleParallax.min.js"></script>
+        <script src="asset/js/parallax.js"></script>
 	      
-	      <script type="module">
-	          import gsap from "https://cdn.skypack.dev/gsap@3.12.0";
-	      
-	          const UPDATE = ({ x, y }) => {
-	          gsap.set(document.documentElement, {
-	              "--x": gsap.utils.mapRange(0, window.innerWidth, -1, 1, x),
-	              "--y": gsap.utils.mapRange(0, window.innerHeight, -1, 1, y)
-	          });
-	          };
-	      
-	          window.addEventListener("pointermove", UPDATE);
-	      </script>
-	  </body>
+        <script type="module">
+            import gsap from "https://cdn.skypack.dev/gsap@3.12.0";
+        
+            const UPDATE = ({ x, y }) => {
+            gsap.set(document.documentElement, {
+                "--x": gsap.utils.mapRange(0, window.innerWidth, -1, 1, x),
+                "--y": gsap.utils.mapRange(0, window.innerHeight, -1, 1, y)
+            });
+            };
+        
+            window.addEventListener("pointermove", UPDATE);
+        </script>
+    </body>
 </html>
