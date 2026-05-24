@@ -174,9 +174,9 @@ h2 > a.enlace {
 	font-family:   var(--font-body);
 	font-size:     var(--text-lead);
 	line-height:   var(--lh-lead);
-	font-weight:   400;
+	font-weight:   500;
 	color:         var(--color-text-sec);
-	margin-bottom: var(--space-8);
+	margin-bottom: var(--space-3);
 	max-width:     640px;
 }
 
@@ -188,7 +188,7 @@ p,
 	line-height:   var(--lh-body);
 	font-weight:   400;
 	color:         var(--color-text-sec);
-	margin-bottom: var(--space-4);
+	margin-bottom: var(--space-2);
 	max-width:     640px;
 }
 
@@ -245,23 +245,12 @@ padding-top: 8px;
 	 FRASE FUERZA — Blockquote editorial
 	 -------------------------------------------------------------------------- */
 .frase-fuerza {
-	border-left:   3px solid var(--color-accent);
-	padding:       var(--space-3) var(--space-6);
-	margin:        var(--space-8) 0;
+  border-left: 1px solid var(--color-border-tertiary);
+  padding:     var(--space-3) var(--space-4);
+  margin:      var(--space-5) 0;
 }
 
-.frase-fuerza p {
-	font-family:   var(--font-display);
-	font-size:     var(--text-h3);
-	line-height:   var(--lh-h3);
-	font-weight:   500;
-	font-style:    italic;
-	color:         var(--color-text-base);
-	max-width:     none;
-	margin-bottom: 0;
-}
-
-.texto-narrativo {
+.texto-narrativo, .frase-fuerza p {
   font-family: var(--font-monospace);
   font-size: clamp(0.95rem, 1.5vw, 1.15rem);
   line-height: 1.6;

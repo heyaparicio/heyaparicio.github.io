@@ -9,11 +9,14 @@
   --color-text-base: #1E2435;
   --color-text-sec:  #4A5568;
   --color-accent:    #FB0040;
+  --color-border-tertiary: #D2D9E7;
   --easing:          cubic-bezier(0.165, 0.84, 0.44, 1);
   --logo-stroke:     var(--color-bg);
-  --space-6: clamp(4rem, 8vw, 8rem);  /* entre secciones */
-  --space-4: clamp(1rem, 2vw, 2rem);  /* entre elementos */
-  --space-2: clamp(0.5rem, 1vw, 1rem); /* margen de headings */
+  --space-6: clamp(5rem,  10vw, 10rem); /* entre secciones principales   */
+  --space-5: clamp(3rem,  6vw,  6rem);  /* entre subsecciones            */
+  --space-4: clamp(1.5rem, 3vw, 3rem);  /* entre elementos de una sección*/
+  --space-3: clamp(1rem,  2vw,  2rem);  /* entre componentes internos    */
+  --space-2: clamp(0.5rem, 1vw, 1rem);  /* espaciado tipográfico         */
 }
 
 
@@ -46,32 +49,40 @@ a, button, .boton {
    3. UTILIDADES DE ESPACIADO
    ============================================================ */
 
-/* Nivel 6 — entre secciones */
-.my-6-x { margin-top:     var(--space-6) !important; margin-bottom:  var(--space-6) !important; }
+/* ── Nivel 6 — secciones principales ── */
 .mt-6-x { margin-top:     var(--space-6) !important; }
 .mb-6-x { margin-bottom:  var(--space-6) !important; }
-
-.py-6-x { padding-top:    var(--space-6) !important; padding-bottom: var(--space-6) !important; }
 .pt-6-x { padding-top:    var(--space-6) !important; }
 .pb-6-x { padding-bottom: var(--space-6) !important; }
+.py-6-x { padding-top:    var(--space-6) !important; padding-bottom: var(--space-6) !important; }
 
-/* Nivel 4 — entre elementos de una sección */
-.my-4-x { margin-top: var(--space-4) !important; margin-bottom: var(--space-4) !important; }
-.mt-4-x { margin-top: var(--space-4) !important; }
-.mb-4-x { margin-bottom: var(--space-4) !important; }
+/* ── Nivel 5 — subsecciones ── */
+.mt-5-x { margin-top:     var(--space-5) !important; }
+.mb-5-x { margin-bottom:  var(--space-5) !important; }
+.pt-5-x { padding-top:    var(--space-5) !important; }
+.pb-5-x { padding-bottom: var(--space-5) !important; }
+.py-5-x { padding-top:    var(--space-5) !important; padding-bottom: var(--space-5) !important; }
 
-.py-4-x { padding-top:    var(--space-4) !important; padding-bottom: var(--space-4) !important; }
+/* ── Nivel 4 — elementos de una sección ── */
+.mt-4-x { margin-top:     var(--space-4) !important; }
+.mb-4-x { margin-bottom:  var(--space-4) !important; }
 .pt-4-x { padding-top:    var(--space-4) !important; }
 .pb-4-x { padding-bottom: var(--space-4) !important; }
+.py-4-x { padding-top:    var(--space-4) !important; padding-bottom: var(--space-4) !important; }
 
-/* Nivel 2 — espaciado tipográfico */
-.my-2-x { margin-top: var(--space-2) !important; margin-bottom: var(--space-2) !important; }
-.mt-2-x { margin-top: var(--space-2) !important; }
-.mb-2-x { margin-bottom: var(--space-2) !important; }
+/* ── Nivel 3 — componentes internos ── */
+.mt-3-x { margin-top:     var(--space-3) !important; }
+.mb-3-x { margin-bottom:  var(--space-3) !important; }
+.pt-3-x { padding-top:    var(--space-3) !important; }
+.pb-3-x { padding-bottom: var(--space-3) !important; }
+.py-3-x { padding-top:    var(--space-3) !important; padding-bottom: var(--space-3) !important; }
 
-.py-2-x { padding-top:    var(--space-2) !important; padding-bottom: var(--space-2) !important; }
+/* ── Nivel 2 — tipográfico ── */
+.mt-2-x { margin-top:     var(--space-2) !important; }
+.mb-2-x { margin-bottom:  var(--space-2) !important; }
 .pt-2-x { padding-top:    var(--space-2) !important; }
 .pb-2-x { padding-bottom: var(--space-2) !important; }
+.py-2-x { padding-top:    var(--space-2) !important; padding-bottom: var(--space-2) !important; }
 
 
 /* ============================================================

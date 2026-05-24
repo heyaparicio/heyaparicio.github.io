@@ -14,45 +14,35 @@
 	</head>
 	<body>
 		<div id="cursor"></div>
-		  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
-            <defs>
-                <filter id="liquid-prism-intense" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox"> <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence"></feTurbulence> <feComponentTransfer in="turbulence" result="mapped"> <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5"></feFuncR> <feFuncG type="gamma" amplitude="0" exponent="1" offset="0"></feFuncG> <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5"></feFuncB> </feComponentTransfer> <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap"></feGaussianBlur> <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lighting-color="white" result="specLight"> <fePointLight x="-200" y="-200" z="300"></fePointLight> </feSpecularLighting> <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage"></feComposite> <feDisplacementMap in="SourceGraphic" in2="softMap" scale="250" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap> </filter>
-            </defs>
-        </svg>
+		<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+			<defs>
+				<filter id="liquid-prism-intense" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox"> <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence"></feTurbulence> <feComponentTransfer in="turbulence" result="mapped"> <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5"></feFuncR> <feFuncG type="gamma" amplitude="0" exponent="1" offset="0"></feFuncG> <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5"></feFuncB> </feComponentTransfer> <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap"></feGaussianBlur> <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lighting-color="white" result="specLight"> <fePointLight x="-200" y="-200" z="300"></fePointLight> </feSpecularLighting> <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage"></feComposite> <feDisplacementMap in="SourceGraphic" in2="softMap" scale="250" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap> </filter>
+			</defs>
+		</svg>
 
-				<header id="main" tabindex="0">
-						<div class="container position-relative">
-								<div class="header-pill" aria-hidden="true">
-										<div class="header-glass"></div>
-								</div>
+		<header id="main" tabindex="0">
+			<div class="container position-relative">
+				<div class="header-pill" aria-hidden="true">
+					<div class="header-glass"></div>
+				</div>
 
-								<nav class="navbar navbar-expand-lg" aria-label="Menu principal">
-										<a class="navbar-brand d-flex align-items-center magnetic" href="index.html" id="logo_erlen-masson">
-												<svg id="apariciolight" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 149.8 149.8">
-														<path class="logo-path" d="M86.9.4h-39.8l32.7,78c-2.6-.3-5.3-.5-8-.5C32.4,78,.4,110,.4,149.4h36.5c0-19.3,15.5-34.9,34.9-34.9s34.9,15.6,34.9,34.9h42.7L86.9.4Z"/>
-												</svg>
-												<span>Aparicio</span>
-										</a>
-										<button class="navbar-toggler ms-auto" type="button"
-												data-bs-toggle="offcanvas"
-												data-bs-target="#offcanvasNavbar1"
-												aria-controls="offcanvasNavbar"
-												aria-label="Toggle navigation">
-												<span class="fs-6 pe-1">Menu</span>
-										</button>
-										<div class="collapse navbar-collapse d-none d-lg-flex" id="navbar">
-												<ul class="navbar-nav ms-auto">
-														<li class="nav-item">
-																<a class="nav-link active" href="proyectos.html" data-hover="Proyectos">Proyectos</a>
-														</li>
-														<li class="nav-item">
-																<a class="nav-link magnetic" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a>
-														</li>
-												</ul>
-										</div>
-								</nav>
-						</div>
-				</header>
+				<nav class="navbar navbar-expand-lg" aria-label="Menu principal">
+					<a class="navbar-brand d-flex align-items-center magnetic" href="index.html" id="logo_erlen-masson">
+						<svg id="apariciolight" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 149.8 149.8">
+							<path class="logo-path" d="M86.9.4h-39.8l32.7,78c-2.6-.3-5.3-.5-8-.5C32.4,78,.4,110,.4,149.4h36.5c0-19.3,15.5-34.9,34.9-34.9s34.9,15.6,34.9,34.9h42.7L86.9.4Z"/>
+						</svg>
+						<span>Aparicio</span>
+					</a>
+					<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar1" aria-controls="offcanvasNavbar" aria-label="Toggle navigation"> <span class="fs-6 pe-1">Menu</span> </button>
+					<div class="collapse navbar-collapse d-none d-lg-flex" id="navbar">
+						<ul class="navbar-nav ms-auto">
+							<li class="nav-item"> <a class="nav-link active" href="proyectos.html" data-hover="Proyectos">Proyectos</a> </li>
+							<li class="nav-item"> <a class="nav-link magnetic" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a> </li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
 
 		<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar1" aria-labelledby="offcanvasNavbar1Label">
 			<div class="offcanvas-header">
@@ -65,43 +55,38 @@
 			</div>
 			<div class="offcanvas-body">
 				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-					<li class="nav-item">
-						<a class="nav-link" href="index.html" data-hover="Inicio">Inicio</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link active" href="proyectos.html" data-hover="Proyectos">Proyectos</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a>
-					</li>
+					<li class="nav-item"> <a class="nav-link" href="index.html" data-hover="Inicio">Inicio</a> </li>
+					<li class="nav-item"> <a class="nav-link active" href="proyectos.html" data-hover="Proyectos">Proyectos</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a> </li>
 				</ul>
 			</div>
 		</div>
 
-		<main data-scroll-container>
-			<div class="py-5 data-scroll-section">
-				<div class="container">
-					<div class="row d-flex">
+		<main class="mb-6-x">
+			<div class="container">
+				<div class="row d-flex">
+					<div class="col-md-6 py-5" data-aos="fade-down" data-aos-delay="200">
+						<h1>De Buena Mano</h1>
+						<span class="text-small">Socio fundador · UX Research · Diseño de interfaz · Handoff · 2025</span>
+					</div>
 						<div class="col-md-6 py-5" data-aos="fade-down" data-aos-delay="200">
-							<h1>De Buena Mano</h1>
-							<span class="text-small">Socio fundador · UX Research · Diseño de interfaz · Handoff · 2025</span>
-						</div>
-							<div class="col-md-6 py-5" data-aos="fade-down" data-aos-delay="200">
-								<p class="frase-fuerza texto-narrativo">Marketplace para comprar y vender productos de crianza entre personas. Diseñé la plataforma siendo socio fundador — lo que significó tomar decisiones de diseño con la misma exigencia que le pediría a un cliente.</p>
+							<h2 class="eyebrow">Contexto</h2>
+							<h3 class="text-lead">Un lugar seguro para comprar y vender productos de crianza</h3>
+							<p>No existía un espacio confiable para comprar y vender productos de crianza entre personas. Los marketplaces genéricos no generan confianza, las redes sociales son informales.</p>
+							<p>De Buena Mano actúa como intermediaria: revisa publicaciones, notifica despachos y libera pagos solo cuando el producto llega al comprador.</p>
+							<p>Fui socio fundador y diseñador al mismo tiempo — lo que me obligó a tomar decisiones desde el usuario, no desde mi cercanía al producto.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<section class="my-5 mb-5">
+			<section class="mt-6-x">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-4 mb-5">
-							<h2 class="eyebrow">Contexto</h2>
-							<h3 class="text-lead">Un lugar seguro para comprar y vender productos de crianza</h3>
-							<p class="text-body">No existía un espacio confiable para comprar y vender productos de crianza entre personas. Los marketplaces genéricos no generan confianza, las redes sociales son informales.</p>
-							<p class="text-body">De Buena Mano actúa como intermediaria: revisa publicaciones, notifica despachos y libera pagos solo cuando el producto llega al comprador.</p>
-							<p class="text-body">Fui socio fundador y diseñador al mismo tiempo — lo que me obligó a tomar decisiones desde el usuario, no desde mi cercanía al producto.</p>
+							<div class="frase-fuerza">
+								<p>Marketplace para comprar y vender productos de crianza entre personas. Diseñé la plataforma siendo socio fundador — lo que significó tomar decisiones de diseño con la misma exigencia que le pediría a un cliente.</p>
+							</div>	
 						</div>
 						<div class="col-lg-7 offset-lg-1 mb-5">
 							<div class="card">
@@ -115,7 +100,7 @@
 				</div>
 			</section>
 
-			<section class="my-5 mb-5">
+			<section class="mt-6-x">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-4 mb-5">
@@ -157,7 +142,7 @@
 				</div>
 			</section>
 
-			<section class="my-5">
+			<section class="mt-6-x">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-10 offset-lg-1">
@@ -232,41 +217,39 @@
 				</div>
 			</section>
 
-			<section class="my-5">
+			<section class="mt-6-x">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-4">
 							<h2 class="eyebrow">DECISIONES DE DISEÑO</h2>
-							<h3 class="text-lead">Cuando conocer desarrollo cambia cómo diseñas</h3>
-							<p>Mi formación en desarrollo web fue determinante para tomar decisiones de diseño sostenibles. No solo diseñé pensando en el usuario, sino también en lo que era viable técnicamente y coherente con las necesidades del negocio.</p>
-							<p>Esto me permitió anticipar restricciones antes del handoff — reduciendo iteraciones costosas — y dialogar con los desarrolladores en su propio lenguaje, alineando criterios sin fricciones. La arquitectura de la información también fue central: mapear los flujos de vendedor y comprador por separado permitió identificar dónde los caminos se cruzaban y dónde cada perfil necesitaba información distinta en el mismo momento.</p>
+							<h3 class="text-lead">Tener nociones del backend cambia cómo diseñas</h3>
+							<p>Anticipé restricciones técnicas antes del handoff, dialogué con los desarrolladores sin intermediarios y tomé decisiones de interfaz fundamentadas en cómo el sistema realmente funciona.</p>
+							<p>Mapear los flujos de vendedor y comprador por separado fue clave: cada perfil necesita información distinta en el mismo momento.</p>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<section class="my-5">
+			<section class="mt-6-x">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-4">
 							<h2 class="eyebrow">RESULTADOS</h2>
-							<h3 class="text-lead">En construcción, con tracción real</h3>
-							<p>De Buena Mano está en fase de posicionamiento. Hasta ahora se han publicado 12 productos desde distintas ciudades del país — una señal temprana de que la propuesta resuena más allá de un contexto local y que la plataforma es usable por personas sin experiencia previa en marketplaces.</p>
-							<p>No hay métricas de conversión todavía, pero la distribución geográfica de las publicaciones confirma que el diseño responsive cumplió su objetivo: cualquier persona, desde cualquier ciudad, puede publicar de forma autónoma.</p>
-							<p>Esto me permitió anticipar restricciones antes del handoff — reduciendo iteraciones costosas — y dialogar con los desarrolladores en su propio lenguaje, alineando criterios sin fricciones. La arquitectura de la información también fue central: mapear los flujos de vendedor y comprador por separado permitió identificar dónde los caminos se cruzaban y dónde cada perfil necesitaba información distinta en el mismo momento.</p>
+							<h3 class="text-lead">12 productos publicados desde distintas ciudades del país</h3>
+							<p>La plataforma está en fase de posicionamiento. La distribución geográfica de las publicaciones confirma que cualquier persona puede publicar de forma autónoma — sin experiencia previa en marketplaces.</p>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<section class="my-5">
+			<section class="mt-6-x">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-4">
 							<h2 class="eyebrow">APRENDIZAJES</h2>
-							<h3 class="text-lead">Diseñar para un producto propio exige una disciplina diferente</h3>
-							<p>El aprendizaje más valioso de este proyecto es que la cercanía al producto puede nublar el juicio. Cuando eres fundador y diseñador al mismo tiempo, tienes que hacer un esfuerzo consciente y constante para mantener la perspectiva del usuario — porque tu propio conocimiento del sistema puede hacerte invisible lo que para un usuario nuevo es confuso.</p>
-							<p>Sostener esa distancia crítica, especialmente en las decisiones de lenguaje y nomenclatura, fue el trabajo más difícil y el más importante del proyecto. Un buen diseño no es el que el fundador entiende — es el que funciona para alguien que lo usa por primera vez.</p>
+							<h3 class="text-lead">Diseñar tu propio producto es el encargo más difícil</h3>
+							<p>La cercanía al proyecto puede hacerte invisible lo que para un usuario nuevo es confuso. Mantener la perspectiva del usuario cuando eres fundador requiere un esfuerzo consciente y constante.</p>
+							<p>Un buen diseño no es el que el fundador entiende — es el que funciona para alguien que lo usa por primera vez.</p>
 						</div>
 					</div>
 				</div>
