@@ -157,6 +157,11 @@ h4,
   line-height: 1;
 }
 
+h2 > a.enlace {
+  display: inline-block;
+  line-height: 1;
+  margin: 0;
+}
 
 /* --------------------------------------------------------------------------
 	 PÁRRAFOS Y CUERPO
@@ -254,6 +259,15 @@ padding-top: 8px;
 	margin-bottom: 0;
 }
 
+.texto-narrativo {
+  font-family: var(--font-monospace);
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+.texto-narrativo.destacado {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+}
 
 /* --------------------------------------------------------------------------
 	 UTILIDADES
