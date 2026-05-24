@@ -1,358 +1,231 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Aparicio</title>
-    <link rel="canonical" href="https://heyaparicio.github.io/" />
-    <link rel="shortcut icon" href="asset/img/favicon.ico" type="image/x-icon"/>
-    <link rel="icon" href="asset/img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="asset/css/bootstrap.css" />
-    <link rel="stylesheet" href="asset/css/fonts.css" />
-    <link rel="stylesheet" href="animations.css"> 
-    <link rel="stylesheet" href="asset/css/aparicio.css"/>
-    <link rel="stylesheet" href="asset/css/home.css"/>
-  </head>
-  <body>
-    <div id="cursor"></div>
-    <svg width="0" height="0" aria-hidden="true" style="position:absolute">
-        <defs>
-            <filter id="liquid-prism-intense" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
-                <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence"></feTurbulence>
-                <feComponentTransfer in="turbulence" result="mapped">
-                    <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5"></feFuncR>
-                    <feFuncG type="gamma" amplitude="0" exponent="1" offset="0"></feFuncG>
-                    <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5"></feFuncB>
-                </feComponentTransfer>
-                <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap"></feGaussianBlur>
-                <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lighting-color="white" result="specLight">
-                    <fePointLight x="-200" y="-200" z="300"></fePointLight>
-                </feSpecularLighting>
-                <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage"></feComposite>
-                <feDisplacementMap in="SourceGraphic" in2="softMap" scale="250" xChannelSelector="R" yChannelSelector="G" result="displaced"></feDisplacementMap>
+	<head>
+	  <meta charset="utf-8" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	  <title>Aparicio</title>
+	  <link rel="canonical" href="https://heyaparicio.github.io/" />
+	  <link rel="shortcut icon" href="asset/img/favicon.ico" type="image/x-icon"/>
+	  <link rel="icon" href="asset/img/favicon.ico" type="image/x-icon" />
+	  <link rel="stylesheet" href="asset/css/bootstrap.css" />
+	  <link rel="stylesheet" href="asset/css/fonts.css" />
+	  <link rel="stylesheet" href="animations.css"> 
+	  <link rel="stylesheet" href="asset/css/aparicio.css"/>
+	  <link rel="stylesheet" href="asset/css/home.css"/>
+	</head>
+	<body>
+	  <div id="cursor"></div>
+	  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+      <defs>
+        <filter id="liquid-prism-intense" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox"> <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence"></feTurbulence> <feComponentTransfer in="turbulence" result="mapped"> <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5"></feFuncR> <feFuncG type="gamma" amplitude="0" exponent="1" offset="0"></feFuncG> <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5"></feFuncB> </feComponentTransfer> <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap"></feGaussianBlur> <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lighting-color="white" result="specLight"> <fePointLight x="-200" y="-200" z="300"></fePointLight> </feSpecularLighting> <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage"></feComposite> <feDisplacementMap in="SourceGraphic" in2="softMap" scale="250" xChannelSelector="R" yChannelSelector="G" result="displaced"></feDisplacementMap> <feFlood flood-color="#1E2435" flood-opacity="0.75" result="colorLayer"></feFlood> <feBlend in="colorLayer" in2="displaced" mode="multiply" result="tinted"></feBlend> <feComposite in="tinted" in2="SourceGraphic" operator="in"></feComposite> </filter>
+      </defs>
+	  </svg>
 
-                <!-- Tinte de color sobre el resultado final -->
-                <feFlood flood-color="#1E2435" flood-opacity="0.75" result="colorLayer"></feFlood>
-                <feBlend in="colorLayer" in2="displaced" mode="multiply" result="tinted"></feBlend>
-                <feComposite in="tinted" in2="SourceGraphic" operator="in"></feComposite>
-            </filter>
-        </defs>
-    </svg>
-
-        <section class="header-bg-gris">
-        <header id="mainNavbar" tabindex="0">
-            <div class="container position-relative">
-                <div class="header-pill" aria-hidden="true">
-                    <div class="header-glass"></div>
-                </div>
-
-                <nav class="navbar navbar-expand-lg" aria-label="Menu principal">
-                    <a class="navbar-brand d-flex align-items-center magnetic" href="index.html" id="logo_erlen-masson" >
-                        <svg id="aparicio" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 149.8 149.8">
-                            <path class="logo-path" d="M86.9.4h-39.8l32.7,78c-2.6-.3-5.3-.5-8-.5C32.4,78,.4,110,.4,149.4h36.5c0-19.3,15.5-34.9,34.9-34.9s34.9,15.6,34.9,34.9h42.7L86.9.4Z"/>
-                        </svg>
-                        <span>Aparicio</span>
-                    </a>
-                    <button class="navbar-toggler ms-auto" type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasNavbar1"
-                        aria-controls="offcanvasNavbar"
-                        aria-label="Toggle navigation">
-                        <span class="fs-6 pe-1">Menu</span>
-                    </button>
-                    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link magnetic" href="proyectos.html" data-hover="Proyectos">Proyectos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link magnetic" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
-    
-      <div
-        class="offcanvas offcanvas-start"
-        tabindex="-1"
-        id="offcanvasNavbar1"
-        aria-labelledby="offcanvasNavbar1Label"
-      >
+    <section class="header-bg-gris">
+      <header id="mainNavbar" tabindex="0">
+          <div class="container position-relative">
+              <div class="header-pill" aria-hidden="true">
+                  <div class="header-glass"></div>
+              </div>
+              <nav class="navbar navbar-expand-lg" aria-label="Menu principal">
+                  <a class="navbar-brand d-flex align-items-center magnetic" href="index.html" id="logo_erlen-masson" >
+                      <svg id="aparicio" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 149.8 149.8">
+                          <path class="logo-path" d="M86.9.4h-39.8l32.7,78c-2.6-.3-5.3-.5-8-.5C32.4,78,.4,110,.4,149.4h36.5c0-19.3,15.5-34.9,34.9-34.9s34.9,15.6,34.9,34.9h42.7L86.9.4Z"/>
+                      </svg>
+                      <span>Aparicio</span>
+                  </a>
+                  <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar1" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="fs-6 pe-1">Menu</span>
+                  </button>
+                  <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
+                      <ul class="navbar-nav ms-auto">
+                          <li class="nav-item"> <a class="nav-link magnetic" href="proyectos.html" data-hover="Proyectos">Proyectos</a> </li>
+                          <li class="nav-item"> <a class="nav-link magnetic" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a> </li>
+                      </ul>
+                  </div>
+              </nav>
+          </div>
+      </header>
+	  
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar1" aria-labelledby="offcanvasNavbar1Label">
         <div class="offcanvas-header">
           <span class="offcanvas-title" id="offcanvasNavbar1Label">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/"
-              version="1.1"
-              viewBox="0 0 149.8 149.8"
-            >
-              <path
-                class="st0"
-                d="M86.9.4h-39.8l32.7,78c-2.6-.3-5.3-.5-8-.5C32.4,78,.4,110,.4,149.4h36.5c0-19.3,15.5-34.9,34.9-34.9s34.9,15.6,34.9,34.9h42.7L86.9.4Z"
-              />
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" version="1.1" viewBox="0 0 149.8 149.8">
+              <path class="st0" d="M86.9.4h-39.8l32.7,78c-2.6-.3-5.3-.5-8-.5C32.4,78,.4,110,.4,149.4h36.5c0-19.3,15.5-34.9,34.9-34.9s34.9,15.6,34.9,34.9h42.7L86.9.4Z" />
             </svg>
           </span>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="offcanvas"
-            aria-label="Cerrar"
-          ></button>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar" ></button>
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
-              <a class="nav-link active" href="index.html" data-hover="Inicio">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="proyectos.html" data-hover="Proyectos">Proyectos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a>
-            </li>
+            <li class="nav-item"> <a class="nav-link active" href="index.html" data-hover="Inicio">Inicio</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="proyectos.html" data-hover="Proyectos">Proyectos</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="sobre-mi.html" data-hover="Sobre mí">Sobre mí</a> </li>
           </ul>
         </div>
       </div>
-      <div class="container">
-        <div class="hero">
-          <div class="row d-lg-flex align-items-center justify-content-between">
-            <div class="col-lg-5 col-md-6" data-reveal="right" data-duration="slow" data-once>
-              <h1 class="rotating-text">
-                <b class="text-static">Primero</b>
-                <b class="word-wrapper">
-                  <span class="word">pregunto,</span>
-                  <span class="word">escucho,</span>
-                  <span class="word">observo,</span>
-                  <span class="word">entiendo,</span>
-                </b></br>
-                <b class="text-static">después diseño.</b>
-              </h1>
-              <div>
-                <p class="text-lead text-surface">
-                  Diseñador de productos digitales y docente en Viña del Mar.
-                  Trabajo en la intersección de la investigación, del código y
-                  las personas que usan lo que construyo.
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-6" data-reveal="left" data-delay="1" data-duration="slow" data-once>
-              <div class="article">
-                <div class="btl-1">
-                  <img
-                    class="alayer alayer-5"
-                    src="asset/img/hero/5.png"
-                    alt=""
-                  />
-                  <img
-                    class="alayer alayer-4"
-                    src="asset/img/hero/4.png"
-                    alt=""
-                  />
-                  <img
-                    class="alayer alayer-3"
-                    src="asset/img/hero/3.png"
-                    alt=""
-                  />
-                  <img
-                    class="alayer alayer-2"
-                    src="asset/img/hero/2.png"
-                    alt=""
-                  />
-                  <img
-                    class="alayer alayer-1"
-                    src="asset/img/hero/1.png"
-                    alt=""
-                  />
-                  <img
-                    class="alayer alayer-0"
-                    src="asset/img/hero/0.png"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+	    <div class="container">
+	      <div class="hero">
+	        <div class="row d-lg-flex align-items-center justify-content-between">
+	          <div class="col-lg-5 col-md-6" data-reveal="right" data-duration="slow" data-once>
+	            <h1 class="rotating-text">
+	              <b class="text-static">Primero</b>
+	              <b class="word-wrapper">
+	                <span class="word">pregunto,</span>
+	                <span class="word">escucho,</span>
+	                <span class="word">observo,</span>
+	                <span class="word">entiendo,</span>
+	              </b></br>
+	              <b class="text-static">después diseño.</b>
+	            </h1>
+	            <div>
+	              <p class="text-lead text-surface">
+	                Diseño productos digitales que funcionan para las personas que los usan, para los equipos que los construyen y para los negocios que los sostienen.
+	              </p>
+	            </div>
+	          </div>
+	          <div class="col-lg-6 col-md-6" data-reveal="left" data-delay="1" data-duration="slow" data-once>
+	            <div class="article">
+	              <div class="btl-1">
+	                <img class="alayer alayer-5" src="asset/img/hero/5.png" alt="" />
+	                <img class="alayer alayer-4" src="asset/img/hero/4.png" alt="" />
+	                <img class="alayer alayer-3" src="asset/img/hero/3.png" alt="" />
+	                <img class="alayer alayer-2" src="asset/img/hero/2.png" alt="" />
+	                <img class="alayer alayer-1" src="asset/img/hero/1.png" alt="" />
+                  <img class="alayer alayer-0" src="asset/img/hero/0.png" alt="" />
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </section>
 
-    <main>
-      <div class="my-6">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 offset-lg-6 col-md-8 offset-md-4" data-reveal="left">
-              <h3 class="display-6">Llegué al diseño desde el código. Por eso cuando diseño, no pienso solo en la pantalla — pienso en la persona que la usa, en el desarrollador que la construye y en el negocio que la sostiene. Un buen diseño funciona para los tres.</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-      <section class="my-6">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12" data-reveal="up">
-                  <h2 class="mb-5">Proyecto destacado</h2>
-                </div>
-                <div class="col-lg-5 my-5" data-reveal="right" data-delay="1">
-                  <h3><a class="magnetic" href="debuenamano.html">De Buena Mano</a></h3>
-                  <p class="text-lead mb-4">¿Cómo simplificar el proceso de compra de segunda mano para familias que nunca han usado un marketplace? — De Buena Mano, 2025</p>
-                  <nav class="nav nav-pills">
-                        <a href="proyectos.html" class="nav-item boton-enlace magnetic">ver todos</a>
-                        <a href="debuenamano.html" class="nav-item boton magnetic">ver proyecto</a>
-                  </nav>
-                </div>
-                <div class="col-lg-6 offset-lg-1" data-reveal="left" data-delay="1">
-                    <div class="card-img-container image-noise">
-                        <div class="img-parallax one">
-                            <a href="#"><img src="asset/img/portafolio/debuenamano/cover_debuenamano.png" class="card-img-top img-zoom main-image ione" alt="Imagen 1"></a>
-                        </div>
-                        <canvas class="noise-overlay"></canvas>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </section>
+	  <main>
+	    <div class="my-6">
+	      <div class="container">
+	        <div class="row">
+	          <div class="col-lg-6 offset-lg-6 col-md-8 offset-md-4" data-reveal="left">
+	            <span class="text-lead monospace">Cada proyecto parte de una pregunta. Esto es lo que construí mientras buscaba respuestas.</span>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	    <section class="my-6">
+	      <div class="container">
+	          <div class="row">
+	              <div class="col-lg-12" data-reveal="up">
+	                <h2 class="mb-5">Trabajo reciente</h2>
+	              </div>
+	              <div class="col-lg-5 my-5" data-reveal="right" data-delay="1">
+	                <h3><a class="magnetic" href="debuenamano.html">De Buena Mano</a></h3>
+	                <p class="text-lead mb-4">¿Cómo simplificar el proceso de compra de segunda mano para familias que nunca han usado un marketplace? — De Buena Mano, 2025</p>
+	                <nav class="nav nav-pills d-flex align-items-center gap-3">
+	                      <li class="nav-item"><a href="proyectos.html" class="nav-link enlace font-medium magnetic" data-hover="ver todos">ver todos</a></li>
+	                      <li class="nav-item"><a href="debuenamano.html" class="nav-item boton magnetic">ver proyecto</a></li>
+	                </nav>
+	              </div>
+	              <div class="col-lg-6 offset-lg-1" data-reveal="left" data-delay="1">
+	                  <div class="card-img-container image-noise">
+	                      <div class="img-parallax one">
+	                          <a href="#"><img src="asset/img/portafolio/debuenamano/cover_debuenamano.png" class="card-img-top img-zoom main-image ione" alt="Imagen 1"></a>
+	                      </div>
+	                      <canvas class="noise-overlay"></canvas>
+	                  </div>
+	              </div>
+	          </div>
+	        </div>
+	      </div>
+	    </section>
 
-      <section class="clientes py-5 mt-6">
-        <div class="container">
-          <div class="row">
-            <div class="col-12" data-reveal="up">
-              <h4 class="text-center mb-5" data-reveal="up">He diseñado para</h4>
-              <article class="wrapper" data-reveal="fade" data-duration="slow" data-once>
-                <div class="marquee">
-                  <div class="marquee__group">
-                    <img
-                      src="asset/img/logos/logo7.svg"
-                      alt="Logotipo de Big Sur Energy"
-                    />
-                    <img
-                      src="asset/img/logos/logo1.svg"
-                      alt="Logotipo de Duoc UC"
-                    />
-                    <img
-                      src="asset/img/logos/logo2.svg"
-                      alt="Logotipo de Ingeniu Solution"
-                    />
-                    <img
-                      src="asset/img/logos/logo3.svg"
-                      alt="Logotipo de De Buena Mano"
-                    />
-                    <img
-                      src="asset/img/logos/logo4.svg"
-                      alt="Logotipo de PUCV"
-                    />
-                    <img
-                      src="asset/img/logos/logo5.svg"
-                      alt="Logotipo de Trapananda Ediciones"
-                    />
-                    <img
-                      src="asset/img/logos/logo6.svg"
-                      alt="Logotipo de Cuero Market"
-                    />
-                    <img
-                      src="asset/img/logos/logo8.svg"
-                      alt="Logotipo de Rincón Terapias"
-                    />
-                  </div>
+	    <section class="clientes py-5 mt-6">
+	      <div class="container">
+	        <div class="row">
+	          <div class="col-12" data-reveal="up">
+	            <h4 class="text-center mb-5" data-reveal="up">He diseñado para</h4>
+	            <article class="wrapper" data-reveal="fade" data-duration="slow" data-once>
+	              <div class="marquee">
+	                <div class="marquee__group">
+	                  <img src="asset/img/logos/logo7.svg" alt="Logotipo de Big Sur Energy" />
+	                  <img src="asset/img/logos/logo1.svg" alt="Logotipo de Duoc UC" />
+	                  <img src="asset/img/logos/logo2.svg" alt="Logotipo de Ingeniu Solution" />
+	                  <img src="asset/img/logos/logo3.svg" alt="Logotipo de De Buena Mano" />
+	                  <img src="asset/img/logos/logo4.svg" alt="Logotipo de PUCV" />
+	                  <img src="asset/img/logos/logo5.svg" alt="Logotipo de Trapananda Ediciones" />
+	                  <img src="asset/img/logos/logo6.svg" alt="Logotipo de Cuero Market" />
+	                  <img src="asset/img/logos/logo8.svg" alt="Logotipo de Rincón Terapias" />
+	                </div>
 
-                  <div aria-hidden="true" class="marquee__group">
-                    <img
-                      src="asset/img/logos/logo7.svg"
-                      alt="Logotipo de Big Sur Energy"
-                    />
-                    <img
-                      src="asset/img/logos/logo1.svg"
-                      alt="Logotipo de Duoc UC"
-                    />
-                    <img
-                      src="asset/img/logos/logo2.svg"
-                      alt="Logotipo de Ingeniu Solution"
-                    />
-                    <img
-                      src="asset/img/logos/logo3.svg"
-                      alt="Logotipo de De Buena Mano"
-                    />
-                    <img
-                      src="asset/img/logos/logo4.svg"
-                      alt="Logotipo de PUCV"
-                    />
-                    <img
-                      src="asset/img/logos/logo5.svg"
-                      alt="Logotipo de Trapananda Ediciones"
-                    />
-                    <img
-                      src="asset/img/logos/logo6.svg"
-                      alt="Logotipo de Cuero Market"
-                    />
-                    <img
-                      src="asset/img/logos/logo8.svg"
-                      alt="Logotipo de Rincón Terapias"
-                    />
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+	                <div aria-hidden="true" class="marquee__group">
+	                  <img src="asset/img/logos/logo7.svg" alt="Logotipo de Big Sur Energy" />
+	                  <img src="asset/img/logos/logo1.svg" alt="Logotipo de Duoc UC" />
+	                  <img src="asset/img/logos/logo2.svg" alt="Logotipo de Ingeniu Solution" />
+	                  <img src="asset/img/logos/logo3.svg" alt="Logotipo de De Buena Mano" />
+	                  <img src="asset/img/logos/logo4.svg" alt="Logotipo de PUCV" />
+	                  <img src="asset/img/logos/logo5.svg" alt="Logotipo de Trapananda Ediciones" />
+	                  <img src="asset/img/logos/logo6.svg" alt="Logotipo de Cuero Market" />
+	                  <img src="asset/img/logos/logo8.svg" alt="Logotipo de Rincón Terapias" />
+	                </div>
+	              </div>
+	            </article>
+	          </div>
+	        </div>
+	      </div>
+	    </section>
+	  </main>
 
-    <footer class="bg-negro-noise py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <nav class="nav">
-              <a href="https://www.instagram.com/apariciodesign" class="nav-link magnetic" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="https://www.linkedin.com/in/hey-aparicio" class="nav-link magnetic" target="_blank" rel="noopener noreferrer" >Linkedin</a>
-            </nav>
-          </div>
-          <div class="col-lg-6">
-            <p class="text-white text-small text-md-end text-center">
-              Lo pienso, lo diseño, lo escribo y lo codifico.
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
+	  <footer class="bg-negro-noise py-5">
+	    <div class="container">
+	      <div class="row">
+	        <div class="col-lg-6">
+	          <nav class="nav">
+	            <a href="https://www.instagram.com/apariciodesign" class="nav-link magnetic" target="_blank" rel="noopener noreferrer">Instagram</a>
+	            <a href="https://www.linkedin.com/in/hey-aparicio" class="nav-link magnetic" target="_blank" rel="noopener noreferrer" >Linkedin</a>
+	          </nav>
+	        </div>
+	        <div class="col-lg-6">
+	          <p class="text-white text-small text-md-end text-center"> Lo pienso, lo diseño, lo escribo y lo codifico. </p>
+	        </div>
+	      </div>
+	    </div>
+	  </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script src="animations.js" defer></script>
-    <script src="asset/js/aparicio.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.3.0/dist/simpleParallax.min.js"></script>
-    <script src="asset/js/parallax.js"></script>
+	  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+	  <script src="animations.js" defer></script>
+	  <script src="asset/js/aparicio.js"></script>
+	  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	  <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.3.0/dist/simpleParallax.min.js"></script>
+	  <script src="asset/js/parallax.js"></script>
 
 
-    <script type="module">
-      import gsap from "https://cdn.skypack.dev/gsap@3.12.0";
+	  <script type="module">
+	    import gsap from "https://cdn.skypack.dev/gsap@3.12.0";
 
-      const UPDATE = ({ x, y }) => {
-        gsap.set(document.documentElement, {
-          "--x": gsap.utils.mapRange(0, window.innerWidth, -1, 1, x),
-          "--y": gsap.utils.mapRange(0, window.innerHeight, -1, 1, y),
-        });
-      };
+	    const UPDATE = ({ x, y }) => {
+	      gsap.set(document.documentElement, {
+	        "--x": gsap.utils.mapRange(0, window.innerWidth, -1, 1, x),
+	        "--y": gsap.utils.mapRange(0, window.innerHeight, -1, 1, y),
+	      });
+	    };
 
-      window.addEventListener("pointermove", UPDATE);
-    </script>
-    <script>
-      const control = document.getElementById("direction-toggle");
-      const wrapper = document.querySelector(".wrapper");
+	    window.addEventListener("pointermove", UPDATE);
+	  </script>
+	  <script>
+	    const control = document.getElementById("direction-toggle");
+	    const wrapper = document.querySelector(".wrapper");
 
-      // ✅ Solo ejecuta si ambos elementos existen
-      if (control && wrapper) {
-        control.addEventListener("click", () => {
-          ["toggle--vertical", "wrapper--vertical"].forEach((cls, i) =>
-            [control, wrapper][i].classList.toggle(cls),
-          );
-          wrapper
-            .querySelectorAll(".marquee")
-            .forEach((m) => m.classList.toggle("marquee--vertical"));
-        });
-      }
-    </script>
-  </body>
+	    // ✅ Solo ejecuta si ambos elementos existen
+	    if (control && wrapper) {
+	      control.addEventListener("click", () => {
+	        ["toggle--vertical", "wrapper--vertical"].forEach((cls, i) =>
+	          [control, wrapper][i].classList.toggle(cls),
+	        );
+	        wrapper
+	          .querySelectorAll(".marquee")
+	          .forEach((m) => m.classList.toggle("marquee--vertical"));
+	      });
+	    }
+	  </script>
+	</body>
 </html>

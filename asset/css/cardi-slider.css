@@ -1,252 +1,252 @@
 /* ============================================================
-   CARDI SLIDER — sección proceso Design Thinking
-   Desktop: cards horizontales, una activa expandida
-   Mobile:  cards verticales apiladas, una activa expandida
-   ============================================================ */
+	 CARDI SLIDER — sección proceso Design Thinking
+	 Desktop: cards horizontales, una activa expandida
+	 Mobile:  cards verticales apiladas, una activa expandida
+	 ============================================================ */
 
 
 /* ============================================================
-   1. CONTENEDOR
-   ============================================================ */
+	 1. CONTENEDOR
+	 ============================================================ */
 
 .cards {
-  display: flex;
-  flex-direction: row;               /* horizontal en desktop */
-  gap: 12px;
-  align-items: stretch;
-  width: 100%;
-  height: 460px;
-  overflow: hidden;
+	display: flex;
+	flex-direction: row;               /* horizontal en desktop */
+	gap: 12px;
+	align-items: stretch;
+	width: 100%;
+	height: 460px;
+	overflow: hidden;
 }
 
 
 /* ============================================================
-   2. CARD BASE — estado inactivo
-   ============================================================ */
+	 2. CARD BASE — estado inactivo
+	 ============================================================ */
 
 .cardi {
-  position: relative;
-  flex: 0 0 72px;                    /* colapsada: ancho fijo */
-  border-radius: 20px;
-  overflow: hidden;
-  cursor: pointer;
-  background-color: var(--color-text-base);
-  transition: flex 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.4s ease;
+	position: relative;
+	flex: 0 0 72px;                    /* colapsada: ancho fijo */
+	border-radius: 20px;
+	overflow: hidden;
+	cursor: pointer;
+	background-color: var(--color-text-base);
+	transition: flex 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.4s ease;
 }
 
 .cardi:hover:not([active]) {
-  flex: 0 0 88px;
+	flex: 0 0 88px;
 }
 
 
 /* ============================================================
-   3. CARD ACTIVA — expandida
-   ============================================================ */
+	 3. CARD ACTIVA — expandida
+	 ============================================================ */
 
 .cardi[active] {
-  flex: 1 1 auto;
-  cursor: default;
-  background-color: #4A5568;
+	flex: 1 1 auto;
+	cursor: default;
+	background-color: #4A5568;
 }
 
 
 /* ============================================================
-   4. IMAGEN
-   ============================================================ */
+	 4. IMAGEN
+	 ============================================================ */
 
 .card__image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  user-select: none;
-  pointer-events: none;
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	display: block;
+	transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+	user-select: none;
+	pointer-events: none;
 }
 
 .cardi:hover:not([active]) .card__image {
-  transform: scale(1.05);
+	transform: scale(1.05);
 }
 
 
 /* ============================================================
-   5. OVERLAY
-   ============================================================ */
+	 5. OVERLAY
+	 ============================================================ */
 
 .cardi::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(30, 36, 56, 0.72) 0%,
-    rgba(30, 36, 56, 0.24) 50%,
-    rgba(30, 36, 56, 0.08) 100%
-  );
-  z-index: 1;
-  transition: opacity 0.4s ease;
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+	  to top,
+	  rgba(30, 36, 56, 0.72) 0%,
+	  rgba(30, 36, 56, 0.24) 50%,
+	  rgba(30, 36, 56, 0.08) 100%
+	);
+	z-index: 1;
+	transition: opacity 0.4s ease;
 }
 
 .cardi:not([active])::before {
-  background: rgba(30, 36, 56, 0);
+	background: rgba(30, 36, 56, 0);
 }
 
 
 /* ============================================================
-   6. CONTENIDO
-   ============================================================ */
+	 6. CONTENIDO
+	 ============================================================ */
 
 .card__infos {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 24px 20px;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 24px 20px;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 
 /* --- Nombre: vertical en colapsada, horizontal en activa --- */
 
 .card__name {
-  font-size: 15px;
-  font-weight: 500;
-  color: #ffffff;
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  writing-mode: vertical-rl;        /* vertical cuando colapsada */
-  transform: rotate(180deg);        /* de abajo a arriba */
-  transition: opacity 0.3s ease;
+	font-size: 15px;
+	font-weight: 500;
+	color: #ffffff;
+	line-height: 1.3;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	writing-mode: vertical-rl;        /* vertical cuando colapsada */
+	transform: rotate(180deg);        /* de abajo a arriba */
+	transition: opacity 0.3s ease;
 }
 
 .cardi[active] .card__name {
-  writing-mode: horizontal-tb;
-  transform: none;
-  white-space: normal;
-  font-size: 18px;
+	writing-mode: horizontal-tb;
+	transform: none;
+	white-space: normal;
+	font-size: 18px;
 }
 
 /* --- Descripción: oculta en colapsada --- */
 
 .card__desc {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.65;
-  max-width: 52ch;
-  opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity   0.4s ease,
-    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	font-size: 14px;
+	color: rgba(255, 255, 255, 0.85);
+	line-height: 1.65;
+	max-width: 52ch;
+	opacity: 0;
+	transform: translateY(8px);
+	transition:
+	  opacity   0.4s ease,
+	  transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cardi[active] .card__desc {
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    opacity   0.5s ease 0.25s,
-    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+	opacity: 1;
+	transform: translateY(0);
+	transition:
+	  opacity   0.5s ease 0.25s,
+	  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
 }
 
 
 /* ============================================================
-   7. MOBILE — layout vertical
-   Las cards se apilan. La inactiva colapsa en altura.
-   La activa se expande en altura.
-   El nombre queda siempre horizontal.
-   ============================================================ */
+	 7. MOBILE — layout vertical
+	 Las cards se apilan. La inactiva colapsa en altura.
+	 La activa se expande en altura.
+	 El nombre queda siempre horizontal.
+	 ============================================================ */
 
 @media (max-width: 768px) {
 
-  .cards {
-    flex-direction: column;          /* apilado vertical */
-    height: auto;                    /* altura dinámica según cards */
-    gap: 8px;
-  }
+	.cards {
+	  flex-direction: column;          /* apilado vertical */
+	  height: auto;                    /* altura dinámica según cards */
+	  gap: 8px;
+	}
 
-  /* Colapsada: altura mínima tipo "banda" */
-  .cardi {
-    flex: 0 0 52px;                  /* alto fijo colapsada */
-    border-radius: 14px;
-    width: 100%;
-  }
+	/* Colapsada: altura mínima tipo "banda" */
+	.cardi {
+	  flex: 0 0 52px;                  /* alto fijo colapsada */
+	  border-radius: 14px;
+	  width: 100%;
+	}
 
-  .cardi:hover:not([active]) {
-    flex: 0 0 64px;
-  }
+	.cardi:hover:not([active]) {
+	  flex: 0 0 64px;
+	}
 
-  /* Activa: altura generosa para imagen + texto */
-  .cardi[active] {
-    flex: 0 0 320px;
-  }
+	/* Activa: altura generosa para imagen + texto */
+	.cardi[active] {
+	  flex: 0 0 320px;
+	}
 
-  /* Nombre siempre horizontal en móvil */
-  .card__name {
-    writing-mode: horizontal-tb;
-    transform: none;
-    font-size: 14px;
-    white-space: nowrap;
-  }
+	/* Nombre siempre horizontal en móvil */
+	.card__name {
+	  writing-mode: horizontal-tb;
+	  transform: none;
+	  font-size: 14px;
+	  white-space: nowrap;
+	}
 
-  .cardi[active] .card__name {
-    font-size: 17px;
-    white-space: normal;
-  }
+	.cardi[active] .card__name {
+	  font-size: 17px;
+	  white-space: normal;
+	}
 
-  .card__infos {
-    padding: 16px 14px;
-  }
+	.card__infos {
+	  padding: 16px 14px;
+	}
 
-  .card__desc {
-    font-size: 13px;
-  }
+	.card__desc {
+	  font-size: 13px;
+	}
 
-  /* En móvil el overlay superior es más fuerte
-     para que el nombre sea legible sobre la banda de imagen */
-  .cardi:not([active])::before {
-    background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.65) 0%,
-      rgba(0, 0, 0, 0.35) 100%
-    );
-  }
+	/* En móvil el overlay superior es más fuerte
+	   para que el nombre sea legible sobre la banda de imagen */
+	.cardi:not([active])::before {
+	  background: linear-gradient(
+	    to right,
+	    rgba(0, 0, 0, 0.65) 0%,
+	    rgba(0, 0, 0, 0.35) 100%
+	  );
+	}
 
 }
 
 
 /* ============================================================
-   8. ACCESIBILIDAD
-   ============================================================ */
+	 8. ACCESIBILIDAD
+	 ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .cardi,
-  .card__image,
-  .card__desc,
-  .card__name { transition: none; }
+	.cardi,
+	.card__image,
+	.card__desc,
+	.card__name { transition: none; }
 }
 
 
 /* ============================================================
-   JS — pegar antes del </body>
+	 JS — pegar antes del </body>
 
-   <script>
-     const container = document.querySelector(".cards");
-     let activeCard = container.querySelector(".cardi[active]") ?? null;
+	 <script>
+	   const container = document.querySelector(".cards");
+	   let activeCard = container.querySelector(".cardi[active]") ?? null;
 
-     container.addEventListener("click", ({ target }) => {
-       const card = target.closest(".cardi");
-       if (!card || card === activeCard) return;
+	   container.addEventListener("click", ({ target }) => {
+	     const card = target.closest(".cardi");
+	     if (!card || card === activeCard) return;
 
-       activeCard?.removeAttribute("active");
-       card.setAttribute("active", "");
-       activeCard = card;
-     });
-   </script>
-   ============================================================ */
+	     activeCard?.removeAttribute("active");
+	     card.setAttribute("active", "");
+	     activeCard = card;
+	   });
+	 </script>
+	 ============================================================ */

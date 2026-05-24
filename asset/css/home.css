@@ -40,7 +40,7 @@
     align-items: center;
     justify-content: flex-start;
     gap: var(--gap);
-    width: max-content; /* reemplaza min-width: auto */
+    width: max-content;
     animation: scroll-x var(--duration) linear infinite;
 }
 
@@ -83,7 +83,7 @@
 .marquee img {
     width: var(--size);
     aspect-ratio: 300/186;
-    object-fit: contain; /* el logo no se distorsiona */
+    object-fit: contain;
     background: var(--color-bg-accent);
     border-radius: 0.75rem;
     padding: 0;

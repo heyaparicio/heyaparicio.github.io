@@ -1,16 +1,17 @@
 /* ============================================================
    MAIN.CSS — heyaparicio.github.io
    Orden: Base → Utilidades → Componentes → Animaciones → Responsive
-   Al final: reglas para mover a fonts.css
    ============================================================ */
+
 :root {
-  /* Paleta cromática */
   --color-bg:        #D2D9E7;
   --color-surface:   #EEF1F6;
   --color-text-base: #1E2435;
   --color-text-sec:  #4A5568;
   --color-accent:    #FB0040;
-  --easing: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --easing:          cubic-bezier(0.165, 0.84, 0.44, 1);
+  /* Logo stroke por variante — evita duplicar @keyframes */
+  --logo-stroke:     var(--color-bg);
 }
 
 
@@ -18,8 +19,8 @@
    1. SELECCIÓN
    ============================================================ */
 
-::selection       { color: #fff; background-color: rgba(64, 209, 192, 0.8); }
-::-moz-selection  { color: #fff; background-color: rgba(64, 208, 192, 0.8); }
+::selection      { color: #fff; background-color: rgba(64, 209, 192, 0.8); }
+::-moz-selection { color: #fff; background-color: rgba(64, 208, 192, 0.8); }
 
 
 /* ============================================================
@@ -27,8 +28,8 @@
    ============================================================ */
 
 html, body {
-  color: #1E2435;
-  background-color: #EEF1F6;
+  color: var(--color-text-base);
+  background-color: var(--color-surface);
   cursor: none;
 }
 
@@ -43,12 +44,12 @@ a, button, .boton {
    3. UTILIDADES DE ESPACIADO
    ============================================================ */
 
-.my-6 { margin-top: 10rem !important;   margin-bottom: 10rem !important; }
-.py-6 { padding-top: 10rem !important;  padding-bottom: 10rem !important; }
-.mt-6 { margin-top: 10rem !important; }
+.my-6 { margin-top:    10rem !important; margin-bottom:  10rem !important; }
+.py-6 { padding-top:   10rem !important; padding-bottom: 10rem !important; }
+.mt-6 { margin-top:    10rem !important; }
 .mb-6 { margin-bottom: 10rem !important; }
-.pt-6 { padding-top: 10rem !important; }
-.pb-6 { padding-bottom: 10rem !important; }
+.pt-6 { padding-top:   10rem !important; }
+.pb-6 { padding-bottom:10rem !important; }
 
 
 /* ============================================================
@@ -59,7 +60,7 @@ a, button, .boton {
 
 .bg-gris        { background: linear-gradient(45deg, #FaFaFa, #F7F7F7); border-radius: 20px; }
 .bg-negro       { background: linear-gradient(45deg, #1E2435, #202020); border-radius: 20px 20px 0 0; }
-.bg-negro-noise { background-color: #1E2435; background-image: url(../img/noise.png); }
+.bg-negro-noise { background-color: var(--color-text-base); background-image: url(../img/noise.png); }
 
 .dots {
   --dot-bg:    var(--color-surface);
@@ -77,14 +78,27 @@ a, button, .boton {
 
 /* ============================================================
    5. BOTONES
+   — .boton-base agrupa las 6 propiedades que .boton y .disabled comparten
    ============================================================ */
+
+.boton-base,
+.boton,
+.disabled {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
 
 .boton-enlace {
   display: inline-block;
   padding: 14px 28px;
   background-color: transparent;
   color: var(--color-text-sec);
-  text-decoration: none;
   font-size: 16px;
   font-weight: 500;
 }
@@ -94,20 +108,10 @@ a, button, .boton {
   font-family: var(--font-display);
   background-color: var(--color-text-sec);
   color: var(--color-surface);
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  border-radius: 100px;
-  font-size: 0.9rem;
-  letter-spacing: 0.06em;
   box-shadow: 0 4px 16px rgba(30, 36, 56, 0.4);
   position: relative;
   overflow: hidden;
   z-index: 0;
-  /* solo las propiedades que realmente cambian */
   transition: color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
@@ -120,31 +124,20 @@ a, button, .boton {
 .boton::before {
   content: "";
   position: absolute;
-  inset: 0;             /* reemplaza top/left/height/width: 100% */
-  width: 0;             /* arranca colapsado */
-  background: #fb0040;
+  inset: 0;
+  width: 0;
+  background: var(--color-accent);
   z-index: -1;
   transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.boton:hover::before {
-  width: 100%;          /* misma propiedad que se declaró en base */
-}
+.boton:hover::before { width: 100%; }
 
 .disabled {
   pointer-events: none;
   opacity: 0.6;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  border-radius: 100px;
-  font-size: 0.9rem;
-  letter-spacing: 0.06em;
   background-color: var(--color-bg);
   color: var(--color-text-base);
-  transition: background-color 0.3s, color 0.3s;
 }
 
 
@@ -152,42 +145,22 @@ a, button, .boton {
    6. CURSOR PERSONALIZADO
    ============================================================ */
 
-/* --- CURSOR --- */
 #cursor {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
+  top: 0; left: 0;
+  width: 20px; height: 20px;
   border-radius: 50%;
   background-color: rgba(251, 0, 64, 0.8);
   pointer-events: none;
   mix-blend-mode: difference;
   z-index: 9999;
-
-  /* CSS custom properties controlan la posición */
-  transform: translate(var(--cx, -100px), var(--cy, -100px))
-             translate(-50%, -50%)
-             scale(var(--scale, 1));
-
-  /* 
-    50ms linear = absorbe el jitter de Brave sin crear lag visible.
-    El movimiento lo maneja el compositor CSS, no el hilo JS.
-  */
-  transition:
-    transform 50ms linear,
-    width 0.3s ease,
-    height 0.3s ease,
-    background-color 0.3s ease,
-    border 0.2s ease,
-    opacity 0.3s ease;
-
+  transform: translate(var(--cx, -100px), var(--cy, -100px)) translate(-50%, -50%) scale(var(--scale, 1));
+  transition: transform 50ms linear, width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border 0.2s ease, opacity 0.3s ease;
   will-change: transform;
 }
 
 #cursor.magnet {
-  width: 90px;
-  height: 90px;
+  width: 90px; height: 90px;
   background: transparent;
   border: 1px solid var(--color-accent);
 }
@@ -195,10 +168,8 @@ a, button, .boton {
 #cursor.magnet::after {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
+  top: 50%; left: 50%;
+  width: 10px; height: 10px;
   background: var(--color-accent);
   border-radius: 50%;
   transform: translate(-50%, -50%);
@@ -223,185 +194,143 @@ a, button, .boton {
   visibility: hidden;
 }
 
-.navbar-transitioning {
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-}
+.navbar-transitioning { transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out; }
 
 .navbar.fixed-top.scrolled {
   transform: translateY(0);
   margin: 20px 20px 0 20px;
-  padding-top: 0;
-  padding-bottom: 0;
- 
+  padding-top: 0; padding-bottom: 0;
 }
 
 header {
-    position: relative;
-    top: 0;
-    z-index: 1030;
-    width: 100%;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-header.fixed-top {
-    position: fixed;
-    top: 0;
-    margin-top: 0 !important;
+  position: relative;
+  top: 0;
+  z-index: 1030;
+  width: 100%;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+header.fixed-top { position: fixed; top: 0; margin-top: 0 !important; }
 
 .header-pill {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -1rem;
-    right: -1rem;
-    border-radius: 6.25rem;
-    overflow: hidden;
+  position: absolute;
+  top: 0; bottom: 0; left: -1rem; right: -1rem;
+  border-radius: 6.25rem;
+  overflow: hidden;
 }
 
-/* Estado por defecto: sin filtro */
 .header-glass {
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    background-color: transparent;
-    filter: none;
-    transition: filter 0.3s ease;
-}
-header.fixed-top.scrolled {
-    transform: translateY(0);
-    opacity: 1;
+  width: 100%; height: 100%;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background-color: transparent;
+  transition: filter 0.3s ease;
 }
 
-/* Se oculta hacia arriba */
-header.fixed-top.nav-hide {
-    transform: translateY(-110%);
-    opacity: 0;
-}
-
-/* ✅ header (no .navbar) es quien recibe fixed-top */
-header.fixed-top .header-glass {
-    filter: url(#liquid-prism-intense);
-}
-
-header.fixed-top .header-pill {
-   border: 1px solid rgba(74, 85, 104, 0.1);;
-}
-
-
+header.fixed-top.scrolled  { transform: translateY(0); opacity: 1; }
+header.fixed-top.nav-hide  { transform: translateY(-110%); opacity: 0; }
+header.fixed-top .header-glass { filter: url(#liquid-prism-intense); }
+header.fixed-top .header-pill  { border: 1px solid rgba(74, 85, 104, 0.1); }
 
 .navbar.fixed-top .nav-link,
 .navbar.fixed-top .navbar-brand span,
-.navbar.fixed-top .navbar-toggler { color: #1E2435; }
+.navbar.fixed-top .navbar-toggler { color: var(--color-text-base); }
 
 .navbar-toggler:focus:not(:focus-visible),
-.btn-close:focus:not(:focus-visible) {
-  outline: none;
-  box-shadow: none;
-}
+.btn-close:focus:not(:focus-visible) { outline: none; box-shadow: none; }
 
-#aparicio, #apariciolight {
-  width: 1.875rem;
-  height: 1.875rem;
-}
-.navbar-brand { gap: 0.469rem;}
+#aparicio,
+#apariciolight { width: 1.875rem; height: 1.875rem; }
+
+.navbar-brand { gap: 0.469rem; }
+
 .navbar-brand svg,
-.offcanvas-title svg {
-  height: auto;
-  fill: #FB0040;
-  display: block;
-}
+.offcanvas-title svg { height: auto; fill: var(--color-accent); display: block; }
 
-/* Navbar — variante clara (#main) */
-#main { margin-top: 20px; }
-#main { padding-top: 1.6rem; padding-bottom: 1.6rem; }
+/* Navbar — variante clara */
+#main { margin-top: 20px; padding-top: 1.6rem; padding-bottom: 1.6rem; }
 
-#main nav .navbar-brand span { color: #1E2435; font-weight: 600; font-size: 1.344rem; text-transform: capitalize; }
+#main nav .navbar-brand span { color: var(--color-text-base); font-weight: 600; font-size: 1.344rem; text-transform: capitalize; }
 
-#navbar .navbar-nav .nav-item, #mainNavbar .navbar-nav .nav-item{ margin: 12px; }
+#navbar .navbar-nav .nav-item,
+#mainNavbar .navbar-nav .nav-item { margin: 12px; }
 
-#navbar .navbar-nav .nav-item .nav-link { color: #1E2435; }
-#mainNavbar .navbar-nav .nav-item .nav-link { color: #EEF1F6; }
-
-#navbar .navbar-nav .nav-item .nav-link, #mainNavbar .navbar-nav .nav-item .nav-link {
-  font-size: 0.938rem;
-  font-weight: 500;
-  letter-spacing: 0.08rem;
+/* Propiedades estructurales — aplican a todos */
+#navbar .navbar-nav .nav-link,
+#mainNavbar .navbar-nav .nav-link,
+.enlace {
   padding: 0 !important;
   position: relative;
   white-space: nowrap;
   text-decoration: none;
 }
 
-/* ── Nav link base ── */
+/* Tipografía — solo para nav, no para .enlace genérico */
 #navbar .navbar-nav .nav-link,
 #mainNavbar .navbar-nav .nav-link {
   font-size: 0.938rem;
   font-weight: 500;
   letter-spacing: 0.08rem;
-  padding: 0 !important;
-  position: relative;
-  white-space: nowrap;
-  text-decoration: none;
 }
 
-/* ── Efecto color: ::before — usa clip-path en lugar de max-width ── */
+/* Colores por variante */
+#navbar .navbar-nav .nav-item .nav-link,
+.enlace { color: var(--color-text-base); }
+
+#mainNavbar .navbar-nav .nav-item .nav-link { color: var(--color-surface); }
+
+/* ── ::before — revela color de acento de izquierda a derecha ── */
 #navbar .navbar-nav .nav-link::before,
-#mainNavbar .navbar-nav .nav-link::before {
+#mainNavbar .navbar-nav .nav-link::before,
+.enlace::before {
   content: attr(data-hover);
   position: absolute;
-  inset: 0; /* top/left/right/bottom: 0 */
+  inset: 0;
   white-space: nowrap;
-  font-size: 0.938rem;
-  font-weight: 500;
-  letter-spacing: 0.08rem;
-  color: #fb0040;
-  /* clip-path solo toca composite, no layout */
+  color: var(--color-accent);
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
   clip-path: inset(0 100% 0 0);
   transition: clip-path 0.5s ease;
   will-change: clip-path;
 }
 
 #navbar .navbar-nav .nav-link:hover::before,
-#mainNavbar .navbar-nav .nav-link:hover::before {
-  clip-path: inset(0 0% 0 0); /* revela de izquierda a derecha */
-}
+#mainNavbar .navbar-nav .nav-link:hover::before,
+.enlace:hover::before { clip-path: inset(0 0% 0 0); }
 
-/* ── Underline: ::after — usa scaleX en lugar de width ── */
+/* ── ::after — subrayado con scaleX ── */
 #navbar .navbar-nav .nav-link::after,
-#mainNavbar .navbar-nav .nav-link::after {
+#mainNavbar .navbar-nav .nav-link::after,
+.enlace::after {
   content: "";
   display: block;
   position: absolute;
-  bottom: -4px;
-  left: 0;
-  height: 2px;
-  width: 100%; /* siempre 100%, la escala lo oculta */
-  background: #fb0040;
+  bottom: -4px; left: 0;
+  height: 2px; width: 100%;
+  background: var(--color-accent);
   opacity: 0.6;
   transform: scaleX(0);
   transform-origin: left center;
-  /* transform y opacity son las únicas propiedades 100% GPU ✅ */
   transition: transform 0.3s ease, opacity 0.3s ease;
   will-change: transform;
 }
 
 #navbar .navbar-nav .nav-link:hover::after,
-#mainNavbar .navbar-nav .nav-link:hover::after {
-  transform: scaleX(1);
-  opacity: 0.9;
-}
+#mainNavbar .navbar-nav .nav-link:hover::after,
+.enlace:hover::after { transform: scaleX(1); opacity: 0.9; }
 
-/* Navbar — variante oscura (#mainNavbar) */
+/* Navbar — variante oscura */
 #mainNavbar nav { padding-top: 10px; padding-bottom: 10px; }
-#mainNavbar .navbar-brand span { color: #EEF1F6; font-weight: 600; font-size: 1.344rem; }
-#mainNavbar .navbar-toggler { border: none; color: #EEF1F6; }
-
+#mainNavbar .navbar-brand span { color: var(--color-surface); font-weight: 600; font-size: 1.344rem; }
+#mainNavbar .navbar-toggler { border: none; color: var(--color-surface); }
 
 /* Nav — reglas globales compartidas */
 .navbar-nav .nav-link {
-  color: #EEF1F6;
+  color: var(--color-surface);
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 0.938rem;
@@ -410,12 +339,12 @@ header.fixed-top .header-pill {
 }
 
 footer .nav .nav-link:hover,
-h2 a:hover,
-h3 a:hover  { color: #FB0040; }
-.nav-link.active { color: #FB0040 !important; }
+.enlace:hover { color: var(--color-accent); }
+
+.nav-link.active { color: var(--color-accent) !important; }
 .nav-item { margin-left: 13px; }
 
-#main .navbar-toggler { border: none; color: #1E2435; }
+#main .navbar-toggler { border: none; color: var(--color-text-base); }
 
 
 /* ============================================================
@@ -429,37 +358,27 @@ h3 a:hover  { color: #FB0040; }
 .offcanvas-body a.nav-link { color: #292929; }
 
 .offcanvas-title { font-size: 1.25rem; }
-
-.offcanvas-body a.nav-link:hover { color: #FB0040 !important; }
+.offcanvas-body a.nav-link:hover { color: var(--color-accent) !important; }
 
 
 /* ============================================================
    9. HEADER / HERO
    ============================================================ */
 
-.header-bg-gris {
-  background-color: #1E2435;
+/* Propiedades compartidas entre ambas variantes de header bg */
+.header-bg-gris,
+.header-bg-gris-single {
+  background-color: var(--color-text-base);
   background-image: url(../img/noise.png);
   border-radius: 20px;
   margin: 20px;
-  height: calc(100vh - 40px);
 }
 
+/* Solo .header-bg-gris necesita altura completa */
+.header-bg-gris { height: calc(100vh - 40px); }
 .header-bg-gris header { padding-top: 1.6rem; padding-bottom: 1.6rem; }
 
-
-.header-bg-gris-single {
-  background-color: #1E2435;
-  background-image: url(../img/noise.png);
-  border-radius: 20px;
-  margin: 20px;
-}
-
-.hero {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-}
+.hero { min-height: 80vh; display: flex; align-items: center; }
 
 
 /* ============================================================
@@ -496,6 +415,7 @@ h3 a:hover  { color: #FB0040; }
 
 .card { border-radius: 26px; border: none; }
 .card .card-body { padding: 12px 12px 24px 12px; }
+.card .card-header { border-radius: 26px 26px 0 0; padding: 12px; font-size: 1rem; font-weight: 600; }
 
 .card .img-wrapper {
   width: 100%;
@@ -505,56 +425,36 @@ h3 a:hover  { color: #FB0040; }
   display: inline-block;
   line-height: 0;
 }
-.card .img-wrapper img {
-  clip-path: inset(0 round 14px);
-  width: 100%;
-  height: auto;
-}
+
+.card .img-wrapper img { clip-path: inset(0 round 14px); width: 100%; height: auto; }
 
 .card-title a { font-weight: 800; margin-bottom: 12px; color: #292929; }
+
 .card-title a:hover,
-.card:hover .card-title a { color: #FB0040 !important; }
+.card:hover .card-title a { color: var(--color-accent) !important; }
 
 .card-img-container {
   position: relative;
   overflow: hidden;
   border-radius: 22px;
   width: 100%;
-  border: 16px solid #1E2435;
+  border: 16px solid var(--color-text-base);
 }
 
-.img-zoom {
-  transition: transform 0.4s ease-in-out;
-  width: auto;
-  height: 100%;
-}
+.img-zoom { transition: transform 0.4s ease-in-out; width: auto; height: 100%; }
 .img-zoom:hover { transform: scale(1.1); }
-
-
 
 
 /* ============================================================
    12. IMÁGENES Y CAPAS PARALLAX
    ============================================================ */
 
-/* --- Parallax con mouse (article) --- */
+.article { position: relative; width: 100%; overflow: hidden; }
 
-.article {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.article article {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  height: 80vh;
-}
+.article article { position: relative; width: 100%; overflow: hidden; height: 80vh; }
 
 article > img.layer-1 {
-  width: 100%;
-  height: auto;
+  width: 100%; height: auto;
   object-fit: cover;
   object-position: calc(-50% + (var(--x) * 30px)) calc(43% + (var(--y) * -20px));
   filter: saturate(1.5) brightness(0.9);
@@ -567,40 +467,20 @@ article > img.layer-2,
 article > img.layer-3,
 article > img.layer-4 {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   object-fit: cover;
   user-select: none;
   pointer-events: none;
 }
 
-article > img.layer-2 {
-  object-position: calc(-50% + (var(--x) * 40px)) calc(43% + (var(--y) * -40px));
-  z-index: 2;
-}
-article > img.layer-3 {
-  object-position: calc(-50% + (var(--x) * 20px)) calc(43% + (var(--y) * -10px));
-  z-index: 3;
-}
-article > img.layer-4 {
-  object-position: calc(-50% + (var(--x) * 10px)) calc(43% + (var(--y) * -5px));
-  z-index: 4;
-}
-
-/* --- Capas animadas (btl-1) --- */
+article > img.layer-2 { object-position: calc(-50% + (var(--x) * 40px)) calc(43% + (var(--y) * -40px)); z-index: 2; }
+article > img.layer-3 { object-position: calc(-50% + (var(--x) * 20px)) calc(43% + (var(--y) * -10px)); z-index: 3; }
+article > img.layer-4 { object-position: calc(-50% + (var(--x) * 10px)) calc(43% + (var(--y) *  -5px)); z-index: 4; }
 
 .btl-1 { position: relative; width: 100%; }
 
-.btl-1 img.alayer-1 {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-  position: relative;
-  z-index: 5;
-}
+.btl-1 img.alayer-1 { width: 100%; height: auto; object-fit: cover; display: block; position: relative; z-index: 5; }
 
 .btl-1 img.alayer-2,
 .btl-1 img.alayer-3,
@@ -608,16 +488,15 @@ article > img.layer-4 {
 .btl-1 img.alayer-5,
 .btl-1 img.alayer-0 {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   object-fit: cover;
   user-select: none;
   pointer-events: none;
 }
 
-.btl-1 img.alayer-2, .btl-1 img.alayer-0 { z-index: 4; }
+.btl-1 img.alayer-2,
+.btl-1 img.alayer-0 { z-index: 4; }
 .btl-1 img.alayer-3 { z-index: 3; }
 .btl-1 img.alayer-4 { z-index: 2; }
 .btl-1 img.alayer-5 { z-index: 1; }
@@ -629,11 +508,8 @@ article > img.layer-4 {
 .btl-1 img.alayer-4 { animation: move_4 6s ease-in-out infinite alternate; }
 .btl-1 img.alayer-5 { animation: move_5 8s ease-in-out infinite alternate; }
 
-/* --- Imágenes superpuestas --- */
-
 .image-noise { position: relative; display: block; }
-
-.main-image { display: block; width: 100%; height: auto; }
+.main-image  { display: block; width: 100%; height: auto; }
 
 .noise-overlay {
   position: absolute;
@@ -652,7 +528,7 @@ article > img.layer-4 {
 .img   { width: 100%; display: block; }
 
 .image.back-image  { left: 0; bottom: 0; transform: translate(0, -17.5%); }
-.image.front-image { right: 0; top: 0;  transform: translate(0, 20%); }
+.image.front-image { right: 0; top: 0; transform: translate(0, 20%); }
 
 .image-wrapper { transform: scale(1.2); }
 .img-parallax  { width: 100%; }
@@ -666,7 +542,7 @@ article > img.layer-4 {
    ============================================================ */
 
 footer .nav .nav-link       { color: #eee; }
-footer .nav .nav-link:hover { color: #FB0040; }
+footer .nav .nav-link:hover { color: var(--color-accent); }
 
 
 /* ============================================================
@@ -703,6 +579,32 @@ footer .nav .nav-link:hover { color: #FB0040; }
   50%       { transform: translate(0, -4px); }
 }
 
+/* ── Logo: shine unificado — stroke controlado por --logo-stroke ── */
+#aparicio .logo-path,
+#apariciolight .logo-path {
+  fill: var(--color-accent);
+  stroke: var(--logo-stroke);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-dasharray: 0, 596;
+}
+
+/* La variante light sobreescribe solo el stroke */
+#apariciolight { --logo-stroke: var(--color-text-base); }
+
+#logo_erlen-masson:hover #aparicio .logo-path,
+#logo_erlen-masson:hover #apariciolight .logo-path {
+  animation: logo-shine 0.9s ease-in-out forwards;
+}
+
+@keyframes logo-shine {
+  0%   { stroke-dasharray:   0, 596; stroke-dashoffset:    0; fill: var(--color-accent); stroke: var(--logo-stroke); }
+  10%  { stroke-dasharray:  60, 536; stroke-dashoffset:    0; fill: transparent;         stroke: var(--logo-stroke); }
+  80%  { stroke-dasharray:  60, 536; stroke-dashoffset: -536; fill: transparent;         stroke: var(--logo-stroke); }
+  100% { stroke-dasharray:   0, 596; stroke-dashoffset: -596; fill: var(--color-accent); stroke: var(--logo-stroke); }
+}
+
 
 /* ============================================================
    15. RESPONSIVE
@@ -716,17 +618,14 @@ footer .nav .nav-link:hover { color: #FB0040; }
 }
 
 @media (max-width: 768px) {
-  .hero                   { padding-top: 60px; }
-  .article                { position: relative; width: 100%; height: 50vh; overflow: hidden; }
-  .header-bg-gris         { height: calc(100vh - 20px); padding-top: 0; }
+  .hero                          { padding-top: 60px; }
+  .article                       { position: relative; width: 100%; height: 50vh; overflow: hidden; }
+  .header-bg-gris                { height: calc(100vh - 20px); padding-top: 0; }
   .header-bg-gris,
-  .navbar.fixed-top       { margin: 10px; }
-  .navbar.fixed-top.scrolled { margin: 10px 10px 0 10px; }
-  .navbar                 { transition: transform 0.3s ease, opacity 0.3s ease; }
-
-  .card-img-container     { border-radius: 16px; border: 10px solid #1E2435; }
-
-  
+  .navbar.fixed-top              { margin: 10px; }
+  .navbar.fixed-top.scrolled     { margin: 10px 10px 0 10px; }
+  .navbar                        { transition: transform 0.3s ease, opacity 0.3s ease; }
+  .card-img-container            { border-radius: 16px; border: 10px solid var(--color-text-base); }
 
   .spacer > span {
     font-size: 3em;
@@ -739,7 +638,6 @@ footer .nav .nav-link:hover { color: #FB0040; }
   /* Tipografía responsive — mover a fonts.css */
   .rotating-text b {
     font-size: 2.8rem;
-    line-height: normal;
     font-weight: 500;
     display: inline-flex;
     flex-wrap: wrap;
@@ -748,45 +646,4 @@ footer .nav .nav-link:hover { color: #FB0040; }
     line-height: 1.2;
     vertical-align: top;
   }
-}
-
-
-#aparicio .logo-path {
- fill: #FB0040;
- stroke: var(--color-bg);
- stroke-width: 3;
- stroke-linejoin: round;
- stroke-linecap: round;
- stroke-dasharray: 0, 596;
-}
-
-#logo_erlen-masson:hover #aparicio .logo-path {
-  animation: shine 0.9s ease-in-out forwards;
-}
-
-@keyframes shine {
-  0%   { stroke-dasharray:  0,   596;   stroke-dashoffset:  0; fill: #FB0040; }
-  10%  { stroke-dasharray:  60, 536; stroke-dashoffset:  0; fill: transparent; }
-  80%  { stroke-dasharray:  60, 536; stroke-dashoffset: -536; fill: transparent; }
-  100% { stroke-dasharray:  0,   596;   stroke-dashoffset: -596; fill: #FB0040; }
-}
-
-#apariciolight .logo-path {
- fill: #FB0040;
- stroke: var(--color-bg);
- stroke-width: 3;
- stroke-linejoin: round;
- stroke-linecap: round;
- stroke-dasharray: 0, 596;
-}
-
-#logo_erlen-masson:hover #apariciolight .logo-path {
-  animation: shinelight 0.9s ease-in-out forwards;
-}
-
-@keyframes shinelight {
-  0%   { stroke-dasharray:  0,   596;   stroke-dashoffset:  0; fill: #FB0040; stroke: var(--color-text-base); }
-  10%  { stroke-dasharray:  60, 536; stroke-dashoffset:  0; fill: transparent; stroke: var(--color-text-base);}
-  80%  { stroke-dasharray:  60, 536; stroke-dashoffset: -536; fill: transparent; stroke: var(--color-text-base);}
-  100% { stroke-dasharray:  0,   596;   stroke-dashoffset: -596; fill: #FB0040; stroke: var(--color-text-base);}
 }
