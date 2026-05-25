@@ -6,7 +6,7 @@
 :root {
   --color-bg:        #D2D9E7;
   --color-surface:   #EEF1F6;
-  --color-text-base: #1E2435;
+  --color-text-base: #1e2435;
   --color-text-sec:  #4A5568;
   --color-accent:    #FB0040;
   --color-border-tertiary: #D2D9E7;
@@ -43,7 +43,6 @@ a, button, .boton {
   transition: background-color 0.3s, color 0.3s;
   cursor: none;
 }
-
 
 /* ============================================================
    3. UTILIDADES DE ESPACIADO
@@ -247,7 +246,10 @@ header.fixed-top { position: fixed; top: 0; margin-top: 0 !important; }
 
 .header-pill {
   position: absolute;
-  top: 0; bottom: 0; left: -1rem; right: -1rem;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   border-radius: 6.25rem;
   overflow: hidden;
 }
@@ -260,7 +262,8 @@ header.fixed-top { position: fixed; top: 0; margin-top: 0 !important; }
 
 header.fixed-top.scrolled  { transform: translateY(0); opacity: 1; }
 header.fixed-top.nav-hide  { transform: translateY(-110%); opacity: 0; }
-header.fixed-top .header-glass { filter: url(#liquid-prism-intense); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+#mainNavbar.fixed-top .header-glass { background-color: rgba(30, 36, 53, 0.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+#main.fixed-top .header-glass { background-color: rgba(238, 241, 246, 0.8) ; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 header.fixed-top .header-pill  { border: 1px solid rgba(74, 85, 104, 0.1); }
 
 .navbar.fixed-top .nav-link,
@@ -359,7 +362,7 @@ header.fixed-top .header-pill  { border: 1px solid rgba(74, 85, 104, 0.1); }
 .enlace:hover::after { transform: scaleX(1); opacity: 0.9; }
 
 /* Navbar — variante oscura */
-#mainNavbar nav { padding-top: 10px; padding-bottom: 10px; }
+#mainNavbar nav, #main nav { padding-top: 10px; padding-bottom: 10px; padding-left: 20px; padding-right: 20px; }
 #mainNavbar .navbar-brand span { color: var(--color-surface); font-weight: 600; font-size: 1.344rem; }
 #mainNavbar .navbar-toggler { border: none; color: var(--color-surface); }
 
@@ -742,15 +745,15 @@ footer .nav .nav-link:hover { color: var(--color-accent); }
   .hero                             { padding-top: 60px; }
   .article                          { position: relative; width: 100%; height: 50vh; overflow: hidden; }
   .header-bg-gris                   { height: calc(100vh - 20px); padding-top: 0; }
-  .header-bg-gris                   { margin: 0.25rem;}
+  .header-bg-gris                   { margin: 0.3rem;}
   .navbar                           { transition: transform 0.3s ease, opacity 0.3s ease; }
   .card-img-container               { border-radius: 16px; border: 10px solid var(--color-text-base); }
 
-  header.fixed-top.scrolled .navbar { margin: 0.25rem 0.25rem 0 0.25rem; }
-  header.fixed-top .header-pill     { margin: 0.25rem; left: 0; right: 0;}
-  header.fixed-top.scrolled nav     { padding: 10px 15px; }
+  header.fixed-top.scrolled .navbar { margin: 0.3rem 0.3rem 0 0.3rem; }
+  header.fixed-top .header-pill     { margin: 0.3rem; left: 0; right: 0;}
+  header.fixed-top.scrolled nav     { padding: 15px 15px; }
 
-  header#main,  header#mainNavbar   { margin-top: 0; padding:0; }
+  header#main,  header#mainNavbar   { margin-top: 0; padding:10px 0 0 0s; }
 
   .spacer > span {
     font-size: 3em;
