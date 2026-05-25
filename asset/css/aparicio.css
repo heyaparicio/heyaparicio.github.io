@@ -481,37 +481,148 @@ footer .nav .nav-link:hover,
 
 
 /* ============================================================
-   12. IMÁGENES Y CAPAS PARALLAX
+   12. HORIZONTAL SECTION
    ============================================================ */
 
-.article { position: relative; width: 100%; overflow: hidden; }
-
-.article article { position: relative; width: 100%; overflow: hidden; height: 80vh; }
-
-article > img.layer-1 {
-  width: 100%; height: auto;
-  object-fit: cover;
-  object-position: calc(-50% + (var(--x) * 30px)) calc(43% + (var(--y) * -20px));
-  filter: saturate(1.5) brightness(0.9);
-  display: block;
-  position: relative;
-  z-index: 1;
+.projects-horizontal{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    padding-block:0 6vh;
 }
 
-article > img.layer-2,
-article > img.layer-3,
-article > img.layer-4 {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  user-select: none;
-  pointer-events: none;
+.projects-pin{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    padding-block:3vh 6vh;
 }
 
-article > img.layer-2 { object-position: calc(-50% + (var(--x) * 40px)) calc(43% + (var(--y) * -40px)); z-index: 2; }
-article > img.layer-3 { object-position: calc(-50% + (var(--x) * 20px)) calc(43% + (var(--y) * -10px)); z-index: 3; }
-article > img.layer-4 { object-position: calc(-50% + (var(--x) * 10px)) calc(43% + (var(--y) *  -5px)); z-index: 4; }
+.projects-track{
+    display:flex;
+    align-items:center;
+    gap:0;
+    will-change:transform;
+}
+
+.project-card{
+    flex:0 0 100vw;
+    width:100vw;
+    min-width:100vw;
+    min-height:60vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-sizing:border-box;
+    padding-inline:clamp(24px,6vw,120px);
+}
+
+.project-layout{
+    width:min(1400px,100%);
+    margin:0 auto;
+    align-items:center;
+}
+
+.project-layout.row{
+    margin-left:0;
+    margin-right:0;
+    --bs-gutter-x:0;
+}
+
+.project-layout > [class*="col-"]{
+    padding-left:2rem;
+    padding-right:2rem;
+}
+
+.card-img-container{
+    width:100%;
+    position:relative;
+    overflow:hidden;
+}
+
+.main-image{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+.project-content{
+    max-width:100%;
+    padding-left:4vw;
+}
+
+.project-content h2{
+    margin-bottom:1.5rem;
+}
+
+@media (max-width:991px){
+
+    .projects-horizontal{
+        overflow:visible;
+        padding-block:4rem;
+    }
+
+    .projects-pin{
+        min-height:auto;
+        overflow:visible;
+        padding-block:0;
+        display:block;
+    }
+
+    .projects-track{
+        display:flex;
+        flex-direction:column;
+        gap:6rem;
+        transform:none!important;
+        width:100%;
+    }
+
+    .project-card{
+        width:100%;
+        min-width:100%;
+        min-height:auto;
+        padding-inline:1.5rem;
+        opacity:1!important;
+        transform:none!important;
+    }
+
+    .project-layout{
+        max-width:100%;
+    }
+
+    .project-layout > [class*="col-"]{
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .project-content{
+        padding-left:0;
+        margin-top:2rem;
+    }
+
+    .project-content h2{
+        margin-bottom:1rem;
+    }
+
+
+}
+
+@media (max-width:576px){
+
+    .project-card{
+        padding-inline:1rem;
+    }
+
+    .project-content{
+        margin-top:1.5rem;
+    }
+
+}
+
+/* ============================================================
+   13. HERO ANIMATION SECTION
+   ============================================================ */
 
 .btl-1 { position: relative; width: 100%; }
 
@@ -543,33 +654,7 @@ article > img.layer-4 { object-position: calc(-50% + (var(--x) * 10px)) calc(43%
 .btl-1 img.alayer-4 { animation: move_4 6s ease-in-out infinite alternate; }
 .btl-1 img.alayer-5 { animation: move_5 8s ease-in-out infinite alternate; }
 
-.image-noise { position: relative; display: block; }
-.main-image  { display: block; width: 100%; height: auto; }
 
-.noise-overlay {
-  position: absolute;
-  width: 100%;
-  top: 0; left: 0; right: 0; bottom: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-.card-img-container:hover .noise-overlay { opacity: 0; }
-
-.image-group { margin: 100px 0; margin-bottom: 100vh; padding: 0 30px; }
-
-.overlapping-images { padding-top: 91.746%; position: relative; }
-
-.image { width: 78.73%; overflow: hidden; position: absolute; }
-.img   { width: 100%; display: block; }
-
-.image.back-image  { left: 0; bottom: 0; transform: translate(0, -17.5%); }
-.image.front-image { right: 0; top: 0; transform: translate(0, 20%); }
-
-.image-wrapper { transform: scale(1.2); }
-.img-parallax  { width: 100%; }
-
-.one { z-index: 4; }
-.one a img { width: 100%; height: auto; display: block; }
 
 
 /* ============================================================
