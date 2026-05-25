@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	  initRotatingText();
 });
 
+
 /* 1. Cursor */
 function initCursor() {
 	  const cursor = document.querySelector('#cursor');
