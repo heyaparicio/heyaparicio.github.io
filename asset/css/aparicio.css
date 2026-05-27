@@ -468,17 +468,6 @@ footer .nav .nav-link:hover,
 .card-title a:hover,
 .card:hover .card-title a { color: var(--color-accent) !important; }
 
-.card-img-container {
-  position: relative;
-  overflow: hidden;
-  border-radius: 22px;
-  width: 100%;
-  border: 16px solid var(--color-text-base);
-}
-
-.img-zoom { transition: transform 0.4s ease-in-out; width: auto; height: 100%; }
-.img-zoom:hover { transform: scale(1.1); }
-
 
 /* ============================================================
    12. HORIZONTAL SECTION
@@ -489,6 +478,7 @@ footer .nav .nav-link:hover,
     width:100%;
     overflow:hidden;
     padding-block:0 6vh;
+    background-color: var(--color-bg);
 }
 
 .projects-pin{
@@ -535,17 +525,20 @@ footer .nav .nav-link:hover,
     padding-right:2rem;
 }
 
-.card-img-container{
-    width:100%;
-    position:relative;
-    overflow:hidden;
+.card-img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 40px;
+  width: 100%;
+  border: 10px solid #fff;
+  background-color: #fff;
 }
 
-.main-image{
-    width:100%;
-    height:auto;
-    display:block;
-}
+.card-img-container img { width:101%; height:auto; display:block; }
+.img-zoom       { transition: transform 0.4s ease-in-out; width: auto; height: 100%; }
+.img-zoom:hover { transform: scale(1.1); }
+
+
 
 .project-content{
     max-width:100%;
@@ -744,7 +737,7 @@ footer .nav .nav-link:hover { color: var(--color-accent); }
   .header-bg-gris                   { height: calc(100vh - 20px); padding-top: 0; }
   .header-bg-gris                   { margin: 0.3rem;}
   .navbar                           { transition: transform 0.3s ease, opacity 0.3s ease; }
-  .card-img-container               { border-radius: 16px; border: 10px solid var(--color-text-base); }
+
 
   header.fixed-top.scrolled .navbar { margin: 0.3rem 0.3rem 0 0.3rem; }
   header.fixed-top .header-pill     { margin: 0.3rem; left: 0; right: 0;}
