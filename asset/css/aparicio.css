@@ -741,7 +741,7 @@ footer .nav .nav-link:hover { color: var(--color-accent); }
 
   header.fixed-top.scrolled .navbar { margin: 0.3rem 0.3rem 0 0.3rem; }
   header.fixed-top .header-pill     { margin: 0.3rem; left: 0; right: 0;}
-  header.fixed-top.scrolled nav     { padding: 15px 15px; }
+  header.fixed-top.scrolled nav     { padding: 15px 15px!important;}
 
   header#main,  header#mainNavbar   { margin-top: 0; padding:10px 0 0 0s; }
 
