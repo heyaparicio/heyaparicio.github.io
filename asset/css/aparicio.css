@@ -530,11 +530,12 @@ footer .nav .nav-link:hover,
   overflow: hidden;
   border-radius: 40px;
   width: 100%;
+  height: auto;
   border: 10px solid #fff;
   background-color: #fff;
 }
 
-.card-img-container img { width:101%; height:auto; display:block; }
+.card-img-container img { width:100%; height:auto; display:block; }
 .img-zoom       { transition: transform 0.4s ease-in-out; width: auto; height: 100%; }
 .img-zoom:hover { transform: scale(1.1); }
 
