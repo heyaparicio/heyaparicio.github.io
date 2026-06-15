@@ -110,7 +110,6 @@ a, button, .boton {
 
 /* ============================================================
    5. BOTONES
-   — .boton-base agrupa las 6 propiedades que .boton y .disabled comparten
    ============================================================ */
 
 .boton-base,
@@ -150,7 +149,7 @@ a, button, .boton {
 .boton:hover {
   color: white;
   transform: translateY(-1px);
-  box-shadow: 0px 18px 30px -20px rgba(251, 0, 64, 0.8);  
+  box-shadow: 0px 18px 30px -20px rgba(251, 0, 64, 0.8);
 }
 
 .boton::before {
@@ -212,76 +211,113 @@ a, button, .boton {
    7. NAVEGACIÓN
    ============================================================ */
 
-.navbar {
-  background: transparent;
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-  will-change: transform, opacity;
-  z-index: 1030;
-}
-
-.navbar.nav-hide {
-  transform: translateY(-100%);
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-}
-
-.navbar-transitioning { transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out; }
-
-
-/* ── Default ────────────────────────────────────────── */
+/* ── Header base: sticky para páginas internas ───────────── */
 header {
-  position: relative;
+  position: sticky;
+  top: 0;
   width: 100%;
   z-index: 1000;
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ── Sticky: entra deslizando desde arriba ──────────── */
-header.fixed-top {
+/* ── Header home: fixed, respeta margen del hero ─────────── */
+/* ── Header home: fixed, respeta margen del hero ─────────── */
+header#mainNavbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  transform: translateY(-110%);
-  opacity: 0;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  /* top/left/right transicionan solo para el cambio de fondo */
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              top   0.4s ease,
+              left  0.4s ease,
+              right 0.4s ease;
 }
 
-/* ── Visible (scroll hacia arriba) ─────────────────── */
-header.fixed-top.scrolled { transform: translateY(0); opacity: 1; }
+/* Al hacer scroll: ocupa ancho completo */
+header#mainNavbar.scrolled {
+  top: 20px;
+  left: 20px;
+  right: 20px;
+}
 
-/* ── Oculto (scroll hacia abajo) ───────────────────── */
-header.fixed-top.nav-hide { transform: translateY(-110%); }
+/* Al ocultar: SOLO transiciona transform, congela top/left/right */
+header#mainNavbar.nav-hide {
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-/* ── Regreso al top: JS controla opacity inline      ── */
-/* ── desactivamos transition para que sea scroll-linked */
-header.fixed-top.returning { transition: none !important; }
+/* ── Ocultar al bajar ────────────────────────────────────── */
+header.nav-hide {
+  transform: translateY(-100%);
+}
 
-#mainNavbar.fixed-top .header-glass { width: 100%; height: 100%; background-color: rgba(30, 36, 53, 0.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-#main.fixed-top .header-glass       { width: 100%; height: 100%; background-color: rgba(238, 241, 246, 0.8) ; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+/* ── Pill ────────────────────────────────────────────────── */
+.header-pill {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  border-radius: 6.25rem;
+  overflow: hidden;
+  background-color: transparent;
+  border: 1px solid transparent;
+  transition: border-color 0.4s ease;
+}
 
-.header-pill { position: absolute; top: 0; bottom: 0; left: 0; right: 0; border-radius: 6.25rem; overflow: hidden; background-color: transparent; }
-header.fixed-top .header-pill  { border: 1px solid rgba(74, 85, 104, 0.1); }
+header.scrolled .header-pill {
+  border-color: rgba(74, 85, 104, 0.1);
+}
 
-.navbar.fixed-top .nav-link,
-.navbar.fixed-top .navbar-brand span,
-.navbar.fixed-top .navbar-toggler { color: var(--color-text-base); }
+/* ── Glass: transparente por defecto ─────────────────────── */
+.header-glass {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: background-color 0.4s ease,
+              backdrop-filter  0.4s ease;
+}
+
+/* Variante light — #main */
+#main.scrolled .header-glass {
+  background-color: rgba(238, 241, 246, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Variante dark — #mainNavbar */
+#mainNavbar.scrolled .header-glass {
+  background-color: rgba(30, 36, 53, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ── Navbar ──────────────────────────────────────────────── */
+.navbar {
+  background: transparent;
+  z-index: 1030;
+}
 
 .navbar-toggler:focus:not(:focus-visible),
 .btn-close:focus:not(:focus-visible) { outline: none; box-shadow: none; }
 
 .navbar-brand { gap: 0.469rem; }
 
-
 /* Navbar — variante clara */
 #main { margin-top: 20px; padding-top: 1.6rem; padding-bottom: 1.6rem; }
 
-#main nav .navbar-brand span { color: var(--color-text-base); font-weight: 600; font-size: 1.344rem; text-transform: capitalize; }
+#main nav .navbar-brand span {
+  color: var(--color-text-base);
+  font-weight: 600;
+  font-size: 1.344rem;
+  text-transform: capitalize;
+}
 
 #main .navbar-nav .nav-item,
 #mainNavbar .navbar-nav .nav-item { margin: 12px; }
 
-/* Propiedades estructurales — aplican a todos */
+/* Propiedades estructurales */
 #main .navbar-nav .nav-link,
 #mainNavbar .navbar-nav .nav-link,
 .enlace {
@@ -291,7 +327,7 @@ header.fixed-top .header-pill  { border: 1px solid rgba(74, 85, 104, 0.1); }
   text-decoration: none;
 }
 
-/* Tipografía — solo para nav, no para .enlace genérico */
+/* Tipografía */
 #main .navbar-nav .nav-link,
 #mainNavbar .navbar-nav .nav-link {
   font-size: 0.938rem;
@@ -305,7 +341,7 @@ header.fixed-top .header-pill  { border: 1px solid rgba(74, 85, 104, 0.1); }
 
 #mainNavbar .navbar-nav .nav-item .nav-link { color: var(--color-surface); }
 
-/* ── ::before — revela color de acento de izquierda a derecha ── */
+/* ── ::before — acento de izquierda a derecha ── */
 #main .navbar-nav .nav-link::before,
 #mainNavbar .navbar-nav .nav-link::before,
 .enlace::before {
@@ -328,7 +364,7 @@ header.fixed-top .header-pill  { border: 1px solid rgba(74, 85, 104, 0.1); }
 #mainNavbar .navbar-nav .nav-link:hover::before,
 .enlace:hover::before { clip-path: inset(0 0% 0 0); }
 
-/* ── ::after — subrayado con scaleX ── */
+/* ── ::after — subrayado ── */
 #main .navbar-nav .nav-link::after,
 #mainNavbar .navbar-nav .nav-link::after,
 .enlace::after {
@@ -345,20 +381,17 @@ header.fixed-top .header-pill  { border: 1px solid rgba(74, 85, 104, 0.1); }
   will-change: transform;
 }
 
-.enlace::after {
-  height: 0.08em;
-}
+.enlace::after { height: 0.08em; }
 
 #main .navbar-nav .nav-link:hover::after,
 #mainNavbar .navbar-nav .nav-link:hover::after,
 .enlace:hover::after { transform: scaleX(1); opacity: 0.9; }
 
 /* Navbar — variante oscura */
-#mainNavbar nav, #main nav { padding-top: 10px; padding-bottom: 10px; padding-left: 20px; padding-right: 20px; }
+#mainNavbar nav, #main nav { padding: 10px 20px; }
 #mainNavbar .navbar-brand span { color: var(--color-surface); font-weight: 600; font-size: 1.344rem; }
 #mainNavbar .navbar-toggler { border: none; color: var(--color-surface); }
 
-/* Nav — reglas globales compartidas */
 .navbar-nav .nav-link {
   color: var(--color-surface);
   font-family: var(--font-body);
@@ -398,7 +431,6 @@ footer .nav .nav-link:hover,
    9. HEADER / HERO
    ============================================================ */
 
-/* Propiedades compartidas entre ambas variantes de header bg */
 .header-bg-gris,
 .header-bg-gris-single {
   background-color: var(--color-text-base);
@@ -407,7 +439,6 @@ footer .nav .nav-link:hover,
   margin: 20px;
 }
 
-/* Solo .header-bg-gris necesita altura completa */
 .header-bg-gris { height: calc(100vh - 40px); }
 .header-bg-gris header { padding-top: 1.6rem; padding-bottom: 1.6rem; }
 
@@ -415,7 +446,7 @@ footer .nav .nav-link:hover,
 
 
 /* ============================================================
-   10. SPACER (banda tipográfica)
+   10. SPACER
    ============================================================ */
 
 .spacer {
@@ -471,56 +502,56 @@ footer .nav .nav-link:hover,
    12. HORIZONTAL SECTION
    ============================================================ */
 
-.projects-horizontal{
-    position:relative;
-    width:100%;
-    overflow:hidden;
-    padding-block:0 6vh;
-    background-color: var(--color-bg);
+.projects-horizontal {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-block: 0 6vh;
+  background-color: var(--color-bg);
 }
 
-.projects-pin{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    overflow:hidden;
-    padding-block:3vh 6vh;
+.projects-pin {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-block: 3vh 6vh;
 }
 
-.projects-track{
-    display:flex;
-    align-items:center;
-    gap:0;
-    will-change:transform;
+.projects-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  will-change: transform;
 }
 
-.project-card{
-    flex:0 0 100vw;
-    width:100vw;
-    min-width:100vw;
-    min-height:60vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-sizing:border-box;
-    padding-inline:clamp(24px,6vw,120px);
+.project-card {
+  flex: 0 0 100vw;
+  width: 100vw;
+  min-width: 100vw;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-inline: clamp(24px, 6vw, 120px);
 }
 
-.project-layout{
-    width:min(1400px,100%);
-    margin:0 auto;
-    align-items:center;
+.project-layout {
+  width: min(1400px, 100%);
+  margin: 0 auto;
+  align-items: center;
 }
 
-.project-layout.row{
-    margin-left:0;
-    margin-right:0;
-    --bs-gutter-x:0;
+.project-layout.row {
+  margin-left: 0;
+  margin-right: 0;
+  --bs-gutter-x: 0;
 }
 
-.project-layout > [class*="col-"]{
-    padding-left:2rem;
-    padding-right:2rem;
+.project-layout > [class*="col-"] {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .card-img-container {
@@ -533,84 +564,38 @@ footer .nav .nav-link:hover,
   background-color: #fff;
 }
 
-.card-img-container img { width:100%; height:auto; display:block; }
+.card-img-container img { width: 100%; height: auto; display: block; }
 .img-zoom       { transition: transform 0.4s ease-in-out; width: auto; height: 100%; }
 .img-zoom:hover { transform: scale(1.1); }
 
+.project-content { max-width: 100%; padding-left: 4vw; }
+.project-content h2 { margin-bottom: 1.5rem; }
 
+@media (max-width: 991px) {
+  .projects-horizontal { overflow: visible; padding-block: 4rem; }
+  .projects-pin        { min-height: auto; overflow: visible; padding-block: 0; display: block; }
+  .projects-track      { display: flex; flex-direction: column; gap: 6rem; transform: none !important; width: 100%; }
 
-.project-content{
-    max-width:100%;
-    padding-left:4vw;
+  .project-card {
+    width: 100%;
+    min-width: 100%;
+    min-height: auto;
+    padding-inline: 1.5rem;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .project-layout { max-width: 100%; }
+  .project-layout > [class*="col-"] { padding-left: 0; padding-right: 0; }
+  .project-content { padding-left: 0; margin-top: 2rem; }
+  .project-content h2 { margin-bottom: 1rem; }
 }
 
-.project-content h2{
-    margin-bottom:1.5rem;
+@media (max-width: 576px) {
+  .project-card    { padding-inline: 1rem; }
+  .project-content { margin-top: 1.5rem; }
 }
 
-@media (max-width:991px){
-
-    .projects-horizontal{
-        overflow:visible;
-        padding-block:4rem;
-    }
-
-    .projects-pin{
-        min-height:auto;
-        overflow:visible;
-        padding-block:0;
-        display:block;
-    }
-
-    .projects-track{
-        display:flex;
-        flex-direction:column;
-        gap:6rem;
-        transform:none!important;
-        width:100%;
-    }
-
-    .project-card{
-        width:100%;
-        min-width:100%;
-        min-height:auto;
-        padding-inline:1.5rem;
-        opacity:1!important;
-        transform:none!important;
-    }
-
-    .project-layout{
-        max-width:100%;
-    }
-
-    .project-layout > [class*="col-"]{
-        padding-left:0;
-        padding-right:0;
-    }
-
-    .project-content{
-        padding-left:0;
-        margin-top:2rem;
-    }
-
-    .project-content h2{
-        margin-bottom:1rem;
-    }
-
-
-}
-
-@media (max-width:576px){
-
-    .project-card{
-        padding-inline:1rem;
-    }
-
-    .project-content{
-        margin-top:1.5rem;
-    }
-
-}
 
 /* ============================================================
    13. HERO ANIMATION SECTION
@@ -647,10 +632,8 @@ footer .nav .nav-link:hover,
 .btl-1 img.alayer-5 { animation: move_5 8s ease-in-out infinite alternate; }
 
 
-
-
 /* ============================================================
-   13. FOOTER
+   14. FOOTER
    ============================================================ */
 
 footer .nav .nav-link       { color: #eee; }
@@ -658,7 +641,7 @@ footer .nav .nav-link:hover { color: var(--color-accent); }
 
 
 /* ============================================================
-   14. ANIMACIONES (keyframes)
+   15. ANIMACIONES (keyframes)
    ============================================================ */
 
 @keyframes move_0 {
@@ -691,7 +674,7 @@ footer .nav .nav-link:hover { color: var(--color-accent); }
   50%       { transform: translate(0, -4px); }
 }
 
-/* ── Logo: shine unificado — stroke controlado por --logo-stroke ── */
+/* ── Logo shine ── */
 #aparicio .logo-path,
 #apariciolight .logo-path {
   fill: var(--color-accent);
@@ -703,7 +686,6 @@ footer .nav .nav-link:hover { color: var(--color-accent); }
   stroke-opacity: 0;
 }
 
-/* La variante light sobreescribe solo el stroke */
 #apariciolight { --logo-stroke: var(--color-text-base); }
 
 #logo_erlen-masson:hover #aparicio .logo-path,
@@ -720,7 +702,7 @@ footer .nav .nav-link:hover { color: var(--color-accent); }
 
 
 /* ============================================================
-   15. RESPONSIVE
+   16. RESPONSIVE
    ============================================================ */
 
 @media screen and (min-width: 768px) {
@@ -731,19 +713,20 @@ footer .nav .nav-link:hover { color: var(--color-accent); }
 }
 
 @media (max-width: 768px) {
-  .hero                             { padding-top: 60px; }
-  .article                          { position: relative; width: 100%; height: 50vh; overflow: hidden; }
-  .header-bg-gris                   { height: 100%; padding-top: 0; }
-  .header-bg-gris                   { margin: 0.3rem;}
-  .navbar                           { transition: transform 0.3s ease, opacity 0.3s ease; }
+  .hero             { padding-top: 60px; }
+  .article          { position: relative; width: 100%; height: 50vh; overflow: hidden; }
+  .header-bg-gris   { height: 100%; margin: 0.3rem; }
 
+  /* Header home en mobile: colapsa los márgenes */
+  header#mainNavbar         { top: 0.3rem; left: 0.3rem; right: 0.3rem; }
+  header#mainNavbar.scrolled { top: 0; left: 0; right: 0; }
 
-  header.fixed-top.scrolled .navbar { margin: 0.3rem 0.3rem 0 0.3rem; }
-  header.fixed-top .header-pill     { margin: 0.3rem; left: 0; right: 0;}
-  header.fixed-top.scrolled nav     { padding: 15px 15px!important;}
+  /* Pill en mobile */
+  header.scrolled .header-pill { margin: 0.3rem; left: 0; right: 0; }
+  header.scrolled nav          { padding: 15px !important; }
 
-  #main, #mainNavbar   { margin-top: 0; padding:10px 0 0 0; }
-  #main { margin-top: 0.3rem; margin-left: 0.3rem; }
+  #main       { margin-top: 0.3rem; margin-left: 0.3rem; padding: 10px 0 0 0; }
+  #mainNavbar { margin-top: 0; padding: 10px 0 0 0; }
 
   .spacer > span {
     font-size: 3em;
@@ -753,7 +736,6 @@ footer .nav .nav-link:hover { color: var(--color-accent); }
     -webkit-text-stroke-color: var(--color-bg);
   }
 
-  /* Tipografía responsive — mover a fonts.css */
   .rotating-text b {
     font-size: 2.8rem;
     font-weight: 500;

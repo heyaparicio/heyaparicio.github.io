@@ -52,112 +52,46 @@ function initCursor() {
 
 /* 2. Sticky header */
 function initStickyHeader() {
-  const header = document.querySelector("header");
-  const body   = document.body;
+  const header = document.querySelector("header#main, header#mainNavbar");
+  if (!header) return;
+ 
+  // home → fixed (dentro del hero oscuro con margen)
+  // resto → sticky (en el flujo del documento)
+  const isFixed   = header.id === "mainNavbar";
+  const threshold = header.offsetHeight;
   let lastScroll  = 0;
-  let isVisible   = false;
-  let isReturning = false;
-
-  function resetHeader() {
-    // Frame 1: quita el paddingTop mientras el header aún es fixed
-    //          → el contenido no se mueve porque el header sigue fuera del flujo
-    body.style.paddingTop = "0";
-
-    requestAnimationFrame(() => {
-      // Frame 2: ahora sí entra al flujo, pero paddingTop ya es 0
-      //          → no hay reflow perceptible
-      header.classList.remove("fixed-top", "scrolled", "nav-hide", "returning");
-      header.style.transform = "";
-      isVisible   = false;
-      isReturning = false;
-
-      requestAnimationFrame(() => {
-        // Frame 3: revela el header estático ya en su posición natural
-        header.style.opacity = "";
-      });
-    });
+ 
+  // Para el header fixed del home:
+  // el hero compensa el espacio que el header deja de ocupar
+  if (isFixed) {
+    const hero = header.closest(".header-bg-gris");
+    if (hero) hero.style.paddingTop = `${threshold}px`;
   }
-
-  function showHeader(headerHeight) {
-    if (isVisible) return;
-
-    isReturning = false;
-    header.classList.remove("returning");
-    header.style.opacity   = "";
-    header.style.transform = "";
-
-    header.classList.add("fixed-top");
-    body.style.paddingTop = `${headerHeight}px`;
-
-    requestAnimationFrame(() => {
-      header.classList.add("scrolled");
-      header.classList.remove("nav-hide");
-      isVisible = true;
-    });
-  }
-
-  function hideHeader() {
-    if (!isVisible) return;
-    header.classList.add("nav-hide");
-    header.classList.remove("scrolled");
-    isVisible = false;
-  }
-
+ 
   function updateNavbar() {
-    const currentScroll  = window.scrollY;
-    const headerHeight   = header.offsetHeight;
-    const resetThreshold = headerHeight * 0.8;
-
-    // ── 1. Dentro del umbral → reset secuenciado ─────────────────
-    if (currentScroll <= resetThreshold) {
-      resetHeader();
-      lastScroll = currentScroll;
-      return;
+    const currentScroll = window.scrollY;
+ 
+    // ── Fondo: aparece al pasar el threshold ─────────────
+    if (currentScroll > threshold) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
     }
-
-    // ── 2. Zona de fusión (solo si el sticky era visible) ─────────
-    if (header.classList.contains("fixed-top") && currentScroll < headerHeight) {
-      if (!isVisible && !isReturning) {
-        resetHeader();
-        lastScroll = currentScroll;
-        return;
-      }
-
-      const range    = headerHeight - resetThreshold;
-      const progress = (currentScroll - resetThreshold) / range; // 0 → 1
-
-      if (!isReturning) {
-        isReturning = true;
-        header.classList.add("returning");
-        header.classList.remove("nav-hide");
-        header.classList.add("scrolled");
-      }
-
-      header.style.opacity   = progress;
-      header.style.transform = `translateY(0)`;
-      body.style.paddingTop  = `${headerHeight * progress}px`;
-
-      lastScroll = currentScroll;
-      return;
+ 
+    // ── Visibilidad: hide al bajar, show al subir ─────────
+    if (currentScroll <= 0) {
+      header.classList.remove("nav-hide");
+    } else if (currentScroll > lastScroll && currentScroll > threshold) {
+      // Bajando y pasado el threshold → ocultar
+      header.classList.add("nav-hide");
+    } else if (lastScroll - currentScroll > 10) {
+      // Subiendo > 10px → mostrar
+      header.classList.remove("nav-hide");
     }
-
-    // ── 3. Zona sticky normal ─────────────────────────────────────
-    if (currentScroll >= headerHeight) {
-      if (isReturning) {
-        isReturning = false;
-        header.classList.remove("returning");
-        header.style.opacity   = "";
-        header.style.transform = "";
-        body.style.paddingTop  = `${headerHeight}px`;
-      }
-
-      if (lastScroll - currentScroll > 20)      showHeader(headerHeight);
-      else if (currentScroll - lastScroll > 20) hideHeader();
-    }
-
+ 
     lastScroll = currentScroll;
   }
-
+ 
   window.addEventListener("scroll", updateNavbar, { passive: true });
   updateNavbar();
 }
