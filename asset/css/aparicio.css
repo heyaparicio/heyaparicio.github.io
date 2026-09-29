@@ -93,6 +93,7 @@ a, button, .boton {
 .bg-gris        { background: linear-gradient(45deg, #FaFaFa, #F7F7F7); border-radius: 20px; }
 .bg-negro       { background: linear-gradient(45deg, #1E2435, #202020); border-radius: 20px 20px 0 0; }
 .bg-negro-noise { background-color: var(--color-text-base); background-image: url(../img/noise.png); }
+.bg-gris-apa { background-color: var(--color-bg); }
 
 .dots {
   --dot-bg:    var(--color-surface);
