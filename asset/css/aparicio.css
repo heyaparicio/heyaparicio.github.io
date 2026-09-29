@@ -700,9 +700,27 @@ footer .nav .nav-link:hover { color: var(--color-accent); }
   100% { stroke-dasharray:   0, 596; stroke-dashoffset: -596; fill: var(--color-accent); stroke: var(--logo-stroke); stroke-opacity: 0; }
 }
 
+/* ============================================================
+   16. 
+   ============================================================ */
+
+/* Estilos de texto de la guía */
+    .t-h1  { font: 700 42px/50px 'Roboto', sans-serif; text-transform: uppercase; }
+    .t-h2  { font: 700 24px/32px 'Roboto', sans-serif; text-transform: uppercase; }
+    .t-h3  { font: 700 14px/22px 'Roboto', sans-serif; text-transform: uppercase; }
+    .t-h4  { font: 500 13px/16px 'Roboto', sans-serif; text-transform: uppercase; }
+    .t-p   { font: 300 14px/22px 'Merriweather', serif; }
+    .t-sb  { font: 700 11px/19px 'Roboto', sans-serif; text-transform: uppercase; }
+    .t-sr  { font: 400 11px/19px 'Roboto', sans-serif; text-transform: uppercase; }
+
+    /* Tabla */
+    .type-table { --bs-table-bg: transparent; }
+    .type-table thead th { color: #9e9e9e; font-weight: 500; font-size: 1.1rem; border-bottom: 1px solid #e6e6e6; padding: 1.25rem .75rem; }
+    .type-table tbody td { vertical-align: middle; padding: 1rem .75rem; border-color: #e6e6e6; }
+
 
 /* ============================================================
-   16. RESPONSIVE
+   17. RESPONSIVE
    ============================================================ */
 
 @media screen and (min-width: 768px) {
@@ -747,3 +765,14 @@ footer .nav .nav-link:hover { color: var(--color-accent); }
     vertical-align: top;
   }
 }
+
+/* Móvil: cada fila se convierte en una tarjeta apilada */
+    @media (max-width: 767.98px) {
+      .type-table thead { display: none; }
+      .type-table, .type-table tbody, .type-table tr, .type-table td { display: block; width: 100%; }
+      .type-table tr { border: 1px solid #e6e6e6; border-radius: .5rem; margin-bottom: 1rem; padding: .5rem 0; }
+      .type-table tbody td { border: 0; padding: .35rem 1rem; display: flex; justify-content: space-between; gap: 1rem; }
+      .type-table tbody td::before { content: attr(data-label); color: #9e9e9e; font-weight: 500; }
+      .type-table tbody td:first-child { display: block; padding-top: .75rem; }
+      .type-table tbody td:first-child::before { content: none; }
+    }
