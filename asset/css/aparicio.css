@@ -701,17 +701,8 @@ footer .nav .nav-link:hover { color: var(--color-accent); }
 }
 
 /* ============================================================
-   16. 
+   16. TABLAS
    ============================================================ */
-
-/* Estilos de texto de la guía */
-    .t-h1  { font: 700 42px/50px 'Roboto', sans-serif; text-transform: uppercase; }
-    .t-h2  { font: 700 24px/32px 'Roboto', sans-serif; text-transform: uppercase; }
-    .t-h3  { font: 700 14px/22px 'Roboto', sans-serif; text-transform: uppercase; }
-    .t-h4  { font: 500 13px/16px 'Roboto', sans-serif; text-transform: uppercase; }
-    .t-p   { font: 300 14px/22px 'Merriweather', serif; }
-    .t-sb  { font: 700 11px/19px 'Roboto', sans-serif; text-transform: uppercase; }
-    .t-sr  { font: 400 11px/19px 'Roboto', sans-serif; text-transform: uppercase; }
 
     /* Tabla */
     .type-table { --bs-table-bg: transparent; }
