@@ -11,6 +11,24 @@
 		<link rel="stylesheet" href="asset/css/fonts.css" />
 		<link rel="stylesheet" href="asset/css/animations.css"> 
 		<link rel="stylesheet" href="asset/css/aparicio.css"/>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&display=swap');
+                .t-h1  { font: 700 52px/normal 'Quicksand', sans-serif; text-transform: uppercase; }
+                .t-h2  { font: 700 32px/normal'Quicksand', sans-serif; text-transform: uppercase; }
+                .t-h3  { font: 700 28px/normal 'Quicksand', sans-serif; }
+				.t-h4  { font: 700 24px/normal 'Quicksand', sans-serif; }
+				.t-h5  { font: 800 20px/normal 'Inter', sans-serif; }
+                .t-p   { font: 400 16px/24px 'Quicksand', sans-serif; }
+				.t-label { font: 700 16px/normal 'Quicksand', sans-serif; }
+                .font-1 { font: 80px 'Quicksand', sans-serif; }
+                .font-2 { font: 20px 'Quicksand', sans-serif; }
+				.font-3 { font: 80px 'Inter', sans-serif; }
+                .font-4 { font: 20px 'Inter', sans-serif; }
+                .bold { font-weight: 800; }
+                .semibold { font-weight: 700; }
+                .regular { font-weight: 400; }
+
+        </style>
 	</head>
 	<body>
 		<div id="cursor"></div>
@@ -213,6 +231,157 @@
 			</section>
 
 			<section class="mt-6-x">
+				<div class="container-fluid bg-gris-apa py-5-x">
+					<div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4 justify-content-center text-center">
+						<div class="col">
+								<span class="font-1 bold d-block">Aa</span>
+								<p class="font-2 bold mb-0">Quicksand bold</p>
+						</div>
+						<div class="col">
+								<span class="font-3 semibold d-block">Aa</span>
+								<p class="font-4 semibold mb-0">Inter semibold</p>
+						</div>
+						<div class="col">
+								<span class="font-3 regular d-block">Aa</span>
+								<p class="font-4 regular mb-0">Inter regular</p>
+						</div>	
+					</div>
+				</div>
+				<div class="container table-responsive mt-6-x">
+                    <table class="table type-table mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="w-25">Nombre</th>
+                                <th scope="col">Font</th>
+                                <th scope="col">Weight</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Line height</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+							<tr>
+                                <td><span class="t-h1">Titular 1</span></td>
+                                <td data-label="Font">Quicksand</td>
+                                <td data-label="Weight">Bold</td>
+                                <td data-label="Size">36px</td>
+                                <td data-label="Line height">normal</td>
+                            </tr>
+                            <tr>
+                                <td><span class="t-h2">Titular 2</span></td>
+                                <td data-label="Font">Quicksand</td>
+                                <td data-label="Weight">Bold</td>
+                                <td data-label="Size">32px</td>
+                                <td data-label="Line height">normal</td>
+                            </tr>
+                            <tr>
+                                <td><span class="t-h3">Titular 3</span></td>
+                                <td data-label="Font">Quicksand</td>
+                                <td data-label="Weight">Bold</td>
+                                <td data-label="Size">28px</td>
+                                <td data-label="Line height">normal</td>
+                            </tr>
+							<tr>
+                                <td><span class="t-h4">Titular 4</span></td>
+                                <td data-label="Font">Quicksand</td>
+                                <td data-label="Weight">Bold</td>
+                                <td data-label="Size">24px</td>
+                                <td data-label="Line height">normal</td>
+                            </tr>
+							<tr>
+                                <td><span class="t-h5">Titular 5</span></td>
+                                <td data-label="Font">Quicksand</td>
+                                <td data-label="Weight">Bold</td>
+                                <td data-label="Size">20px</td>
+                                <td data-label="Line height">normal</td>
+                            </tr>
+                            <tr>
+                                <td><span class="t-p">Párrafo</span></td>
+                                <td data-label="Font">Inter</td>
+                                <td data-label="Weight">Regular</td>
+                                <td data-label="Size">16px</td>
+                                <td data-label="Line height">24px</td>
+                            </tr>
+                            <tr>
+                                <td><span class="t-label">Label</span></td>
+                                <td data-label="Font">Quicksand</td>
+                                <td data-label="Weight">Bold</td>
+                                <td data-label="Size">16px</td>
+                                <td data-label="Line height">normal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+			</section>
+
+			<section class="mt-6-x">
+                <div class="container py-5">
+                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+
+                        <div class="col">
+                            <div class="card color-card h-100 border-0 rounded-0">
+                                <div class="color-swatch" style="--swatch: #151A0F;"></div>
+                                <div class="card-body px-3 py-3">
+                                    <h3 class="color-name h5 mb-0">Hunter green</h3>
+                                    <p class="color-hex mb-0">#151A0F</p>
+                                </div>
+                            </div>
+                        </div>
+
+						<div class="col">
+                            <div class="card color-card h-100 border-0 rounded-0">
+                                <div class="color-swatch" style="--swatch: #DBA421;"></div>
+                                <div class="card-body px-3 py-3">
+                                    <h3 class="color-name h5 mb-0">Goldenrod</h3>
+                                    <p class="color-hex mb-0">#DBA421</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card color-card h-100 border-0 rounded-0">
+                                <div class="color-swatch" style="--swatch: #425928;"></div>
+                                <div class="card-body px-3 py-3">
+                                    <h3 class="color-name h5 mb-0">Baked</h3>
+                                    <p class="color-hex mb-0">#425928</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+						<div class="col">
+                            <div class="card color-card h-100 border-0 rounded-0">
+                                <div class="color-swatch" style="--swatch: #747E67;"></div>
+                                <div class="card-body px-3 py-3">
+                                    <h3 class="color-name h5 mb-0">Limed ash</h3>
+                                    <p class="color-hex mb-0">#747E67</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card color-card h-100 border-0 rounded-0">
+                                <div class="color-swatch" style="--swatch: #C0C6B9;"></div>
+                                <div class="card-body px-3 py-3">
+                                    <h3 class="color-name h5 mb-0">Myst gray</h3>
+                                    <p class="color-hex mb-0">#C0C6B9</p>
+                                </div>
+                            </div>
+                        </div>
+
+						<div class="col">
+                            <div class="card color-card h-100 border-0 rounded-0">
+                                <div class="color-swatch" style="--swatch: #F9FAFA;"></div>
+                                <div class="card-body px-3 py-3">
+                                    <h3 class="color-name h5 mb-0">Luxury white</h3>
+                                    <p class="color-hex mb-0">#F9FAFA</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+			<section class="mt-6-x">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-4">
@@ -221,25 +390,11 @@
 							<p>Anticipé restricciones técnicas antes del handoff, dialogué con los desarrolladores sin intermediarios y tomé decisiones de interfaz fundamentadas en cómo el sistema realmente funciona.</p>
 							<p>Mapear los flujos de vendedor y comprador por separado fue clave: cada perfil necesita información distinta en el mismo momento.</p>
 						</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="mt-6-x">
-				<div class="container">
-					<div class="row">
 						<div class="col-lg-4">
 							<h2 class="eyebrow">RESULTADOS</h2>
 							<h3 class="text-lead">12 productos publicados desde distintas ciudades del país</h3>
 							<p>La plataforma está en fase de posicionamiento. La distribución geográfica de las publicaciones confirma que cualquier persona puede publicar de forma autónoma — sin experiencia previa en marketplaces.</p>
 						</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="mt-6-x">
-				<div class="container">
-					<div class="row">
 						<div class="col-lg-4">
 							<h2 class="eyebrow">APRENDIZAJES</h2>
 							<h3 class="text-lead">Diseñar tu propio producto es el encargo más difícil</h3>
@@ -249,7 +404,6 @@
 					</div>
 				</div>
 			</section>
-
 		</main>
 
 		<footer class="bg-negro-noise py-5">
