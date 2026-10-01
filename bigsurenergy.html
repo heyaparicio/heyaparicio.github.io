@@ -14,15 +14,15 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
                 .t-h1  { font: 800 42px/50px 'Montserrat', sans-serif; text-transform: uppercase; }
-                .t-h2  { font: italic 700 36px/44px 'Montserrat', sans-serif; text-transform: uppercase; }
+                .t-h2  { font: italic 700 36px/42px 'Montserrat', sans-serif; text-transform: uppercase; }
                 .t-h3  { font: 800 24px/30px 'Montserrat', sans-serif; text-transform: uppercase; }
-                .t-pl  { font: 300 20px/36px 'Montserrat', sans-serif; }
+                .t-pl  { font: 300 20px/26px 'Montserrat', sans-serif; }
                 .t-p   { font: 400 16px/22px 'Montserrat', sans-serif; }
                 .t-sm  { font: 400 14px/20px 'Montserrat', sans-serif; }
-                .font-h1 { font: 90px/50px 'Montserrat', sans-serif; }
-                .font-h2 { font: 32px/50px 'Montserrat', sans-serif; }
+                .font-h1 { font: 80px 'Montserrat', sans-serif; }
+                .font-h2 { font: 20px 'Montserrat', sans-serif; }
                 .bold { font-weight: 800; }
-                .semibold { font-weight: 700; }
+                .bold-italic { font-weight: 800; font-style: italic; }
                 .semibold-italic { font-weight: 700; font-style: italic; }
                 .regular { font-weight: 400; }
                 .italic { font-style: italic; }
@@ -85,9 +85,11 @@
 					<div class="col-md-6 py-5" data-aos="fade-down" data-aos-delay="200">
 						<h1>Bigsur Energy</h1>
 						<span class="text-small">Diseño de interfaz · Dirección de arte · Handoff · 2021</span>
-                        <nav class="nav nav-pills d-flex align-items-center gap-3">
-							<li class="nav-item"><a href="https://bigsurenergy.cl/" target="_blank" class="nav-link enlace font-medium magnetic" data-hover="visitar sitio">visitar sitio</a></li>
-                        </nav>
+                        <div class="mt-5">
+                            <a href="https://bigsurenergy.cl/" target="_blank" data-hover="ver proyecto" class="boton magnetic">
+                                visitar sitio
+                            </a>
+                        </div>
 					</div>
 						<div class="col-md-6 py-5" data-aos="fade-down" data-aos-delay="200">
 							<h2 class="eyebrow">Contexto</h2>
@@ -156,11 +158,10 @@
                                 <div class="col-lg-4 col-sm-6 mb-5">
 									<div class="card">
 										<div class="img-wrapper">
-										<img src="asset/img/portafolio/bigsurenergy/typo.svg"alt="tipografía para bigsurenergy" class="img-fluid" />
+										<img src="asset/img/portafolio/bigsurenergy/form.svg"alt="formulario para bigsurenergy" class="img-fluid" />
 										</div>
 										<div class="card-body">
-											<h3 class="text-label">Tipografía</h3>
-											<p class="text-small">Montserrat como familia tipográfica principal.</p>
+											<h3 class="text-label">Formulario</h3>
 										</div>
 									</div>
 								</div>
@@ -171,9 +172,6 @@
 										</div>
 										<div class="card-body">
 											<h3 class="text-label">animación parallax</h3>
-											<p class="text-small">
-												vectores isometricos que se mueven a distinta velocidad, generando sensación de profundidad.
-											</p>
 										</div>
 									</div>
 								</div>
@@ -184,7 +182,6 @@
 										</div>
 										<div class="card-body">
 											<h3 class="text-label">Herramientas</h3>
-											<p class="text-small">Softwares, plugins y plataformas para el desarrollo del proyecto.</p>
 										</div>
 									</div>
 								</div>
@@ -194,31 +191,28 @@
 					</div>
 				</div>
                 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <h3 class="font-h1 bold">Aa</h3>
-                                    <p class="font-h2 bold">Montserrat bold</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <h3 class="font-h1 semibold">Aa</h3>
-                                    <p class="font-h2 semibold">Montserrat semibold</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <h3 class="font-h1 semibold-italic">Aa</h3>
-                                    <p class="font-h2 semibold-italic">Montserrat semibold italic</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <h3 class="font-h1 regular">Aa</h3>
-                                    <p class="font-h2 regular">Montserrat regular</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <h3 class="font-h1 italic">Aa</h3>
-                                    <p class="font-h2 italic">Montserrat italic</p>
-                                </div>
-                            </div>
+
+                <div class="container-fluid bg-gris-apa py-5-x mt-6-x">
+                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4 justify-content-center text-center">
+                        <div class="col">
+                            <span class="font-h1 bold d-block">Aa</span>
+                            <p class="font-h2 bold mb-0">Montserrat bold</p>
+                        </div>
+                        <div class="col">
+                            <span class="font-h1 regular d-block">Aa</span>
+                            <p class="font-h2 regular mb-0">Montserrat regular</p>
+                        </div>
+                        <div class="col">
+                            <span class="font-h1 bold d-block">Aa</span>
+                            <p class="font-h2 bold-italic mb-0">Montserrat bold italic</p>
+                        </div>
+                        <div class="col">
+                            <span class="font-h1 semibold-italic d-block">Aa</span>
+                            <p class="font-h2 semibold-italic mb-0">Montserrat semibold italic</p>
+                        </div>
+                        <div class="col">
+                            <span class="font-h1 italic d-block">Aa</span>
+                            <p class="font-h2 italic mb-0">Montserrat italic</p>
                         </div>
                     </div>
                 </div>
@@ -236,51 +230,92 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><span class="t-h1">Titular 1</span></td>
-                                <td data-label="Font">Roboto condensed</td>
-                                <td data-label="Weight">Bold</td>
-                                <td data-label="Size">54px</td>
-                                <td data-label="Line height">60px</td>
-                            </tr>
-                            <tr>
                                 <td><span class="t-h2">Titular 2</span></td>
-                                <td data-label="Font">Roboto condensed</td>
-                                <td data-label="Weight">Bold</td>
-                                <td data-label="Size">42px</td>
-                                <td data-label="Line height">48px</td>
+                                <td data-label="Font">Montserrat</td>
+                                <td data-label="Weight">Semibold italic</td>
+                                <td data-label="Size">36px</td>
+                                <td data-label="Line height">42px</td>
                             </tr>
                             <tr>
                                 <td><span class="t-h3">Titular 3</span></td>
-                                <td data-label="Font">Roboto Slab</td>
-                                <td data-label="Weight">Medium</td>
-                                <td data-label="Size">20px</td>
-                                <td data-label="Line height">26px</td>
-                            </tr>
-                            <tr>
-                                <td><span class="t-pl">Párrafo destacado</span></td>
-                                <td data-label="Font">Roboto Slab</td>
-                                <td data-label="Weight">light</td>
+                                <td data-label="Font">Montserrat</td>
+                                <td data-label="Weight">Bold</td>
                                 <td data-label="Size">24px</td>
                                 <td data-label="Line height">30px</td>
                             </tr>
                             <tr>
-                                <td><span class="t-p">Párrafo</span></td>
-                                <td data-label="Font">Roboto Slab</td>
+                                <td><span class="t-pl">Párrafo destacado</span></td>
+                                <td data-label="Font">Montserrat</td>
                                 <td data-label="Weight">Regular</td>
-                                <td data-label="Size">15px</td>
-                                <td data-label="Line height">21px</td>
+                                <td data-label="Size">20px</td>
+                                <td data-label="Line height">26px</td>
+                            </tr>
+                            <tr>
+                                <td><span class="t-p">Párrafo</span></td>
+                                <td data-label="Font">Montserrat</td>
+                                <td data-label="Weight">Regular</td>
+                                <td data-label="Size">16px</td>
+                                <td data-label="Line height">22px</td>
                             </tr>
                             <tr>
                                 <td><span class="t-sm">Texto pequeño</span></td>
-                                <td data-label="Font">Roboto condensed</td>
+                                <td data-label="Font">Montserrat</td>
                                 <td data-label="Weight">Regular</td>
-                                <td data-label="Size">13px</td>
-                                <td data-label="Line height">19px</td>
+                                <td data-label="Size">14px</td>
+                                <td data-label="Line height">20px</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 			</section>
+
+            <section class="mt-6-x">
+                <div class="container py-5">
+                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+
+                         <div class="col">
+                            <div class="card color-card h-100 border-0 rounded-0">
+                                <div class="color-swatch" style="--swatch: #0C1218;"></div>
+                                <div class="card-body px-3 py-3">
+                                    <h3 class="color-name h5 mb-0">Bunker</h3>
+                                    <p class="color-hex mb-0">#0C1218</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card color-card h-100 border-0 rounded-0">
+                                <div class="color-swatch" style="--swatch: #2F455C;"></div>
+                                <div class="card-body px-3 py-3">
+                                    <h3 class="color-name h5 mb-0">Atomic</h3>
+                                    <p class="color-hex mb-0">#2F455C</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col">
+                            <div class="card color-card h-100 border-0 rounded-0">
+                                <div class="color-swatch" style="--swatch: #21CFB4;"></div>
+                                <div class="card-body px-3 py-3">
+                                    <h3 class="color-name h5 mb-0">Mermaid</h3>
+                                    <p class="color-hex mb-0">#21CFB4</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card color-card h-100 border-0 rounded-0">
+                                <div class="color-swatch" style="--swatch: #FFFFFF;"></div>
+                                <div class="card-body px-3 py-3">
+                                    <h3 class="color-name h5 mb-0">Full white</h3>
+                                    <p class="color-hex mb-0">#FFFFFF</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
 
 			<section class="mt-6-x">
 				<div class="container">
@@ -290,25 +325,11 @@
 							<h3 class="text-lead">La guía de estilos como lenguaje común del equipo</h3>
 							<p>Construí una guía de estilos exhaustiva: colores, tipografías, tamaños, espacios y estados de cada componente. Pensada explícitamente para que el desarrollador y el animador entendieran con exactitud qué construir, cómo se comporta la interfaz y qué flujo espera el usuario, evitando retrabajos. El proceso fue wireframes → mockups → guía de estilos, prototipado en Figma e implementado en WordPress con Divi y Slider Revolution.</p>
 						</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="mt-6-x">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-4">
+                        <div class="col-lg-4">
 							<h2 class="eyebrow">RESULTADOS</h2>
 							<p>El sitio sigue operativo como carta de presentación digital de la consultora</p>
 						</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="mt-6-x">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-4">
+                        <div class="col-lg-4">
 							<h2 class="eyebrow">APRENDIZAJES</h2>
 							<h3 class="text-lead">Dirigir arte que no ejecutas tú te obliga a especificar, no a sugerir</h3>
 							<p>Cuando el resultado final depende de las manos de otro especialista, la calidad del diseño se mide por lo específica que es tu guía, no por lo bonito que se ve tu mockup.</p>
