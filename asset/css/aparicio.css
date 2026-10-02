@@ -4,7 +4,7 @@
    ============================================================ */
 
 :root {
-  --color-bg:        #D2D9E7;
+  --color-bg:        #E4E9F1;
   --color-surface:   #EEF1F6;
   --color-text-base: #1e2435;
   --color-text-sec:  #4A5568;
@@ -94,6 +94,7 @@ a, button, .boton {
 .bg-negro       { background: linear-gradient(45deg, #1E2435, #202020); border-radius: 20px 20px 0 0; }
 .bg-negro-noise { background-color: var(--color-text-base); background-image: url(../img/noise.png); }
 .bg-gris-apa { background-color: var(--color-bg); }
+.bg-separa { background-color: #E4E9F1; }
 
 .dots {
   --dot-bg:    var(--color-surface);
@@ -513,8 +514,9 @@ footer .nav .nav-link:hover,
   width: 100%;
   overflow: hidden;
   padding-block: 0 6vh;
-  background-color: var(--color-bg);
 }
+
+.pin-spacer {background-color: var(--color-bg);}
 
 .projects-pin {
   min-height: 100vh;

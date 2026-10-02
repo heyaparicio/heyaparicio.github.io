@@ -16,7 +16,7 @@
     font-size: 1rem;
     line-height: 1.5;
     color: var(--color-text);
-    background-color: var(--color-bg);
+    background-color: #bdc7db;
 }
 
 .marquee {
