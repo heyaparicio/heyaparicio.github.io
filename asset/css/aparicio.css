@@ -83,8 +83,6 @@ a, button, .boton {
 .pb-2-x { padding-bottom: var(--space-2) !important; }
 .py-2-x { padding-top:    var(--space-2) !important; padding-bottom: var(--space-2) !important; }
 
-main { padding-bottom: 80px; }
-
 /* ============================================================
    4. UTILIDADES DE COLOR Y FORMA
    ============================================================ */
