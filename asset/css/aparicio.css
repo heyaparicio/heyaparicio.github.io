@@ -564,7 +564,8 @@ footer .nav .nav-link:hover,
 .card-img-container {
   position: relative;
   overflow: hidden;
-  border-radius: 40px;
+  border-radius: 5rem;
+  corner-shape: squircle;
   width: 100%;
   height: auto;
   border: 10px solid #fff;
