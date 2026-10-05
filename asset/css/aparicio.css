@@ -745,6 +745,12 @@ footer .nav .nav-link:hover { color: var(--color-accent); }
   #main       { margin-top: 0.3rem; margin-left: 0.3rem; padding: 10px 0 0 0; }
   #mainNavbar { margin-top: 0; padding: 10px 0 0 0; }
 
+  .card-img-container {
+  
+  border-radius: 3rem;
+  corner-shape: squircle;
+  }
+
   .spacer > span {
     font-size: 3em;
     font-weight: 900;
