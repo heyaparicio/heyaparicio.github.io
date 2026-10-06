@@ -646,6 +646,7 @@ footer .nav .nav-link:hover,
 
 footer .nav .nav-link       { color: #eee; }
 footer .nav .nav-link:hover { color: var(--color-accent); }
+footer span.text-white      { font-family: var(--font-monospace); }
 
 
 /* ============================================================
