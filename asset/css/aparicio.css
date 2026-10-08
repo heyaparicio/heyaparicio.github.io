@@ -483,20 +483,21 @@ footer .nav .nav-link:hover,
    11. CARDS
    ============================================================ */
 
-.card { border-radius: 26px; border: none; }
-.card .card-body { padding: 12px 12px 24px 12px; }
-.card .card-header { border-radius: 26px 26px 0 0; padding: 12px; font-size: 1rem; font-weight: 600; }
+.card { border-radius: 5rem; corner-shape: squircle; border: none; }
+.card .card-body { padding: 1rem 1rem 1.8rem 1rem; }
+.card .card-header { border-radius: 5rem 5rem 0 0; corner-shape: squircle; padding: 1rem; font-size: 1rem; font-weight: 600; }
 
 .card .img-wrapper {
   width: 100%;
-  padding: 12px;
-  border-radius: 14px;
+  padding: 1rem;
+  border-radius: 1.8rem;
+  corner-shape: squircle;
   overflow: hidden;
   display: inline-block;
   line-height: 0;
 }
 
-.card .img-wrapper img { clip-path: inset(0 round 14px); width: 100%; height: auto; }
+.card .img-wrapper img { clip-path: inset(0 round 1.8rem); width: 100%; height: auto; }
 
 .card-title a { font-weight: 800; margin-bottom: 12px; color: #292929; }
 
