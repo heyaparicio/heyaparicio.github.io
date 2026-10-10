@@ -108,11 +108,6 @@ a, button, .boton {
     var(--dot-color);
 }
 
-.color-swatch {
-    background-color: var(--swatch);
-    aspect-ratio: 350 / 294; /* proporción del diseño */
-}
-
 
 /* ============================================================
    5. BOTONES
@@ -263,7 +258,8 @@ header.nav-hide {
 .header-pill {
   position: absolute;
   top: 0; bottom: 0; left: 0; right: 0;
-  border-radius: 6.25rem;
+  border-radius: 5rem;
+  corner-shape: squircle;
   overflow: hidden;
   background-color: transparent;
   border: 1px solid transparent;
@@ -441,7 +437,8 @@ footer .nav .nav-link:hover,
 .header-bg-gris-single {
   background-color: var(--color-text-base);
   background-image: url(../img/noise.png);
-  border-radius: 20px;
+  border-radius: 5rem;
+  corner-shape: squircle;
   margin: 20px;
 }
 
@@ -484,8 +481,8 @@ footer .nav .nav-link:hover,
    ============================================================ */
 
 .card { border-radius: 5rem; corner-shape: squircle; border: none; }
-.card .card-body { padding: 1rem 1rem 1.8rem 1rem; }
-.card .card-header { border-radius: 5rem 5rem 0 0; corner-shape: squircle; padding: 1rem; font-size: 1rem; font-weight: 600; }
+.card .card-body { padding: 1.5rem; }
+.card .card-header { border-radius: 5rem 5rem 0 0; corner-shape: squircle; padding: 1.5rem; font-size: 1rem; font-weight: 600; }
 
 .card .img-wrapper {
   width: 100%;
@@ -503,6 +500,27 @@ footer .nav .nav-link:hover,
 
 .card-title a:hover,
 .card:hover .card-title a { color: var(--color-accent) !important; }
+
+.swatch {
+	border-radius: 5rem;
+  corner-shape: squircle;
+	min-height: 220px;            /* altura en móvil */
+	background-color: var(--bg);
+	color: var(--fg);
+}
+
+@media (min-width: 576px) { .swatch { min-height: 280px; } }
+@media (min-width: 992px) { .swatch { min-height: 380px; } }
+
+.swatch .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.8rem;
+}
+    .swatch-rgb  { font-size: .8rem; letter-spacing: .02em; }
+    .swatch-name { font-size: clamp(1.25rem, 2vw, 1.9rem); font-weight: 600; line-height: 1.1; margin: 0; display: block; }
+    .swatch-hex  { font-size: 1rem; opacity: .8; margin: 0; }
 
 
 /* ============================================================

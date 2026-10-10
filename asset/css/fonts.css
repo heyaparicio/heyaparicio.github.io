@@ -51,7 +51,7 @@
 	--ls-h2:           -0.2px;
 	--ls-h3:            0px;
 	--ls-h4:            0px;
-	--ls-label:         0.08em;
+	--ls-label:         0.095em;
 
 	/* Espaciados verticales — múltiplos de 8 */
 	--space-2:          8px;
@@ -220,9 +220,11 @@ p:last-child,
 	font-weight:     600;
 	letter-spacing:  var(--ls-label);
 	text-transform:  uppercase;
-	color:           var(--color-accent);
+	color:           var(--color-text-sec);
 	display:         block;
 	margin-bottom:   var(--space-2);
+	border-left:    1.5px solid var(--color-accent);
+	padding-left:    var(--space-2);
 }
 
 /* Label neutro — sin acento */
