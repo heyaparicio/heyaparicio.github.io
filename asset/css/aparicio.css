@@ -765,11 +765,9 @@ footer span.text-white      { font-family: var(--font-monospace); }
   #main       { margin-top: 0.3rem; margin-left: 0.3rem; padding: 10px 0 0 0; }
   #mainNavbar { margin-top: 0; padding: 10px 0 0 0; }
 
-  .card-img-container {
-  
-  border-radius: 3rem;
-  corner-shape: squircle;
-  }
+  .card-img-container, .header-pill,.header-bg-gris, .header-bg-gris-single,
+  .card, .card .card-header, .card .img-wrapper, .swatch 
+  { border-radius: 3rem; corner-shape: squircle; }
 
   .spacer > span {
     font-size: 3em;
