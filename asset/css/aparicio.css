@@ -59,6 +59,13 @@ a, button, .boton {
   cursor: none;
 }
 
+a .ico-svg {
+    position: relative;
+    display: inline-block;
+    height: auto;
+    stroke-color: var(--color-text-base);
+    transition: all .3s;}
+
 /* Bootstrap define .lead con peso 300; se alinea con el sistema */
 .lead { font-weight: var(--fw-body); }
 
