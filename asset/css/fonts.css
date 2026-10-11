@@ -16,52 +16,123 @@
 	 -------------------------------------------------------------------------- */
 :root {
 
-	/* Familias tipográficas */
-	--font-display:    'Ubuntu', sans-serif;
-	--font-body:       'Inter Tight', sans-serif;
-	--font-monospace:   'IBM Plex Mono', monospace;
+  /* ==========================================================
+     FAMILIAS TIPOGRÁFICAS
+     ========================================================== */
+  --font-display:   'Ubuntu', sans-serif;
+  --font-body:      'Inter Tight', sans-serif;
+  --font-monospace: 'IBM Plex Mono', monospace;
 
-	/* Escala de tamaños — Perfect Fourth (1.333) */
-/* Base: 16px → cada paso × 1.333             */
+  /* ==========================================================
+     ESCALA FLUIDA (móvil 360px → escritorio 1440px)
+     clamp(mín, base + pendiente·vw, máx)
+     Valores en rem: respetan la preferencia de tamaño del usuario.
+     Referencia en px  →  móvil / escritorio
+     ========================================================== */
+  --text-display: clamp(3rem,     2rem     + 4.444vw, 6rem);     /* 48 → 96  Hero exclusivo        */
+  --text-h1:      clamp(2.25rem,  1.667rem + 2.593vw, 4rem);     /* 36 → 64  Título de página      */
+  --text-h2:      clamp(1.875rem, 1.5rem   + 1.667vw, 3rem);     /* 30 → 48  Título de sección     */
+  --text-h3:      clamp(1.5rem,   1.333rem + 0.741vw, 2rem);     /* 24 → 32  Subsección            */
+  --text-h4:      clamp(1.25rem,  1.167rem + 0.370vw, 1.5rem);   /* 20 → 24  Componente / card     */
+  --text-lead:    clamp(1.125rem, 1.083rem + 0.185vw, 1.25rem);  /* 18 → 20  Párrafo introductorio */
+  --text-body:    1rem;                                          /* 16       Cuerpo principal      */
+  --text-small:   0.875rem;                                      /* 14       Apoyo / metadata      */
+  --text-label:   0.75rem;                                       /* 12       Labels, eyebrows, UI  */
 
-	--text-display:    64px;   /* Hero exclusivo                  */
-	--text-h1:         48px;   /* Título de página                */
-	--text-h2:         40px;   /* Título de sección               */
-	--text-h3:         32px;   /* Subsección                      */
-	--text-h4:         24px;   /* Componente / card               */
-	--text-lead:       20px;   /* Párrafo introductorio           */
-	--text-body:       16px;   /* Cuerpo principal — base 1rem    */
-	--text-small:      14px;   /* Texto de apoyo / metadata       */
-	--text-label:      12px;   /* Labels, eyebrows, UI            */
+  /* ==========================================================
+     LINE HEIGHT — sin unidad, para que escale con el tamaño fluido
+     Cuanto más grande el texto, más ajustado.
+     ========================================================== */
+  --lh-display: 1;
+  --lh-h1:      1.05;
+  --lh-h2:      1.1;
+  --lh-h3:      1.2;
+  --lh-h4:      1.3;
+  --lh-lead:    1.5;
+  --lh-body:    1.6;
+  --lh-small:   1.5;
+  --lh-label:   1.4;
 
-	/* Line heights — múltiplos de 8 */
-	--lh-display:      72px;
-	--lh-h1:           56px;
-	--lh-h2:           48px;
-	--lh-h3:           40px;
-	--lh-h4:           32px;
-	--lh-lead:         32px;
-	--lh-body:         28px;
-	--lh-small:        24px;
-	--lh-label:        16px;
+  /* ==========================================================
+     LETTER SPACING — en em, para que escale con el tamaño
+     ========================================================== */
+  --ls-display: -0.04em;
+  --ls-h1:      -0.035em;
+  --ls-h2:      -0.025em;
+  --ls-h3:      -0.015em;
+  --ls-h4:      -0.01em;
+  --ls-lead:    -0.005em;
+  --ls-body:     0;
+  --ls-label:    0.08em;   /* uppercase + monoespaciada */
 
-	/* Letter spacing */
-	--ls-display:      -0.5px;
-	--ls-h1:           -0.3px;
-	--ls-h2:           -0.2px;
-	--ls-h3:            0px;
-	--ls-h4:            0px;
-	--ls-label:         0.095em;
+  /* ==========================================================
+     PESOS
+     ========================================================== */
+  --fw-display: 700;
+  --fw-heading: 500;
+  --fw-body:    400;
+  --fw-label:   500;
 
-	/* Espaciados verticales — múltiplos de 8 */
-	--space-2:          8px;
-	--space-3:         12px;
-	--space-4:         16px;
-	--space-6:         24px;
-	--space-8:         32px;
-	--space-12:        48px;
-	--space-16:        64px;
-	--space-24:        96px;
+  /* ==========================================================
+     MEDIDA (ancho de línea para lectura cómoda)
+     ========================================================== */
+  --measure-heading: 18ch;
+  --measure-body:    62ch;
+
+  /* ==========================================================
+     ESPACIADO — base de 4px
+     ========================================================== */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-40: 160px;
+
+  /* Espaciado fluido (móvil → escritorio) */
+  --section-y: clamp(4rem,    2rem     + 8.889vw, 10rem);  /* 64 → 160  Padding vertical de sección */
+  --gutter:    clamp(1.25rem, 0.667rem + 2.593vw, 3rem);   /* 20 → 48   Márgenes laterales          */
+}
+
+/* ============================================================
+   APLICACIÓN BASE
+   ============================================================ */
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  font-weight: var(--fw-body);
+}
+
+.display, h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  max-width: var(--measure-heading);
+  text-wrap: balance;
+}
+
+.display { font-size: var(--text-display); line-height: var(--lh-display); letter-spacing: var(--ls-display); font-weight: var(--fw-display); }
+h1       { font-size: var(--text-h1);      line-height: var(--lh-h1);      letter-spacing: var(--ls-h1); }
+h2       { font-size: var(--text-h2);      line-height: var(--lh-h2);      letter-spacing: var(--ls-h2); }
+h3       { font-size: var(--text-h3);      line-height: var(--lh-h3);      letter-spacing: var(--ls-h3); }
+h4       { font-size: var(--text-h4);      line-height: var(--lh-h4);      letter-spacing: var(--ls-h4); }
+
+p        { max-width: var(--measure-body); text-wrap: pretty; }
+.lead    { font-size: var(--text-lead);  line-height: var(--lh-lead); letter-spacing: var(--ls-lead); }
+.small   { font-size: var(--text-small); line-height: var(--lh-small); }
+
+.label {
+  font-family: var(--font-monospace);
+  font-size: var(--text-label);
+  line-height: var(--lh-label);
+  letter-spacing: var(--ls-label);
+  font-weight: var(--fw-label);
+  text-transform: uppercase;
 }
 
 
