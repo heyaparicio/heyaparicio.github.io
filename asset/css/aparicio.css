@@ -1,6 +1,11 @@
 /* ============================================================
    MAIN.CSS — heyaparicio.github.io
    Orden: Base → Utilidades → Componentes → Animaciones → Responsive
+
+   ORDEN DE CARGA (importante):
+   bootstrap.css → typography.css → main.css
+   Los tamaños, pesos, interlineados y tracking de texto salen de
+   los tokens de typography.css (--text-*, --lh-*, --ls-*, --fw-*).
    ============================================================ */
 
 :root {
@@ -12,11 +17,15 @@
   --color-border-tertiary: #D2D9E7;
   --easing:          cubic-bezier(0.165, 0.84, 0.44, 1);
   --logo-stroke:     var(--color-bg);
-  --space-6: clamp(5rem,  10vw, 10rem); /* entre secciones principales   */
-  --space-5: clamp(3rem,  6vw,  6rem);  /* entre subsecciones            */
-  --space-4: clamp(1.5rem, 3vw, 3rem);  /* entre elementos de una sección*/
-  --space-3: clamp(1rem,  2vw,  2rem);  /* entre componentes internos    */
-  --space-2: clamp(0.5rem, 1vw, 1rem);  /* espaciado tipográfico         */
+
+  /* Espaciado fluido por niveles.
+     Renombrado de --space-N a --fluid-N para no chocar con la escala
+     fija de typography.css (--space-2 = 8px, --space-6 = 24px, etc.) */
+  --fluid-6: clamp(5rem,  10vw, 10rem); /* entre secciones principales   */
+  --fluid-5: clamp(3rem,  6vw,  6rem);  /* entre subsecciones            */
+  --fluid-4: clamp(1.5rem, 3vw, 3rem);  /* entre elementos de una sección*/
+  --fluid-3: clamp(1rem,  2vw,  2rem);  /* entre componentes internos    */
+  --fluid-2: clamp(0.5rem, 1vw, 1rem);  /* espaciado tipográfico         */
 }
 
 
@@ -38,50 +47,60 @@ html, body {
   cursor: none;
 }
 
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
 a, button, .boton {
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
   cursor: none;
 }
 
+/* Bootstrap define .lead con peso 300; se alinea con el sistema */
+.lead { font-weight: var(--fw-body); }
+
+
 /* ============================================================
    3. UTILIDADES DE ESPACIADO
    ============================================================ */
 
 /* ── Nivel 6 — secciones principales ── */
-.mt-6-x { margin-top:     var(--space-6) !important; }
-.mb-6-x { margin-bottom:  var(--space-6) !important; }
-.pt-6-x { padding-top:    var(--space-6) !important; }
-.pb-6-x { padding-bottom: var(--space-6) !important; }
-.py-6-x { padding-top:    var(--space-6) !important; padding-bottom: var(--space-6) !important; }
+.mt-6-x { margin-top:     var(--fluid-6) !important; }
+.mb-6-x { margin-bottom:  var(--fluid-6) !important; }
+.pt-6-x { padding-top:    var(--fluid-6) !important; }
+.pb-6-x { padding-bottom: var(--fluid-6) !important; }
+.py-6-x { padding-top:    var(--fluid-6) !important; padding-bottom: var(--fluid-6) !important; }
 
 /* ── Nivel 5 — subsecciones ── */
-.mt-5-x { margin-top:     var(--space-5) !important; }
-.mb-5-x { margin-bottom:  var(--space-5) !important; }
-.pt-5-x { padding-top:    var(--space-5) !important; }
-.pb-5-x { padding-bottom: var(--space-5) !important; }
-.py-5-x { padding-top:    var(--space-5) !important; padding-bottom: var(--space-5) !important; }
+.mt-5-x { margin-top:     var(--fluid-5) !important; }
+.mb-5-x { margin-bottom:  var(--fluid-5) !important; }
+.pt-5-x { padding-top:    var(--fluid-5) !important; }
+.pb-5-x { padding-bottom: var(--fluid-5) !important; }
+.py-5-x { padding-top:    var(--fluid-5) !important; padding-bottom: var(--fluid-5) !important; }
 
 /* ── Nivel 4 — elementos de una sección ── */
-.mt-4-x { margin-top:     var(--space-4) !important; }
-.mb-4-x { margin-bottom:  var(--space-4) !important; }
-.pt-4-x { padding-top:    var(--space-4) !important; }
-.pb-4-x { padding-bottom: var(--space-4) !important; }
-.py-4-x { padding-top:    var(--space-4) !important; padding-bottom: var(--space-4) !important; }
+.mt-4-x { margin-top:     var(--fluid-4) !important; }
+.mb-4-x { margin-bottom:  var(--fluid-4) !important; }
+.pt-4-x { padding-top:    var(--fluid-4) !important; }
+.pb-4-x { padding-bottom: var(--fluid-4) !important; }
+.py-4-x { padding-top:    var(--fluid-4) !important; padding-bottom: var(--fluid-4) !important; }
 
 /* ── Nivel 3 — componentes internos ── */
-.mt-3-x { margin-top:     var(--space-3) !important; }
-.mb-3-x { margin-bottom:  var(--space-3) !important; }
-.pt-3-x { padding-top:    var(--space-3) !important; }
-.pb-3-x { padding-bottom: var(--space-3) !important; }
-.py-3-x { padding-top:    var(--space-3) !important; padding-bottom: var(--space-3) !important; }
+.mt-3-x { margin-top:     var(--fluid-3) !important; }
+.mb-3-x { margin-bottom:  var(--fluid-3) !important; }
+.pt-3-x { padding-top:    var(--fluid-3) !important; }
+.pb-3-x { padding-bottom: var(--fluid-3) !important; }
+.py-3-x { padding-top:    var(--fluid-3) !important; padding-bottom: var(--fluid-3) !important; }
 
 /* ── Nivel 2 — tipográfico ── */
-.mt-2-x { margin-top:     var(--space-2) !important; }
-.mb-2-x { margin-bottom:  var(--space-2) !important; }
-.pt-2-x { padding-top:    var(--space-2) !important; }
-.pb-2-x { padding-bottom: var(--space-2) !important; }
-.py-2-x { padding-top:    var(--space-2) !important; padding-bottom: var(--space-2) !important; }
+.mt-2-x { margin-top:     var(--fluid-2) !important; }
+.mb-2-x { margin-bottom:  var(--fluid-2) !important; }
+.pt-2-x { padding-top:    var(--fluid-2) !important; }
+.pb-2-x { padding-bottom: var(--fluid-2) !important; }
+.py-2-x { padding-top:    var(--fluid-2) !important; padding-bottom: var(--fluid-2) !important; }
 
 /* ============================================================
    4. UTILIDADES DE COLOR Y FORMA
@@ -121,9 +140,11 @@ a, button, .boton {
   gap: 8px;
   padding: 12px 24px;
   border-radius: 100px;
-  font-size: 0.9rem;
-  letter-spacing: 0.06em;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: var(--text-small);
+  line-height: var(--lh-label);
+  letter-spacing: 0.02em;
+  font-weight: var(--fw-heading);   /* Ubuntu no tiene 600: antes se renderizaba como 700 */
 }
 
 .boton-enlace {
@@ -131,13 +152,14 @@ a, button, .boton {
   padding: 14px 28px;
   background-color: transparent;
   color: var(--color-text-sec);
-  font-size: 16px;
-  font-weight: 500;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-label);
+  font-weight: var(--fw-heading);
 }
 .boton-enlace:hover { color: var(--color-accent); }
 
 .boton {
-  font-family: var(--font-display);
   background-color: var(--color-text-sec);
   color: var(--color-surface);
   box-shadow: 0px 18px 20px -20px rgba(74, 85, 104, 0.8);
@@ -223,7 +245,6 @@ header {
 }
 
 /* ── Header home: fixed, respeta margen del hero ─────────── */
-/* ── Header home: fixed, respeta margen del hero ─────────── */
 header#mainNavbar {
   position: fixed;
   top: 20px;
@@ -306,13 +327,20 @@ header.scrolled .header-pill {
 
 .navbar-brand { gap: 0.469rem; }
 
+/* Tipografía del logotipo (una sola regla para ambas variantes) */
+.navbar-brand span {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  line-height: var(--lh-h4);
+  font-weight: var(--fw-heading);
+  letter-spacing: var(--ls-h4);
+}
+
 /* Navbar — variante clara */
 #main { margin-top: 20px; padding-top: 1.6rem; padding-bottom: 1.6rem; }
 
 #main nav .navbar-brand span {
   color: var(--color-text-base);
-  font-weight: 600;
-  font-size: 1.344rem;
   text-transform: capitalize;
 }
 
@@ -327,14 +355,6 @@ header.scrolled .header-pill {
   position: relative;
   white-space: nowrap;
   text-decoration: none;
-}
-
-/* Tipografía */
-#main .navbar-nav .nav-link,
-#mainNavbar .navbar-nav .nav-link {
-  font-size: 0.938rem;
-  font-weight: 500;
-  letter-spacing: 0.08rem;
 }
 
 /* Colores por variante */
@@ -391,15 +411,18 @@ header.scrolled .header-pill {
 
 /* Navbar — variante oscura */
 #mainNavbar nav, #main nav { padding: 10px 20px; }
-#mainNavbar .navbar-brand span { color: var(--color-surface); font-weight: 600; font-size: 1.344rem; }
+#mainNavbar .navbar-brand span { color: var(--color-surface); }
 #mainNavbar .navbar-toggler { border: none; color: var(--color-surface); }
 
+/* Enlaces de navegación: única fuente de verdad tipográfica
+   (antes estaba duplicada y en conflicto en dos reglas) */
 .navbar-nav .nav-link {
   color: var(--color-surface);
   font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 0.938rem;
-  letter-spacing: 0.25px;
+  font-size: var(--text-small);
+  line-height: var(--lh-small);
+  font-weight: var(--fw-heading);
+  letter-spacing: 0.02em;
   position: relative;
 }
 
@@ -423,9 +446,23 @@ footer .nav .nav-link:hover,
 
 .btn-close,
 .offcanvas-title,
-.offcanvas-body a.nav-link { color:#1E2435; font-weight: 500; }
+.offcanvas-body a.nav-link { color:#1E2435; font-weight: var(--fw-heading); }
 
-.offcanvas-title { font-size: 1.25rem; }
+.offcanvas-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  line-height: var(--lh-h4);
+  letter-spacing: var(--ls-h4);
+}
+
+/* Menú móvil: enlaces a escala de componente para lectura/táctil cómoda */
+.offcanvas-body a.nav-link {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  line-height: var(--lh-h4);
+  letter-spacing: var(--ls-h4);
+}
+
 .offcanvas-body a.nav-link:hover { color: var(--color-accent) !important; }
 
 
@@ -468,9 +505,11 @@ footer .nav .nav-link:hover,
   position: absolute;
   color: transparent;
   width: 500vw;
-  font-size: 5em;
-  font-weight: 900;
   font-family: var(--font-display);
+  font-size: var(--text-display);        /* fluido: ya no necesita override en móvil */
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  font-weight: var(--fw-display);        /* Ubuntu llega a 700; 900 no existe */
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: var(--color-bg);
 }
@@ -482,7 +521,16 @@ footer .nav .nav-link:hover,
 
 .card { border-radius: 5rem; corner-shape: squircle; border: none; }
 .card .card-body { padding: 1.5rem; }
-.card .card-header { border-radius: 5rem 5rem 0 0; corner-shape: squircle; padding: 1.5rem; font-size: 1rem; font-weight: 600; }
+
+.card .card-header {
+  border-radius: 5rem 5rem 0 0;
+  corner-shape: squircle;
+  padding: 1.5rem;
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  line-height: var(--lh-label);
+  font-weight: var(--fw-heading);
+}
 
 .card .img-wrapper {
   width: 100%;
@@ -496,31 +544,62 @@ footer .nav .nav-link:hover,
 
 .card .img-wrapper img { clip-path: inset(0 round 1.8rem); width: 100%; height: auto; }
 
-.card-title a { font-weight: 800; margin-bottom: 12px; color: #292929; }
+.card-title a {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  line-height: var(--lh-h4);
+  letter-spacing: var(--ls-h4);
+  font-weight: var(--fw-heading);        /* antes 800: Ubuntu no lo tiene */
+  margin-bottom: 12px;
+  color: #292929;
+}
 
 .card-title a:hover,
 .card:hover .card-title a { color: var(--color-accent) !important; }
 
 .swatch {
-	border-radius: 5rem;
+  border-radius: 5rem;
   corner-shape: squircle;
-	min-height: 220px;            /* altura en móvil */
-	background-color: var(--bg);
-	color: var(--fg);
+  min-height: 220px;            /* altura en móvil */
+  background-color: var(--bg);
+  color: var(--fg);
 }
 
 @media (min-width: 576px) { .swatch { min-height: 280px; } }
 @media (min-width: 992px) { .swatch { min-height: 380px; } }
 
 .swatch .card-body {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.8rem;
 }
-    .swatch-rgb  { font-size: .8rem; letter-spacing: .02em; }
-    .swatch-name { font-size: clamp(1.25rem, 2vw, 1.9rem); font-weight: 600; line-height: 1.1; margin: 0; display: block; }
-    .swatch-hex  { font-size: 1rem; opacity: .8; margin: 0; }
+
+.swatch-rgb {
+  font-family: var(--font-monospace);
+  font-size: var(--text-label);
+  line-height: var(--lh-label);
+  letter-spacing: var(--ls-label);
+  font-weight: var(--fw-label);
+}
+
+.swatch-name {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  line-height: var(--lh-h4);
+  letter-spacing: var(--ls-h4);
+  font-weight: var(--fw-heading);
+  margin: 0;
+  display: block;
+}
+
+.swatch-hex {
+  font-family: var(--font-monospace);
+  font-size: var(--text-body);
+  line-height: var(--lh-small);
+  opacity: .8;
+  margin: 0;
+}
 
 
 /* ============================================================
@@ -596,7 +675,7 @@ footer .nav .nav-link:hover,
 .img-zoom:hover { transform: scale(1.1); }
 
 .project-content { max-width: 100%; padding-left: 4vw; }
-.project-content h2 { margin-bottom: 1.5rem; }
+.project-content h2 { margin-bottom: var(--space-6); }   /* 24px */
 
 @media (max-width: 991px) {
   .projects-horizontal { overflow: visible; padding-block: 4rem; }
@@ -615,7 +694,7 @@ footer .nav .nav-link:hover,
   .project-layout { max-width: 100%; }
   .project-layout > [class*="col-"] { padding-left: 0; padding-right: 0; }
   .project-content { padding-left: 0; margin-top: 2rem; }
-  .project-content h2 { margin-bottom: 1rem; }
+  .project-content h2 { margin-bottom: var(--space-4); }   /* 16px */
 }
 
 @media (max-width: 576px) {
@@ -665,7 +744,12 @@ footer .nav .nav-link:hover,
 
 footer .nav .nav-link       { color: #eee; }
 footer .nav .nav-link:hover { color: var(--color-accent); }
-footer span.text-white      { font-family: var(--font-monospace); }
+
+footer span.text-white {
+  font-family: var(--font-monospace);
+  font-size: var(--text-small);
+  line-height: var(--lh-small);
+}
 
 
 /* ============================================================
@@ -732,10 +816,28 @@ footer span.text-white      { font-family: var(--font-monospace); }
    16. TABLAS
    ============================================================ */
 
-    /* Tabla */
-    .type-table { --bs-table-bg: transparent; }
-    .type-table thead th { color: #9e9e9e; font-weight: 500; font-size: 1.1rem; border-bottom: 1px solid #e6e6e6; padding: 1.25rem .75rem; }
-    .type-table tbody td { vertical-align: middle; padding: 1rem .75rem; border-color: #e6e6e6; }
+.type-table { --bs-table-bg: transparent; }
+
+/* Encabezados: estilo label (mono, mayúsculas) */
+.type-table thead th {
+  font-family: var(--font-monospace);
+  font-size: var(--text-label);
+  line-height: var(--lh-label);
+  letter-spacing: var(--ls-label);
+  font-weight: var(--fw-label);
+  text-transform: uppercase;
+  color: var(--color-text-sec);          /* antes #9e9e9e: contraste insuficiente */
+  border-bottom: 1px solid #e6e6e6;
+  padding: 1.25rem .75rem;
+}
+
+.type-table tbody td {
+  vertical-align: middle;
+  padding: 1rem .75rem;
+  border-color: #e6e6e6;
+  font-size: var(--text-body);
+  line-height: var(--lh-small);
+}
 
 
 /* ============================================================
@@ -766,36 +868,40 @@ footer span.text-white      { font-family: var(--font-monospace); }
   #mainNavbar { margin-top: 0; padding: 10px 0 0 0; }
 
   .card-img-container, .header-pill,.header-bg-gris, .header-bg-gris-single,
-  .card, .card .card-header, .card .img-wrapper, .swatch 
+  .card, .card .card-header, .card .img-wrapper, .swatch
   { border-radius: 3rem; corner-shape: squircle; }
 
-  .spacer > span {
-    font-size: 3em;
-    font-weight: 900;
-    font-family: var(--font-display);
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: var(--color-bg);
-  }
+  /* .spacer > span ya es fluido con --text-display: se eliminó su override */
 
   .rotating-text b {
-    font-size: 2.8rem;
-    font-weight: 500;
+    font-size: var(--text-h1);          /* 36px en móvil chico, ~47px a 768px (antes 2.8rem fijo) */
+    font-weight: var(--fw-heading);
+    letter-spacing: var(--ls-h1);
     display: inline-flex;
     flex-wrap: wrap;
     gap: 0.25rem;
     max-width: 100%;
-    line-height: 1.2;
+    line-height: 1.2;                   /* se mantiene: el efecto rotativo suele recortar con overflow */
     vertical-align: top;
   }
 }
 
 /* Móvil: cada fila se convierte en una tarjeta apilada */
-    @media (max-width: 767.98px) {
-      .type-table thead { display: none; }
-      .type-table, .type-table tbody, .type-table tr, .type-table td { display: block; width: 100%; }
-      .type-table tr { border: 1px solid #e6e6e6; border-radius: .5rem; margin-bottom: 1rem; padding: .5rem 0; }
-      .type-table tbody td { border: 0; padding: .35rem 1rem; display: flex; justify-content: space-between; gap: 1rem; }
-      .type-table tbody td::before { content: attr(data-label); color: #9e9e9e; font-weight: 500; }
-      .type-table tbody td:first-child { display: block; padding-top: .75rem; }
-      .type-table tbody td:first-child::before { content: none; }
-    }
+@media (max-width: 767.98px) {
+  .type-table thead { display: none; }
+  .type-table, .type-table tbody, .type-table tr, .type-table td { display: block; width: 100%; }
+  .type-table tr { border: 1px solid #e6e6e6; border-radius: .5rem; margin-bottom: 1rem; padding: .5rem 0; }
+  .type-table tbody td { border: 0; padding: .35rem 1rem; display: flex; justify-content: space-between; gap: 1rem; }
+  .type-table tbody td::before {
+    content: attr(data-label);
+    font-family: var(--font-monospace);
+    font-size: var(--text-label);
+    line-height: var(--lh-label);
+    letter-spacing: var(--ls-label);
+    font-weight: var(--fw-label);
+    text-transform: uppercase;
+    color: var(--color-text-sec);
+  }
+  .type-table tbody td:first-child { display: block; padding-top: .75rem; }
+  .type-table tbody td:first-child::before { content: none; }
+}
