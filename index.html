@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="asset/css/animations.css"> 
 		<link rel="stylesheet" href="asset/css/aparicio.css"/>
 		<link rel="stylesheet" href="asset/css/home.css"/>
+        
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMP62DWV1B"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
@@ -92,28 +93,25 @@
 						</p>
 						</div>
 					</div>
-					<div class="col-lg-6 col-md-6" data-reveal="left" data-delay="1" data-duration="slow" data-once>
-						<div class="article">
+					<div class="col-lg-6 col-md-6 glow-container" data-reveal="left" data-delay="1" data-duration="slow" data-once>
 						<div class="btl-1">
-							<img class="alayer alayer-5" src="asset/img/hero/5.png" alt="" />
-							<img class="alayer alayer-4" src="asset/img/hero/4.png" alt="" />
-							<img class="alayer alayer-3" src="asset/img/hero/3.png" alt="" />
-							<img class="alayer alayer-2" src="asset/img/hero/2.png" alt="" />
-							<img class="alayer alayer-1" src="asset/img/hero/1.png" alt="" />
-						<img class="alayer alayer-0" src="asset/img/hero/0.png" alt="" />
-						</div>
-						</div>
-					</div>
+                            <img src="asset/img/hero/5.png" alt="" class="alayer alayer-5" data-depth="4" data-ax="0.60" data-ay="0.50">
+                            <img src="asset/img/hero/4.png" alt="" class="alayer alayer-4" data-depth="8" data-ax="0.50" data-ay="0.50">
+                            <img src="asset/img/hero/3.png" alt="" class="alayer alayer-3" data-depth="12" data-ax="0.79" data-ay="0.81">
+                            <img src="asset/img/hero/2.png" alt="" class="alayer alayer-2" data-depth="16" data-ax="0.79" data-ay="0.22">
+                            <img src="asset/img/hero/1.png" alt="" class="alayer alayer-1" data-depth="20" data-ax="0.35" data-ay="0.36">
+                            <img src="asset/img/hero/0.png" alt="" class="alayer alayer-0" data-depth="24" data-ax="0.50" data-ay="0.50">
+                        </div>
 					</div>
 				</div>
 			</div>
 	  	</section>
 
 		<main>
-			<div class="mt-6-x" data-reveal="left" data-duration="slow" data-once>
+			<div class="mt-6-x" data-reveal="down" data-duration="slow" data-once>
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-6 offset-lg-6 col-md-8 offset-md-4">
+						<div class="col-lg-6 col-md-8 offset-md-1 offset-lg-1">
 							<h2>Proyectos destacados</h2>
 							<span class="texto-narrativo">Cada proyecto parte de una pregunta. Esto es lo que construí mientras buscaba respuestas.</span>
 						</div>
@@ -129,7 +127,7 @@
                             <!-- PROYECTO 1 -->
 
                             <article class="project-card">
-                                <div class="project-layout row align-items-center" data-reveal="up" data-delay="1">
+                                <div class="project-layout row align-items-center" data-reveal="left" data-delay="1" data-duration="slow" data-once>
 
                                     <!-- IMAGE -->
 
@@ -173,7 +171,7 @@
                             <!-- PROYECTO 2 -->
 
                             <article class="project-card">
-                                <div class="project-layout row align-items-center" data-reveal="up" data-delay="2">
+                                <div class="project-layout row align-items-center">
 
                                     <!-- IMAGE -->
 
@@ -217,7 +215,7 @@
                             <!-- PROYECTO 3 -->
 
                             <article class="project-card">
-                                <div class="project-layout row align-items-center" data-reveal="up" data-delay="3">
+                                <div class="project-layout row align-items-center">
 
                                     <!-- IMAGE -->
 
@@ -260,7 +258,7 @@
                             <!-- PROYECTO 4 -->
 
                             <article class="project-card">
-                                <div class="project-layout row align-items-center" data-reveal="up" data-delay="4">
+                                <div class="project-layout row align-items-center">
 
                                     <!-- IMAGE -->
 
@@ -340,7 +338,6 @@
 					</div>
 				</div>
 		</section>
-	  	
 
 		<footer class="bg-negro-noise py-5">
             <div class="container">
@@ -374,7 +371,139 @@
 		<script src="asset/js/parallax.js"></script>	
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-	      
+	    
+        <script>
+(() => {
+  const area = document.querySelector('.hero');
+  const wrap = document.querySelector('.btl-1');
+  const els  = [...document.querySelectorAll('.hero [data-depth]')];
+  if (!area || !wrap || !els.length) return;
+
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  /* ---------- Ajustes ---------- */
+  const AMP     = 1.4;    // recorrido máximo = data-depth × AMP (px)
+  const SOFT    = 0.22;   // radio de máxima atracción (fracción del ancho)
+  const ZETA    = 0.42;   // rebote: 1 = sin rebote · 0.3 = muy gelatinoso
+  const K_BACK  = 40;     // rigidez capas del fondo (más lentas)
+  const K_FRONT = 85;     // rigidez capas del frente (más ágiles)
+  const TILT    = 2.0;    // inclinación 3D en grados (0 = apagada)
+  const DEBUG   = false;  // true = muestra los puntos de anclaje
+
+  const H = 1 / 120;      // paso fijo de la simulación (estable a cualquier fps)
+  const PEAK = 0.3849;    // normaliza la fuerza para que su máximo sea 1
+
+  const maxD = Math.max(...els.map((e) => +e.dataset.depth || 0)) || 1;
+
+  const P = els.map((el) => {
+    const depth = +el.dataset.depth || 0;
+    const f = depth / maxD;                          // 0 fondo → 1 frente
+    const k = K_BACK + (K_FRONT - K_BACK) * f;
+    return {
+      el,
+      ax: parseFloat(el.dataset.ax ?? 0.5),
+      ay: parseFloat(el.dataset.ay ?? 0.5),
+      reach: depth * AMP,
+      k,
+      c: 2 * ZETA * Math.sqrt(k),                    // amortiguación
+      x: 0, y: 0, vx: 0, vy: 0
+    };
+  });
+
+  if (DEBUG) {
+    P.forEach((p) => {
+      const dot = document.createElement('i');
+      dot.style.cssText =
+        `position:absolute;left:${p.ax * 100}%;top:${p.ay * 100}%;width:10px;height:10px;` +
+        'margin:-5px;border-radius:50%;background:#0f0;z-index:99;pointer-events:none';
+      wrap.appendChild(dot);
+    });
+  }
+
+  let mx = 0, my = 0, active = false;
+  let last = 0, acc = 0, raf = null;
+  let tiltX = 0, tiltY = 0;
+
+  const step = (t) => {
+    const dt = Math.min((t - last) / 1000, 1 / 30);
+    last = t;
+    acc += dt;
+
+    // Mouse en coordenadas locales del contenedor
+    const r = wrap.getBoundingClientRect();
+    const w = wrap.offsetWidth, h = wrap.offsetHeight;
+    const lx = mx - (r.left + (r.width  - w) / 2);
+    const ly = my - (r.top  + (r.height - h) / 2);
+    const s2 = (SOFT * w) ** 2;
+
+    // 1) Gravedad: posición de equilibrio de cada capa
+    for (const p of P) {
+      if (active) {
+        const dx = lx - (p.ax * w + p.x);
+        const dy = ly - (p.ay * h + p.y);
+        const F  = s2 / (PEAK * Math.pow(dx * dx + dy * dy + s2, 1.5));
+        p.tx = dx * F * p.reach;
+        p.ty = dy * F * p.reach;
+      } else {
+        p.tx = 0; p.ty = 0;
+      }
+    }
+
+    // 2) Resorte amortiguado hacia ese equilibrio (pasos fijos)
+    while (acc >= H) {
+      acc -= H;
+      for (const p of P) {
+        p.vx += (p.k * (p.tx - p.x) - p.c * p.vx) * H;
+        p.vy += (p.k * (p.ty - p.y) - p.c * p.vy) * H;
+        p.x  += p.vx * H;
+        p.y  += p.vy * H;
+      }
+    }
+
+    // 3) Aplicar y comprobar si todo llegó al reposo
+    let moving = active;
+    for (const p of P) {
+      p.el.style.translate = `${p.x.toFixed(2)}px ${p.y.toFixed(2)}px`;
+      if (Math.abs(p.x) > 0.01 || Math.abs(p.y) > 0.01 ||
+          Math.abs(p.vx) > 0.01 || Math.abs(p.vy) > 0.01) moving = true;
+    }
+
+    // Inclinación 3D suave hacia el mouse
+    if (TILT) {
+      const nx = active ? Math.max(-1, Math.min(1, (lx / w) * 2 - 1)) : 0;
+      const ny = active ? Math.max(-1, Math.min(1, (ly / h) * 2 - 1)) : 0;
+      const a = 1 - Math.exp(-dt * 3.5);
+      tiltX += (nx - tiltX) * a;
+      tiltY += (ny - tiltY) * a;
+      wrap.style.transform =
+        `perspective(1000px) rotateX(${(-tiltY * TILT).toFixed(3)}deg) rotateY(${(tiltX * TILT).toFixed(3)}deg)`;
+      if (Math.abs(tiltX) > 0.001 || Math.abs(tiltY) > 0.001) moving = true;
+    }
+
+    raf = moving ? requestAnimationFrame(step) : null;   // se apaga en reposo
+  };
+
+  const run = () => {
+    if (raf) return;
+    last = performance.now();
+    raf = requestAnimationFrame(step);
+  };
+
+  area.addEventListener('pointermove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    active = true;
+    run();
+  });
+
+  area.addEventListener('pointerleave', () => {
+    active = false;
+    run();
+  });
+})();
+</script>
+
+
         <script type="module">
             gsap.registerPlugin(ScrollTrigger);
 

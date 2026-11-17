@@ -1,9 +1,68 @@
 :root {
     --size: clamp(8rem, 1rem + 15vmin, 14rem);
     --gap: calc(var(--size) / 8);
-    --duration: 40s;
+    --duration: 80s;
     --scroll-start: 0;
     --scroll-end: calc(-100% - var(--gap));
+}
+:root {
+  --glow-color: #FF33CA;
+  --glow-blur: 100px;      /* Tailwind blur-3xl ≈ 64px; 100px mantiene tu look */
+  --glow-opacity: 0.5;
+}
+
+.glow-container {
+  position: relative;
+  isolation: isolate;      /* z-index: -1 no se escapa detrás del body */
+}
+
+.glow-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background: radial-gradient(circle closest-side, var(--color-accent) 0%, transparent 100%);
+  filter: blur(var(--glow-blur)) saturate(1.4);
+  opacity: var(--glow-opacity);
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;
+
+  animation: glow-breathe 8s cubic-bezier(.4, 0, .2, 1) infinite alternate;
+}
+@keyframes glow-breathe {
+  from { transform: scale(1); opacity: 0.45; }
+  to   { transform: scale(1.15); opacity: 0.6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-container::before { animation: none; }
+}
+
+.glow {
+  position: relative;  
+  isolation: isolate;
+}
+
+.glow::before {
+  content: "";
+  position: absolute;      /* no ocupa espacio en el layout */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  /* centrado */
+  height: 20rem;
+  width: 20rem;
+  background-color: var(--color-accent);
+  filter: blur(160px) saturate(1.4);
+  border-radius: 160px;
+  opacity: 0.45;
+  z-index: -1;
+  pointer-events: none;   
 }
 
 .clientes {
@@ -160,4 +219,121 @@
         opacity: 0;
         visibility: hidden;
     }
+}
+
+wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- Columnas guía ----------
+   La grilla se abre 12px hacia afuera para que cada línea
+   caiga en el medio del espacio entre columnas. */
+
+   /* ---------- Tokens (valores de la fuente original) ---------- */
+
+.section-asignaturas {
+  --cols: 6;
+  --title-span: 3;
+  --cell-x: 16px;
+  --line: 1px solid var(--color-border-tertiary);
+
+  position: relative;
+  isolation: isolate;              /* las capas quedan dentro de la sección */
+  padding-block: 112px;
+}
+
+/* ---------- Capas ---------- */
+.gridlines { z-index: 0; }         /* al fondo */
+.content   { position: relative; z-index: 1; }   /* texto sobre las líneas */
+
+/* ---------- Líneas de grilla ---------- */
+.gridlines {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  pointer-events: none;
+}
+.gridlines span { border-right: var(--line); }
+.gridlines span:first-child { border-left: var(--line); }
+
+/* ---------- Filas (misma grilla que las líneas) ---------- */
+.rows { border-top: var(--line); }
+
+.row-asignatura {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  align-items: center;
+  padding-block: 26px;
+  padding-inline: 0;
+  border-bottom: var(--line);
+  transition: background-color .3s, padding-inline .3s;
+}
+
+.row-asignatura > * {
+  margin: 0;
+  padding-inline: var(--cell-x);
+  transition: color .3s, opacity .3s;
+}
+
+.row-asignatura .yr {
+  color: var(--fg-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.row-asignatura h3 {
+  grid-column: span var(--title-span);
+  font-size: var(--text-h4);
+}
+
+.row-asignatura .rl {
+  grid-column: span 2;
+  color: var(--fg-soft);
+}
+
+/* ---------- Hover (solo puntero real) ---------- */
+@media (hover: hover) and (pointer: fine) {
+
+  /* Fila activa: profundidad */
+  .row-asignatura:hover {
+    padding-inline: 20px;
+    background-color: color-mix(in srgb, var(--color-border-tertiary) 50%, transparent);
+  }
+
+  /* Textos secundarios ganan contraste */
+  .row-asignatura:hover .yr,
+  .row-asignatura:hover .rl {
+    color: var(--color-text-primary, currentColor);
+  }
+
+  /* Las otras filas se atenúan */
+  .rows:has(.row-asignatura:hover) .row-asignatura:not(:hover) > * {
+    opacity: .4;
+  }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .section-asignaturas { --cols: 4; }
+  .gridlines span:nth-child(n+5) { display: none; }
+  .row-asignatura .rl { display: none; }
+}
+
+@media (max-width: 600px) {
+  .section-asignaturas {
+    --cols: 3;
+    --title-span: 2;
+    --cell-x: 12px;
+    padding-block: 80px;
+  }
+  .gridlines span:nth-child(n+4) { display: none; }
+}
+
+/* ---------- Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .row-asignatura,
+  .row-asignatura > * { transition: none; }
 }
