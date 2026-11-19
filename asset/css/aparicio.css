@@ -877,7 +877,7 @@ footer span.text-white {
 
   .card-img-container, .header-pill,.header-bg-gris, .header-bg-gris-single,
   .card, .card .card-header, .card .img-wrapper, .swatch
-  { border-radius: 3rem; corner-shape: squircle; }
+  { border-radius: 2rem; corner-shape: squircle; }
 
   /* .spacer > span ya es fluido con --text-display: se eliminó su override */
 

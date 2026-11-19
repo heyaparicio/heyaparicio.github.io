@@ -6,63 +6,52 @@
     --scroll-end: calc(-100% - var(--gap));
 }
 :root {
-  --glow-color: #FF33CA;
   --glow-blur: 100px;      /* Tailwind blur-3xl ≈ 64px; 100px mantiene tu look */
-  --glow-opacity: 0.5;
 }
 
+/* 1. Sin halo en las imágenes */
+.btl-1 img.alayer { filter: none; }
+
+/* 2. Glow de fondo, anclado al celular */
 .glow-container {
+  --glow-x: 60%;     /* posición del celular dentro de la columna */
+  --glow-y: 52%;
+  --gx: 0px;         /* desplazamiento que envía el script */
+  --gy: 0px;
   position: relative;
-  isolation: isolate;      /* z-index: -1 no se escapa detrás del body */
+  isolation: isolate;
 }
 
 .glow-container::before {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
+  top: var(--glow-y);
+  left: var(--glow-x);
+  translate: calc(-50% + var(--gx)) calc(-50% + var(--gy));
 
-  width: 20rem;
-  height: 20rem;
+  width: 26rem;
+  height: 26rem;
   border-radius: 50%;
-  background: radial-gradient(circle closest-side, var(--color-accent) 0%, transparent 100%);
-  filter: blur(var(--glow-blur)) saturate(1.4);
-  opacity: var(--glow-opacity);
+  background: radial-gradient(circle closest-side,
+    color-mix(in srgb, var(--color-accent) 70%, transparent) 0%,
+    color-mix(in srgb, var(--color-accent) 32%, transparent) 40%,
+    color-mix(in srgb, var(--color-accent) 8%,  transparent) 72%,
+    transparent 100%);
+  filter: blur(var(--glow-blur, 100px)) saturate(1.1);
+  opacity: .5;
   z-index: -1;
   pointer-events: none;
   will-change: transform;
-
   animation: glow-breathe 8s cubic-bezier(.4, 0, .2, 1) infinite alternate;
 }
+
 @keyframes glow-breathe {
-  from { transform: scale(1); opacity: 0.45; }
-  to   { transform: scale(1.15); opacity: 0.6; }
+  from { transform: scale(1);    opacity: .38; }
+  to   { transform: scale(1.12); opacity: .5;  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .glow-container::before { animation: none; }
-}
-
-.glow {
-  position: relative;  
-  isolation: isolate;
-}
-
-.glow::before {
-  content: "";
-  position: absolute;      /* no ocupa espacio en el layout */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);  /* centrado */
-  height: 20rem;
-  width: 20rem;
-  background-color: var(--color-accent);
-  filter: blur(160px) saturate(1.4);
-  border-radius: 160px;
-  opacity: 0.45;
-  z-index: -1;
-  pointer-events: none;   
 }
 
 .clientes {
